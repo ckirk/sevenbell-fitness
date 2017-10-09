@@ -1,0 +1,44 @@
+// @import url('https://fonts.googleapis.com/css?family=Didact+Gothic');
+// @import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900');
+@import 'variables.scss';
+@import 'landingPage.scss';
+
+// GLOBAL
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  color: #fff;
+
+  a {
+    text-decoration: inherit;
+    color: #fff;
+  }
+  button {
+    border: none;
+    border-radius: none;
+    background-color: #555;
+    outline: none;
+    cursor: pointer;
+  }
+}
+
+::selection {
+  background: $gold;
+  color: #000;
+}
+
+// MISC
+.noSelect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
