@@ -16,14 +16,14 @@ class Base extends React.Component {
       <div id='base'>
         <div id="header">
           <div className="logo">
-            <Link to='/'>
+            <Link to='/' >
               <img src='../images/logo.png' />
             </Link>
           </div>
           <div className="navMenu">
-            <Link to='/memberships'>Memberships</Link>
-            <Link to='/schedule'>Class Schedule</Link>
-            <Link to='/training'>Personal Training</Link>
+            <Link to='/memberships' activeClassName='active'>Memberships</Link>
+            <Link to='/schedule' activeClassName='active'>Class Schedule</Link>
+            <Link to='/training' activeClassName='active'>Personal Training</Link>
           </div>
         </div>
         {this.props.children}

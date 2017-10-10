@@ -5,6 +5,9 @@ import { Router, Route, Link, IndexRoute, hashHistory, browserHistory } from 're
 // Component Imports
 import Base from './components/Base'
 import LandingPage from './components/LandingPage'
+import Memberships from './components/Memberships'
+import Schedule from './components/Schedule'
+import Training from './components/Training'
 
 // REACT-ROUTER
 class App extends Component {
@@ -13,7 +16,9 @@ class App extends Component {
       <Router history={hashHistory}>
         <Route path='/' component={Base}>
           <IndexRoute component={LandingPage} />
-          {/* <Route path='details' component={Details} /> */}
+          <Route path='memberships' component={Memberships} />
+          <Route path='schedule' component={Schedule} />
+          <Route path='training' component={Training} />
 
           <Route path='*' component={NotFound} />
         </Route>
