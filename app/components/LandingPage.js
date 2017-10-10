@@ -56,7 +56,7 @@ class LandingPage extends React.Component {
             }}></div>
           <div className="gradient cover"></div>
           <div className="content">
-            <div className="maxWidth">
+            <div className="center">
               <div className="featureContainer">
                 <div className="featureIcon">
                   <i className="fa fa-fw fa-trophy" aria-hidden="true"></i>
@@ -228,8 +228,42 @@ class LandingPage extends React.Component {
         </div>
 
         {/* PHILOSOPHY */}
-        <div id="philosophy">
+        <div id="philosophy"
+          style={{
+            background: 'url(../images/philosophy.png) no-repeat center center',
+            backgroundSize: 'cover'
+        }}>
+          <h1>Our Philosophy</h1>
+          <div className="steps">
+            <div className="center">
+              <div className="step">
+                <i className="fa fa-fw fa-balance-scale" aria-hidden="true"></i>
+                <h2>Assess</h2>
+                <p>Our assessment acts as a snapshot of your current state of fitness</p>
+                <button>
+                  Learn More
+                </button>
+              </div>
 
+              <div className="step">
+                <i className="fa fa-fw fa-calendar-check-o" aria-hidden="true"></i>
+                <h2>Plan</h2>
+                <p>The results of the assessment allow our trainers to create the best plan to get you to your goals based on your body type</p>
+                <button>
+                  Learn More
+                </button>
+              </div>
+
+              <div className="step">
+                <i className="fa fa-fw fa-line-chart" aria-hidden="true"></i>
+                <h2>Progress</h2>
+                <p>Results are earned, and if you follow our program, you will have earned them</p>
+                <button>
+                  Learn More
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* SEVENBELL */}
