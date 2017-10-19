@@ -240,27 +240,33 @@ class LandingPage extends React.Component {
                 <i className="fa fa-fw fa-balance-scale" aria-hidden="true"></i>
                 <h2>Assess</h2>
                 <p>Our assessment acts as a snapshot of your current state of fitness</p>
-                <button>
-                  Learn More
-                </button>
+                <div className="buttonContainer">
+                  <button>
+                    Learn More
+                  </button>
+                </div>
               </div>
 
               <div className="step">
                 <i className="fa fa-fw fa-calendar-check-o" aria-hidden="true"></i>
                 <h2>Plan</h2>
                 <p>The results of the assessment allow our trainers to create the best plan to get you to your goals based on your body type</p>
-                <button>
-                  Learn More
-                </button>
+                <div className="buttonContainer">
+                  <button>
+                    Learn More
+                  </button>
+                </div>
               </div>
 
               <div className="step">
                 <i className="fa fa-fw fa-line-chart" aria-hidden="true"></i>
                 <h2>Progress</h2>
                 <p>Results are earned, and if you follow our program, you will have earned them</p>
-                <button>
-                  Learn More
-                </button>
+                <div className="buttonContainer">
+                  <button>
+                    Learn More
+                  </button>
+                </div>
               </div>
             </div>
           </div>
@@ -268,6 +274,21 @@ class LandingPage extends React.Component {
 
         {/* SEVENBELL */}
         <div id="sevenBell">
+          <div className="sevenPic"
+            style={{
+              background: 'url(../images/seven_hoodie2.png) no-repeat top center',
+              backgroundSize: 'cover'
+          }}>
+            {/* <img src='../images/seven_hoodie.png' /> */}
+          </div>
+          <div className="content">
+            <h1>Who is SevenBell?</h1>
+            <p>If you’re ready to take your body to the next level and train with the best, make your next workout with Seven Bell himself.</p>
+            <div className="buttons">
+              <button>Learn More</button>
+              <button>Train with SevenBell</button>
+            </div>
+          </div>
 
         </div>
 

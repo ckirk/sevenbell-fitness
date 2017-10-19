@@ -158,7 +158,7 @@
   #tour {
     position: relative;
     min-height: 400px;
-    background-color: teal;
+    // background-color: teal;
     .title {
       position: absolute;
       top: 0;
@@ -411,12 +411,13 @@
     color: $dark-grey;
     text-align: center;
     min-height: 400px;
-    padding: 20px;
+    padding: 40px;
     h1 {
-      margin: 30px;
+      margin: 20px;
       font-size: 5em;
     }
     .steps {
+      padding: 20px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -424,29 +425,95 @@
         display: flex;
         justify-content: space-around;
         align-items: stretch;
+        flex: 1 0 auto;
+        max-width: 1200px;
         .step {
           flex: 1 0 33%;
           padding: 20px;
+          max-width: 280px;
+          display: flex;
+          flex-direction: column;
           .fa {
             font-size: 4em;
+            margin: 0 auto;
           }
           h2 {
             font-size: 2em;
+            margin-top: 20px;
+            margin-bottom: 0;
           }
-          button {
-            background-color: rgba(#fff, 0);
-            border: 1px solid $dark-grey;
-            border-radius: 4px;
+          p {
             font-size: 0.9em;
-            padding: .5em 3em;
-            &:hover {
-              background-color: $dark-grey;
-              color: #fff;
+            margin: 20px 0;
+          }
+          .buttonContainer {
+            flex: 1 0 auto;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            button {
+              background-color: rgba(#fff, 0);
+              border: 1px solid $dark-grey;
+              border-radius: 4px;
+              font-size: 0.9em;
+              padding: .5em 3em;
+              // width: 100%;
+              &:hover {
+                background-color: $dark-grey;
+                color: #fff;
+              }
             }
           }
         }
       }
     }
+  }
+  #sevenBell {
+    background: linear-gradient(90deg, #000 0%, rgb(45, 45, 45) 100%);
+    display: flex;
+    min-height: 400px;
+    .sevenPic {
+      flex: 1 0 40%;
+      img {
+        height: 400px;
+      }
+    }
+    .content {
+      padding: 30px;
+      flex: 1 0 60%;
+      h1 {
+        padding: 20px 0;
+        color: $gold;
+      }
+      p {
+        font-size: 1.2em;
+        font-weight: 200;
+      }
+      .buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 50px;
+        button {
+          padding: 1em 2em;
+          margin: 10px;
+          background-color: rgba($gold, 0);
+          color: $gold;
+          border: 1px solid $gold;
+          border-radius: 4px;
+          font-size: 0.9em;
+          width: 200px;
+          &:hover {
+            background-color: $gold;
+            color: $dark-grey;
+          }
+        }
+      }
+    }
+  }
+  #footer {
+    min-height: 100px;
+    background-color: $dark-grey;
   }
 }
 
