@@ -20,8 +20,7 @@ class LandingPage extends React.Component {
           style={{
             background: 'url(../images/training.jpg) no-repeat center center',
             backgroundSize: 'cover'
-          }}
-        >
+          }}>
           <div className="gradient"></div>
           <div className="content">
             <h1>Brooklyn's #1 Private Gym</h1>
