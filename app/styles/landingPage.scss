@@ -1,8 +1,12 @@
 #base {
 
   h1 {
-    font-size: 3em;
-    line-height: 45px;
+    font-size: 4em;
+    line-height: 55px;
+    margin: 0;
+  }
+  h2 {
+    font-size: 2.5em;
     margin: 0;
   }
 
@@ -52,13 +56,12 @@
     .content {
       z-index: 1;
       h1 {
-        font-size: 3.5em;
         font-weight: 700;
-        margin-bottom: 20px;
+        margin-bottom: 30px;
       }
       p {
         font-weight: 500;
-        font-size: 0.9em;
+        font-size: 1em;
         a {
           font-weight: 300;
         }
@@ -159,14 +162,10 @@
   #tour {
     position: relative;
     min-height: 400px;
-    // background-color: teal;
     .title {
       position: absolute;
       top: 0;
       right: 0;
-      h2 {
-        margin: 0;
-      }
       background-color: rgba(#EFBE55, 0.9);
       color: $dark-grey;
       margin-top: 20px;
@@ -175,9 +174,9 @@
     .bigButton {
       position: absolute;
       bottom: 0;
-      margin: 10px;
+      margin: 20px;
       opacity: 0.8;
-      font-size: 0.8em;
+      font-size: 1em;
       padding: 8px 10px;
       transition: all 0.5s ease;
       &:hover {
@@ -206,12 +205,17 @@
       color: $dark-grey;
       .textBox {
         position: absolute;
-        background-color: rgba(#fff, 0.2);
+        background-color: rgba(#fff, 0.5);
         display: inline-block;
         padding: 10px;
         margin: 20px;
+        h1 {
+          margin-bottom: 10px;
+        }
         p {
           margin: 0;
+          font-size: 1.2em;
+          font-weight: 400;
         }
       }
       .bottom {
@@ -223,7 +227,7 @@
         align-items: center;
         .subways {
           display: flex;
-          padding: 10px;
+          margin: 20px;
           .subway {
             display: flex;
             justify-content: center;
@@ -238,7 +242,7 @@
         }
         a {
           padding: 5px 10px;
-          margin: 10px;
+          margin: 20px;
           background-color: rgba($gold, 0.9);
           color: $dark-grey;
           border-radius: 4px;
@@ -254,14 +258,14 @@
         text-align: right;
         padding: 20px 20px;
         h1 {
-          font-size: 3em;
-          margin: 0;
-          margin-bottom: 10px;
+          margin-bottom: 20px;
         }
         .box {
           border: 1px solid #fff;
           display: inline-block;
           padding: 5px 10px;
+          font-size: 1.3em;
+          font-weight: 400;
         }
       }
       .bottom {
@@ -271,8 +275,10 @@
         .perk {
           background-color: rgba(#000, 0.5);
           display: inline-block;
-          padding: 5px 10px;
+          padding: 0.3em 0.6em;
           margin-bottom: 5px;
+          font-size: 1.2em;
+          font-weight: 300;
         }
       }
     }
@@ -285,16 +291,14 @@
     text-align: center;
     padding: 40px;
     min-height: 300px;
-    h1 {
-      font-size: 2.5em;
-    }
   }
   #yelp {
     position: relative;
     background: linear-gradient(45deg, $gold 0%, rgba(#EFBE55, 0.35) 100%);
     color: $dark-grey;
-    h1 {
+    h2 {
       padding: 30px;
+      font-size: 3em;
     }
     .reviews {
       // margin-left: 100px;
@@ -484,10 +488,11 @@
       flex: 1 0 60%;
       h1 {
         padding: 20px 0;
+        font-size: 4em;
         color: $gold;
       }
       p {
-        font-size: 1.2em;
+        font-size: 1.4em;
         font-weight: 200;
       }
       .buttons {

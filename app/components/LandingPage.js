@@ -170,13 +170,13 @@ class LandingPage extends React.Component {
             backgroundSize: 'cover'
           }}>
           <div className="content">
-            <h1>The Best Private Gym Experience In Brooklyn <br/> Is SevenBell Fitness</h1>
+            <h2>The Best Private Gym Experience In Brooklyn <br/> Is SevenBell Fitness</h2>
           </div>
         </div>
 
         {/* YELP */}
         <div id="yelp">
-          <h1>Our Members Love Us on Yelp!</h1>
+          <h2>Our Members Love Us on Yelp!</h2>
           <div className="reviews">
             <Review image='6' name='Cody B.' quote="This has been my first time consistently going to a gym and working with a trainer and it's been a great experience." />
             <Review image='3' name='Christina R.' quote="My body has improved and [so has] my struggles with motivation and regularity… [I’m] excited to see what happens next!" />
