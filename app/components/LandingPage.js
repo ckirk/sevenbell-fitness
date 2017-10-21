@@ -1,6 +1,18 @@
 import React, { Component } from 'react';
 import { Router, Route, Link, IndexRoute, hashHistory, browserHistory } from 'react-router';
 
+// Image Imports
+import training from '../images/training.jpg'
+import curves from '../images/curves_bw.png'
+import logo from '../images/logo.png'
+
+import member1 from '../images/members/1.jpg'
+import member3 from '../images/members/3.jpg'
+import member5 from '../images/members/5.jpg'
+import member6 from '../images/members/6.jpg'
+
+// import curves from '../images/curves_bw.png'
+
 // import SlideShow from 'SlideShow'
 
 class LandingPage extends React.Component {
@@ -18,7 +30,7 @@ class LandingPage extends React.Component {
         {/* HERO */}
         <div className="hero"
           style={{
-            background: 'url(../images/training.jpg) no-repeat center center',
+            background: `url(${training}) no-repeat center center`,
             backgroundSize: 'cover'
           }}>
           <div className="gradient"></div>
@@ -50,7 +62,7 @@ class LandingPage extends React.Component {
         <div id="topFeatures">
           <div className="bkgImage cover"
             style={{
-              background: 'url(../images/curves_bw.png) no-repeat center center',
+              background: `url(${curves}) no-repeat center center`,
               backgroundSize: 'cover'
             }}></div>
           <div className="gradient cover"></div>
@@ -97,11 +109,7 @@ class LandingPage extends React.Component {
 
         {/* 360 TOUR */}
         <div id="tour">
-          <div className="bkgImage cover"
-            style={{
-              background: 'url(../images/360_placeholder.jpg) no-repeat center center',
-              backgroundSize: 'cover'
-            }}></div>
+          <div className="bkgImage cover"></div>
             <div className="title">
               <h2>360&deg; Tour</h2>
             </div>
@@ -117,11 +125,7 @@ class LandingPage extends React.Component {
         <div id="two">
 
           {/* LOCATION */}
-          <div id="location" className='half'
-            style={{
-              background: 'url(../images/map.png) no-repeat center center',
-              backgroundSize: 'cover'
-            }}>
+          <div id="location" className='half'>
             <div className="map cover"></div>
             <div className="textBox">
               <h1>Location</h1>
@@ -142,11 +146,7 @@ class LandingPage extends React.Component {
           </div>
 
           {/* PERKS */}
-          <div id="perks" className='half'
-            style={{
-              background: 'url(../images/kettle_bells2x.png) no-repeat center center',
-              backgroundSize: 'cover'
-            }}>
+          <div id="perks" className='half'>
             <div className="top">
               <h1>Private<br/>Gym Perks</h1>
               <div className="box">
@@ -163,11 +163,7 @@ class LandingPage extends React.Component {
         </div>
 
         {/* QUOTE */}
-        <div id="quote"
-          style={{
-            background: 'url(../images/blue_gym.png) no-repeat center center',
-            backgroundSize: 'cover'
-          }}>
+        <div id="quote">
           <div className="content">
             <h2>The Best Private Gym Experience In Brooklyn <br/> Is SevenBell Fitness</h2>
           </div>
@@ -177,10 +173,10 @@ class LandingPage extends React.Component {
         <div id="yelp">
           <h2>Our Members Love Us on Yelp!</h2>
           <div className="reviews">
-            <Review image='6' name='Cody B.' quote="This has been my first time consistently going to a gym and working with a trainer and it's been a great experience." />
-            <Review image='3' name='Christina R.' quote="My body has improved and [so has] my struggles with motivation and regularity… [I’m] excited to see what happens next!" />
-            <Review image='5' name='Schuyler H.' quote="Can't recommend this gym enough to anyone who feels intimidated by gyms. You feel welcomed immediately." />
-            <Review image='1' name='Jade B.' quote='Unlike other fitness chains, SevenBell staff puts in the effort to say hello and know you by name.' />
+            <Review image={member6} name='Cody B.' quote="This has been my first time consistently going to a gym and working with a trainer and it's been a great experience." />
+            <Review image={member3} name='Christina R.' quote="My body has improved and [so has] my struggles with motivation and regularity… [I’m] excited to see what happens next!" />
+            <Review image={member5} name='Schuyler H.' quote="Can't recommend this gym enough to anyone who feels intimidated by gyms. You feel welcomed immediately." />
+            <Review image={member1} name='Jade B.' quote='Unlike other fitness chains, SevenBell staff puts in the effort to say hello and know you by name.' />
           </div>
           <div className="arrows">
             <i className="fa fa-fw fa-chevron-left" aria-hidden="true"></i>
@@ -189,11 +185,7 @@ class LandingPage extends React.Component {
         </div>
 
         {/* EXPLORE */}
-        <div id="explore"
-          style={{
-            background: 'url(../images/weights.png) no-repeat center center',
-            backgroundSize: 'cover'
-        }}>
+        <div id="explore">
           <div className='left'>
             <h1>Explore</h1>
             <div className="cta">
@@ -227,11 +219,7 @@ class LandingPage extends React.Component {
         </div>
 
         {/* PHILOSOPHY */}
-        <div id="philosophy"
-          style={{
-            background: 'url(../images/philosophy.png) no-repeat center center',
-            backgroundSize: 'cover'
-        }}>
+        <div id="philosophy">
           <h1>Our Philosophy</h1>
           <div className="steps">
             <div className="center">
@@ -273,11 +261,7 @@ class LandingPage extends React.Component {
 
         {/* SEVENBELL */}
         <div id="sevenBell">
-          <div className="sevenPic"
-            style={{
-              background: 'url(../images/seven_hoodie2.png) no-repeat top center',
-              backgroundSize: 'cover'
-          }}>
+          <div className="sevenPic">
             {/* <img src='../images/seven_hoodie.png' /> */}
           </div>
           <div className="content">
@@ -295,7 +279,7 @@ class LandingPage extends React.Component {
         <div id="footer">
           <div className="logo">
             <Link to='/' >
-              <img src='../images/logo.png' />
+              <img src={logo} />
             </Link>
           </div>
           <div className="info">
@@ -339,7 +323,7 @@ class LandingPage extends React.Component {
 const Review = (props) => (
   <div className="review">
     <div className="avatar">
-      <img src={`../images/users/${props.image}.jpg`} />
+      <img src={props.image} />
     </div>
     <div className="stars">
       <i className="fa fa-fw fa-star" aria-hidden="true"></i>

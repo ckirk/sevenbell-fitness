@@ -174,6 +174,8 @@
   #tour {
     position: relative;
     min-height: 400px;
+    background: url(../images/360_placeholder.jpg) no-repeat center center;
+    background-size: cover;
     .title {
       position: absolute;
       top: 0;
@@ -215,6 +217,8 @@
       min-height: 300px;
       background-color: rgb(157, 162, 162);
       color: $dark-grey;
+      background: url(../images/map.png) no-repeat center center;
+      background-size: cover;
       .textBox {
         position: absolute;
         background-color: rgba(#fff, 0.5);
@@ -265,6 +269,8 @@
       position: relative;
       flex: 1 0 50%;
       min-height: 400px;
+      background: url(../images/kettle_bells2x.png) no-repeat center center;
+      background-size: cover;
       // background-color: rgb(215, 143, 19);
       .top {
         text-align: right;
@@ -303,6 +309,8 @@
     text-align: center;
     padding: 40px;
     min-height: 300px;
+    background: url(../images/blue_gym.png) no-repeat center center;
+    background-size: cover;
   }
   #yelp {
     position: relative;
@@ -369,6 +377,8 @@
     color: $gold;
     display: flex;
     min-height: 350px;
+    background: url(../images/weights.png) no-repeat center center;
+    background-size: cover;
     .left {
       display: flex;
       flex-direction: column;
@@ -429,6 +439,8 @@
     text-align: center;
     min-height: 400px;
     padding: 40px;
+    background: url(../images/philosophy.png) no-repeat center center;
+    background-size: cover;
     h1 {
       margin: 20px;
       font-size: 5em;
@@ -491,6 +503,8 @@
     min-height: 400px;
     .sevenPic {
       flex: 1 0 40%;
+      background: url(../images/seven_hoodie2.png) no-repeat top center;
+      background-size: cover;
       img {
         height: 400px;
       }

@@ -1,6 +1,8 @@
 import React, { PropTypes } from 'react';
 import { Router, Route, Link, IndexRoute, hashHistory, browserHistory } from 'react-router';
 
+import logo from '../images/logo.png'
+
 // import SlideShow from 'SlideShow'
 
 class Base extends React.Component {
@@ -17,7 +19,7 @@ class Base extends React.Component {
         <div id="header">
           <div className="logo">
             <Link to='/' >
-              <img src='../images/logo.png' />
+              <img src={logo} />
             </Link>
           </div>
           <div className="navMenu">
