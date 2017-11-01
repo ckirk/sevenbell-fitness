@@ -1,0 +1,50 @@
+#training {
+  .contentBkg {
+    display: flex;
+    align-items: stretch;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    padding: 30px;
+    .trainerContainer {
+      margin: 10px;
+      background-color: rgba(#fff, 0.8);
+      padding: 20px;
+      display: flex;
+      flex: 1 0 calc(50% - 40px);
+      flex-direction: column;
+      .top {
+        display: flex;
+        margin-bottom: 20px;
+        .image {
+          margin-right: 30px;
+          img {
+            height: 180px;
+            border-radius: 100%;
+          }
+        }
+      }
+      .right {
+        h1 {
+          font-size: 3em;
+          margin-bottom: 10px;
+        }
+        h5 {
+          font-size: 1.2em;
+          margin: 0;
+          margin-bottom: 10px;
+        }
+        .skills {
+          padding-left: 10px;
+          .skill {
+            display: inline-block;
+            background-color: $gold;
+            border-radius: 4px;
+            margin: 4px;
+            padding: 0.2em 0.6em;
+            font-size: 0.9em;
+          }
+        }
+      }
+    }
+  }
+}

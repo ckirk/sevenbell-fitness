@@ -1,8 +1,5 @@
 #memberships {
   .contentBkg {
-    color: $dark-grey;
-    height: calc(100% - 400px);
-    background: linear-gradient(45deg, rgba(#EFBE55, 1) 0%, rgba(#EFBE55, 0.35) 100%);
     .memberships {
       flex: 1 0 auto;
       display: flex;

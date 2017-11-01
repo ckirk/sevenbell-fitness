@@ -1,3 +1,4 @@
+var webpack = require('webpack');
 require('dotenv').config();
 
 // To merge common, dev, and prod config files
@@ -12,7 +13,12 @@ var S3Plugin = require('webpack-s3-plugin');
 
 module.exports = merge(common, {
   plugins: [
-    new UglifyJSPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('production')
+      }
+    }),
+    new webpack.optimize.UglifyJsPlugin(),
     new S3Plugin({
       // Exclude uploading of html
       exclude: /.*\.html$/,

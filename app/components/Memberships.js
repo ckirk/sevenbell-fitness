@@ -26,6 +26,7 @@ class Memberships extends React.Component {
             <button className='bigButton'>Schedule A Tour</button>
           </div>
         </div>
+
         <div className="contentBkg">
           <div className="memberships">
             <Tier name='Basic'
@@ -61,9 +62,9 @@ const Tier = (props) => (
     </div>
     <div className="perksContainer">
       <div className="perks">
-        {props.perks.map((perk) => {
+        {props.perks.map((perk, index) => {
           return (
-            <p>
+            <p key={index}>
               <i className="fa fa-fw fa-check" aria-hidden="true"></i>
               {perk}
             </p>

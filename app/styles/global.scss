@@ -5,6 +5,8 @@
 @import 'shared.scss';
 @import 'landingPage.scss';
 @import 'memberships.scss';
+@import 'trainers.scss';
+@import 'schedule.scss';
 
 // GLOBAL
 *, *:before, *:after {
@@ -35,65 +37,6 @@ body {
 
 #app {
   height: 100%;
-}
-
-.contentWrapper {
-  flex: 1 0 auto;
-}
-
-#footer {
-  background-color: $dark-grey;
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  flex: 0 0 auto;
-  .logo {
-    img {
-      height: 60px;
-      margin: 30px;
-    }
-  }
-  .info {
-    display: flex;
-    align-items: center;
-    margin: 20px;
-    .address, .hours {
-      border-left: 1px solid #fff;
-      padding-left: 15px;
-      margin-right: 50px;
-      // display: flex;
-      // align-items: center;
-    }
-    p, a {
-      margin: 0;
-      font-size: 1em;
-      font-weight: 200;
-      line-height: 22px;
-      white-space: nowrap;
-    }
-  }
-  .right {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    margin-right: 10px;
-    .socials {
-      flex: 1 0 auto;
-      display: flex;
-      align-items: center;
-      .fa {
-        font-size: 4em;
-        margin: 10px;
-      }
-    }
-    .copyright {
-      margin: 10px;
-      margin-top: 0;
-      font-size: 0.8em;
-      color: #979797;
-      text-align: right;
-    }
-  }
 }
 
 ::selection {
