@@ -60,11 +60,7 @@ class LandingPage extends React.Component {
 
         {/* TOP FEATURES */}
         <div id="topFeatures">
-          <div className="bkgImage cover"
-            style={{
-              background: `url(${curves}) no-repeat center center`,
-              backgroundSize: 'cover'
-            }}></div>
+          <div className="bkgImage cover"></div>
           <div className="gradient cover"></div>
           <div className="content">
             <div className="center">
@@ -273,47 +269,6 @@ class LandingPage extends React.Component {
             </div>
           </div>
 
-        </div>
-
-        {/* FOOTER */}
-        <div id="footer">
-          <div className="logo">
-            <Link to='/' >
-              <img src={logo} />
-            </Link>
-          </div>
-          <div className="info">
-            <div className="address">
-
-                <p>640 Dean St.</p>
-                <p>Brooklyn, NY 11238</p>
-                <a href="tel:718-857-2355"> (718) 857-2355</a>
-
-            </div>
-            <div className="hours">
-
-                <p>Monday-Thursday: 5:30am-10pm</p>
-                <p>Friday: 5:30am-8pm</p>
-                <p>Saturday & Sunday: 9am-8pm</p>
-
-            </div>
-          </div>
-          <div className="right">
-            <div className="socials">
-              <a href='#'>
-                <i className="fa fa-instagram" aria-hidden="true"></i>
-              </a>
-              <a href='#'>
-                <i className="fa fa-facebook-square" aria-hidden="true"></i>
-              </a>
-              <a href='#'>
-                <i className="fa fa-twitter-square" aria-hidden="true"></i>
-              </a>
-            </div>
-            <div className="copyright">
-              Copyright All Rights Reserved © 2017 | SEVENBELLFITNESS
-            </div>
-          </div>
         </div>
       </div>
     );

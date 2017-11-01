@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import bkgImage from '../images/ropes.png'
 
 class Memberships extends React.Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class Memberships extends React.Component {
         {/* HERO */}
         <div className="hero"
           style={{
-            background: 'url(../images/ropes.png) no-repeat center center',
+            background: `url(${bkgImage}) no-repeat center center`,
             backgroundSize: 'cover'
           }}>
           <div className="gradient"></div>
@@ -25,10 +26,55 @@ class Memberships extends React.Component {
             <button className='bigButton'>Schedule A Tour</button>
           </div>
         </div>
+        <div className="contentBkg">
+          <div className="memberships">
+            <Tier name='Basic'
+                  description='Access to private facility and classes'
+                  price={90}
+                  perks={['Private gym access', 'Private classes', 'One fitness assessment']}
+            />
+            <Tier name='VIP'
+                  description="I’m comitted to my body"
+                  price={140}
+                  perks={['Private gym access', 'Private classes', 'Monthly fitness assessment', 'Supplement starter kit', 'Lowest training cost']}
+                  center={true}
+            />
+            <Tier name='Preferred'
+                  description='Guidance with no comittment'
+                  price={130}
+                  perks={['Private gym access', 'Private classes', 'Monthly fitness assessment', 'Discount training price', 'Discount enrollment']}
+            />
+          </div>
+        </div>
 
       </div>
     );
   }
 }
+
+const Tier = (props) => (
+  <div className={"tier " + (props.center? 'center' : '')}>
+    <div className="top">
+      <h1>{props.name}</h1>
+      <div className="line"></div>
+      <h3>{props.description}</h3>
+    </div>
+    <div className="perksContainer">
+      <div className="perks">
+        {props.perks.map((perk) => {
+          return (
+            <p>
+              <i className="fa fa-fw fa-check" aria-hidden="true"></i>
+              {perk}
+            </p>
+          )
+        })}
+      </div>
+    </div>
+    <div className="bottom">
+      <h2>${props.price}<span>/mo</span></h2>
+    </div>
+  </div>
+)
 
 export default Memberships;

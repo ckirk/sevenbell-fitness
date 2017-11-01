@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import bkgImage from '../images/pushup.jpg'
+
 
 class Schedule extends React.Component {
   constructor(props) {
@@ -13,7 +15,7 @@ class Schedule extends React.Component {
         {/* HERO */}
         <div className="hero"
           style={{
-            background: 'url(../images/pushup.jpg) no-repeat center center',
+            background: `url(${bkgImage}) no-repeat center center`,
             backgroundSize: 'cover'
           }}>
           <div className="gradient"></div>

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import bkgImage from '../images/high_five.png'
+
 
 class Training extends React.Component {
   constructor(props) {
@@ -13,7 +15,7 @@ class Training extends React.Component {
         {/* HERO */}
         <div className="hero"
           style={{
-            background: 'url(../images/high_five.png) no-repeat center center',
+            background: `url(${bkgImage}) no-repeat center center`,
             backgroundSize: 'cover'
           }}>
           <div className="gradient"></div>

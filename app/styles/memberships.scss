@@ -1,0 +1,68 @@
+#memberships {
+  .contentBkg {
+    color: $dark-grey;
+    height: calc(100% - 400px);
+    background: linear-gradient(45deg, rgba(#EFBE55, 1) 0%, rgba(#EFBE55, 0.35) 100%);
+    .memberships {
+      flex: 1 0 auto;
+      display: flex;
+      align-items: flex-start;
+      padding: 30px;
+      max-width: 1000px;
+      margin: 0 auto;
+      justify-content: center;
+      .tier {
+        display: flex;
+        // width: 300px;
+        flex: 1 0 350px;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 30px;
+        margin: 10px;
+        background-color: #fff;
+        &.center {
+          box-shadow: 5px 5px 20px rgba(#000, 0.25);
+          height: 500px;
+        }
+        h1 {
+          text-align: center;
+          margin-bottom: 10px;
+          font-size: 3em;
+        }
+        h2 {
+          text-align: center;
+          font-size: 3em;
+          span {
+            font-size: .4em;
+          }
+        }
+        h3 {
+          text-align: center;
+        }
+        .line {
+          background-color: $dark-grey;
+          height: 3px;
+          width: 70%;
+          margin: 0 auto;
+        }
+        .perksContainer {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-bottom: 30px;
+          .perks {
+            p {
+              margin: 10px 0;
+              font-size: 1.1em;
+              font-weight: 400;
+            }
+            .fa {
+              margin-right: 5px;
+              font-size: 1.5em;
+            }
+          }
+        }
+      }
+    }
+  }
+}

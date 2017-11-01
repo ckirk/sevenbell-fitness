@@ -1,0 +1,197 @@
+#base {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  h1 {
+    font-size: 4em;
+    line-height: 55px;
+    margin: 0;
+  }
+  h2 {
+    font-size: 2.5em;
+    margin: 0;
+  }
+  #header {
+    display: flex;
+    position: absolute;
+    justify-content: space-between;
+    min-height: 50px;
+    width: 100%;
+    z-index: 3;
+    .logo {
+      img {
+        max-height: 50px;
+        margin: 10px;
+      }
+    }
+    .navMenu {
+      // margin-right: 10px;
+      margin-top: 20px;
+      a {
+        background-color: rgba(0, 0, 0, 0.4);
+        color: #fff;
+        padding: 0.5em 1em;
+        margin: 0 8px 8px 0;
+        font-size: .8em;
+        font-weight: 400;
+        transition: all 0.5s ease;
+        &.active {
+          border-bottom: 1px solid $gold;
+        }
+        &:hover {
+          background-color: rgba(0, 0, 0, 0.6);
+        }
+      }
+    }
+  }
+  .hero {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: rgb(82, 83, 83);
+    padding-top: 50px;
+    min-height: 400px;
+    color: #fff;
+    .content {
+      z-index: 1;
+      h1 {
+        font-weight: 700;
+        margin-bottom: 30px;
+      }
+      p {
+        font-weight: 500;
+        font-size: 1em;
+        a {
+          font-weight: 300;
+        }
+      }
+    }
+    .bottom {
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      .socials {
+        display: flex;
+        justify-content: flex-end;
+        font-size: 2.5em;
+        padding: 5px;
+        .fa {
+          padding: 5px;
+          opacity: 0.8;
+          transition: all 0.5s ease;
+          &:hover {
+            opacity: 1;
+          }
+        }
+      }
+    }
+    .gradient {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(45deg, rgba(#1a1a1a, 1) 0%, rgba(#414141, 0.2) 100%);
+    }
+  }
+  .bigButton {
+    background-color: $gold;
+    color: $dark-grey;
+    font-size: 1.2em;
+    font-weight: 700;
+    padding: 10px 20px;
+    border-radius: 4px;
+  }
+  .supportPage {
+    .hero {
+      h1 {
+        margin-bottom: 15px;
+      }
+      p {
+        border-top: 1px solid #fff;
+        padding: 15px 0;
+        max-width: 500px;
+      }
+    }
+  }
+}
+
+.cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+// css for slideshow
+#references {
+  background:
+    url(/images/geometric_dark.png)    /* image */
+    center center / cover               /* position / size */
+    no-repeat;                      /* repeat */
+    // $dark-green-fade;
+  position: relative;
+  overflow: hidden;
+  #slides {
+    width: 100%;
+    display: flex;
+    transition: all 0.5s ease;
+    .slide {
+      flex: 1 0 100%;
+      #content {
+        padding: 50px 130px;
+        h2 {
+          text-align: center;
+          font-size: 1.8em;
+          font-weight: 500;
+        }
+        p {
+          text-align: right;
+          font-weight: 300;
+          font-size: 1.3em;
+        }
+      }
+    }
+  }
+  #arrows {
+    position: absolute;
+    text-align: left;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 100%;
+    padding: 20px;
+    display: inline-block;
+    font-size: 4em;
+    .fa {
+      cursor: pointer;
+    }
+    .fa-chevron-right {
+      float: right;
+    }
+  }
+  #dots {
+    margin: 0 auto;
+    padding: 20px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    .dot {
+      height: 12px;
+      width: 12px;
+      border: 1px solid #fff;
+      border-radius: 100%;
+      display: inline-block;
+      margin: 3px;
+      cursor: pointer;
+      &.active {
+        background-color: #fff;
+      }
+    }
+  }
+}
