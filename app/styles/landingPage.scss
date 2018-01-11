@@ -53,7 +53,7 @@
     }
     .bkgImage {
       z-index: -2;
-      opacity: 0.1;
+      opacity: 0.04;
     }
   }
   #tour {
@@ -64,7 +64,7 @@
     .title {
       position: absolute;
       top: 0;
-      right: 0;
+      left: 0;
       background-color: rgba(#EFBE55, 0.9);
       color: $dark-grey;
       margin-top: 20px;
@@ -73,6 +73,7 @@
     .bigButton {
       position: absolute;
       bottom: 0;
+      right: 0;
       margin: 20px;
       opacity: 0.8;
       font-size: 1em;
@@ -193,9 +194,12 @@
     align-items: center;
     text-align: center;
     padding: 40px;
-    min-height: 300px;
+    min-height: 400px;
     background: url(../images/blue_gym.png) no-repeat center center;
     background-size: cover;
+    h2 {
+      font-size: 3em;
+    }
   }
   #yelp {
     position: relative;
@@ -207,16 +211,18 @@
     }
     .reviews {
       // margin-left: 100px;
-      // margin-top: 30px;
+      // padding-bottom: 50px;
       display: flex;
       justify-content: space-around;
       padding-bottom: 30px;
       .review {
         display: flex;
+        position: relative;
         flex-direction: column;
         flex: 1 0 auto;
         padding: 10px 30px;
-        max-width: 250px;
+        margin-bottom: 30px;
+        max-width: 300px;
         .avatar {
           text-align: center;
           margin-bottom: 10px;
@@ -243,6 +249,20 @@
           align-items: flex-end;
           justify-content: flex-end;
         }
+        .logo {
+          display: none;
+        }
+        &:first-child {
+          .logo {
+            position: absolute;
+            display: block;
+            top: -300;
+            left: -130;
+            font-size: 40em;
+            z-index: -1;
+            opacity: 0.5;
+          }
+        }
       }
     }
     .arrows {
@@ -261,7 +281,7 @@
   #explore {
     color: $gold;
     display: flex;
-    min-height: 350px;
+    min-height: 400px;
     background: url(../images/weights.png) no-repeat center center;
     background-size: cover;
     .left {

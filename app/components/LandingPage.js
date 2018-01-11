@@ -289,6 +289,9 @@ const Review = (props) => (
     </div>
     <div className="quote">"{props.quote}"</div>
     <div className="name">- {props.name}</div>
+    <div className="logo">
+      <i className="fa fa-yelp" aria-hidden="true"></i>
+    </div>
   </div>
 )
 
