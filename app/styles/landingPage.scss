@@ -2,7 +2,6 @@
   #topFeatures {
     position: relative;
     min-height: 350px;
-    max-height: 500px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -40,7 +39,7 @@
             margin-bottom: 20px;
           }
           .featureText {
-            font-size: 1.2em;
+            font-size: 1.4em;
             font-weight: 700;
           }
         }
@@ -58,17 +57,18 @@
   }
   #tour {
     position: relative;
-    min-height: 400px;
+    min-height: 500px;
     background: url(../images/360_placeholder.jpg) no-repeat center center;
     background-size: cover;
     .title {
       position: absolute;
-      top: 0;
+      top: 20;
       left: 0;
       background-color: rgba(#EFBE55, 0.9);
       color: $dark-grey;
       margin-top: 20px;
       padding: 10px 20px;
+      // box-shadow: 4px 4px 30px 0px rgba(0,0,0,0.5);
     }
     .bigButton {
       position: absolute;
@@ -100,16 +100,17 @@
     #location {
       position: relative;
       flex: 1 0 50%;
-      min-height: 300px;
+      min-height: 500px;
       background-color: rgb(157, 162, 162);
       color: $dark-grey;
       background: url(../images/map.png) no-repeat center center;
       background-size: cover;
       .textBox {
         position: absolute;
-        background-color: rgba(#fff, 0.5);
+        background-color: rgba(#fff, 0.6);
+        box-shadow: 4px 4px 30px 0px rgba(0,0,0,0.1);
         display: inline-block;
-        padding: 10px;
+        padding: 20px;
         margin: 20px;
         h1 {
           margin-bottom: 10px;
@@ -117,7 +118,7 @@
         p {
           margin: 0;
           font-size: 1.2em;
-          font-weight: 400;
+          font-weight: 500;
         }
       }
       .bottom {
@@ -168,8 +169,8 @@
           border: 1px solid #fff;
           display: inline-block;
           padding: 5px 10px;
-          font-size: 1.3em;
-          font-weight: 400;
+          font-size: 1.4em;
+          font-weight: 500;
         }
       }
       .bottom {
@@ -181,8 +182,8 @@
           display: inline-block;
           padding: 0.3em 0.6em;
           margin-bottom: 5px;
-          font-size: 1.2em;
-          font-weight: 300;
+          font-size: 1.5em;
+          font-weight: 400;
         }
       }
     }
@@ -194,11 +195,15 @@
     align-items: center;
     text-align: center;
     padding: 40px;
-    min-height: 400px;
+    min-height: 500px;
     background: url(../images/blue_gym.png) no-repeat center center;
     background-size: cover;
     h2 {
       font-size: 3em;
+    }
+    .content {
+      padding: 60px;
+      border: 3px solid #fff;
     }
   }
   #yelp {
@@ -228,20 +233,23 @@
           margin-bottom: 10px;
           img {
             border-radius: 100%;
+            height: 150px;
+            margin-bottom: 10px;
           }
         }
         .stars {
-          font-size: 1.5em;
+          font-size: 1.7em;
           text-align: center;
           margin-bottom: 10px;
         }
         .quote {
           margin-bottom: 10px;
-          font-size: 0.9em;
+          font-size: 1em;
         }
         .name {
           text-align: right;
           font-weight: 700;
+          font-size: 1.4em;
 
           // Align names
           flex: 1 0 auto;
@@ -256,7 +264,7 @@
           .logo {
             position: absolute;
             display: block;
-            top: -300;
+            top: -290;
             left: -130;
             font-size: 40em;
             z-index: -1;
@@ -319,16 +327,17 @@
         .option {
           color: $gold;
           height: 60px;
-          padding: 10px 20px;
+          padding: 1.5em 2em;
           border: 2px solid $gold;
           margin: 10px;
           display: flex;
           justify-content: space-between;
           align-items: center;
+          font-size: 1.3em;
           // transition: all 0.5s ease;
           .fa {
             margin-right: 100px;
-            font-size: 2em;
+            font-size: 2.2em;
           }
           &:hover {
             background-color: $gold;
@@ -352,6 +361,7 @@
     }
     .steps {
       padding: 20px;
+      margin-top: 50px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -368,17 +378,17 @@
           display: flex;
           flex-direction: column;
           .fa {
-            font-size: 4em;
+            font-size: 5em;
             margin: 0 auto;
           }
           h2 {
-            font-size: 2em;
+            font-size: 2.5em;
             margin-top: 20px;
-            margin-bottom: 0;
           }
           p {
-            font-size: 0.9em;
+            font-size: 1em;
             margin: 20px 0;
+            margin-bottom: 30px;
           }
           .buttonContainer {
             flex: 1 0 auto;
@@ -387,10 +397,11 @@
             justify-content: center;
             button {
               background-color: rgba(#fff, 0);
-              border: 1px solid $dark-grey;
+              border: 2px solid $dark-grey;
               border-radius: 4px;
-              font-size: 0.9em;
-              padding: .5em 3em;
+              font-size: 1.2em;
+              padding: .8em 3em;
+              font-weight: 500;
               // width: 100%;
               &:hover {
                 background-color: $dark-grey;
@@ -405,7 +416,7 @@
   #sevenBell {
     background: linear-gradient(90deg, #000 0%, rgb(45, 45, 45) 100%);
     display: flex;
-    min-height: 400px;
+    min-height: 500px;
     .sevenPic {
       flex: 1 0 40%;
       background: url(../images/seven_hoodie2.png) no-repeat top center;
@@ -429,17 +440,18 @@
       .buttons {
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: stretch;
         margin-top: 50px;
         button {
           padding: 1em 2em;
           margin: 10px;
           background-color: rgba($gold, 0);
           color: $gold;
-          border: 1px solid $gold;
+          border: 2px solid $gold;
           border-radius: 4px;
-          font-size: 0.9em;
-          width: 200px;
+          font-size: 1.2em;
+          font-weight: 500;
+          // width: 200px;
           &:hover {
             background-color: $gold;
             color: $dark-grey;

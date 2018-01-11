@@ -69,7 +69,7 @@ class LandingPage extends React.Component {
                   <i className="fa fa-fw fa-trophy" aria-hidden="true"></i>
                 </div>
                 <div className="featureText">
-                  Nationally Certified Personal Trainers
+                  Nationally Certified Trainers
                 </div>
               </div>
 
