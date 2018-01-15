@@ -198,7 +198,7 @@ class LandingPage extends React.Component {
                 <div className="subway orange">B</div>
                 <div className="subway yellow">Q</div>
               </div>
-              <a href='https://www.google.com/maps/place/SevenBell+Fitness/@40.6802876,-73.971325,17z/data=!3m1!4b1!4m5!3m4!1s0x89c25ba5b814cd3d:0x257bc11a2006f8e2!8m2!3d40.6802836!4d-73.9691363'>Google Maps</a>
+              <a href='https://www.google.com/maps/place/SevenBell+Fitness/@40.6802876,-73.971325,17z/data=!3m1!4b1!4m5!3m4!1s0x89c25ba5b814cd3d:0x257bc11a2006f8e2!8m2!3d40.6802836!4d-73.9691363'>Open in Google Maps</a>
             </div>
           </div>
 
