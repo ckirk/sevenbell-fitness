@@ -19,8 +19,36 @@ class LandingPage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      open: false
+      tourOpen: false,
+      philoOpen: false,
+      sevenOpen: false
     }
+  };
+
+  toggleTourPopup = () => {
+    this.setState({
+      tourOpen: !this.state.tourOpen
+    });
+  };
+
+  toggleSevenPopup = () => {
+    this.setState({
+      sevenOpen: !this.state.sevenOpen
+    });
+  };
+
+  handleClickOutside = (event) => {
+    if (event.target.classList.contains('popup')) {
+      this.closePopup();
+    }
+  };
+
+  closePopup = () => {
+    this.setState({
+      tourOpen: false,
+      philoOpen: false,
+      sevenOpen: false
+    });
   };
 
   render() {
@@ -36,7 +64,7 @@ class LandingPage extends React.Component {
           <div className="gradient"></div>
           <div className="content">
             <h1>Brooklyn's #1 Private Gym</h1>
-            <button className='bigButton'>Schedule A Tour</button>
+            <button className='bigButton' onClick={this.toggleTourPopup}>Schedule A Tour</button>
             <p>
               Call Now:
               <a href="tel:718-857-2355"> (718) 857-2355</a>
@@ -109,7 +137,7 @@ class LandingPage extends React.Component {
             <div className="title">
               <h2>360&deg; Tour</h2>
             </div>
-            <button className="bigButton">
+            <button className="bigButton" onClick={this.toggleTourPopup}>
               Schedule A Tour
             </button>
             <div className="arrows">
@@ -129,13 +157,13 @@ class LandingPage extends React.Component {
             </div>
             <div className="bottom">
               <div className="subways">
-                <div className="subway">A</div>
-                <div className="subway">C</div>
-                <div className="subway">2</div>
-                <div className="subway">3</div>
-                <div className="subway">4</div>
-                <div className="subway">B</div>
-                <div className="subway">Q</div>
+                <div className="subway blue">A</div>
+                <div className="subway blue">C</div>
+                <div className="subway red">2</div>
+                <div className="subway red">3</div>
+                <div className="subway green">4</div>
+                <div className="subway orange">B</div>
+                <div className="subway yellow">Q</div>
               </div>
               <a href='#'>Google Maps</a>
             </div>
@@ -186,7 +214,7 @@ class LandingPage extends React.Component {
             <h1>Explore</h1>
             <div className="cta">
               <div className="center">
-                <button className='bigButton'>Schedule A Tour</button>
+                <button className='bigButton' onClick={this.toggleTourPopup}>Schedule A Tour</button>
                 <p>
                   Call Now:
                   <a href="tel:718-857-2355"> (718) 857-2355</a>
@@ -264,12 +292,35 @@ class LandingPage extends React.Component {
             <h1>Who is SevenBell?</h1>
             <p>If you’re ready to take your body to the next level and train with the best, make your next workout with Seven Bell himself.</p>
             <div className="buttons">
-              <button>Learn More</button>
+              <button onClick={this.toggleSevenPopup}>Learn More</button>
               <button>Train with SevenBell</button>
             </div>
           </div>
 
         </div>
+
+        <Popup open={this.state.tourOpen} closePopup={this.closePopup} handleClickOutside={this.handleClickOutside}>
+          <div className="tour">
+            <div className="header">
+              <h1>Schedule<br/>A Tour</h1>
+            </div>
+            <div className="body">
+              <form>
+                <input type="text" name="name" placeholder="Name" />
+                <input type="text" name="phone" placeholder="Phone Number" />
+                <input type="submit" value="Submit" />
+              </form>
+            </div>
+          </div>
+        </Popup>
+
+        <Popup open={this.state.philoOpen} closePopup={this.closePopup} handleClickOutside={this.handleClickOutside}>
+          <h1>Our Philosophy</h1>
+        </Popup>
+
+        <Popup open={this.state.sevenOpen} closePopup={this.closePopup} handleClickOutside={this.handleClickOutside}>
+          <h1>About SevenBell</h1>
+        </Popup>
       </div>
     );
   }
@@ -291,6 +342,18 @@ const Review = (props) => (
     <div className="name">- {props.name}</div>
     <div className="logo">
       <i className="fa fa-yelp" aria-hidden="true"></i>
+    </div>
+  </div>
+)
+
+
+const Popup = (props) => (
+  <div className={"popup" + (props.open ? ' open' : '')} onClick={props.handleClickOutside}>
+    <div className="centered">
+      <div className="close" onClick={props.closePopup}>
+        <i className="fa fa-fw fa-times-circle" aria-hidden="true"></i>
+      </div>
+      {props.children}
     </div>
   </div>
 )

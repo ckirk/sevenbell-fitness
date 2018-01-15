@@ -141,6 +141,27 @@
             height: 30px;
             width: 30px;
             margin-right: 2px;
+            // transition: all 0.2s;
+          }
+          &:hover {
+            .subway {
+              &.blue {
+                background-color: #0039A6;
+              }
+              &.red {
+                background-color: #EE352E;
+              }
+              &.green {
+                background-color: #00933C;
+              }
+              &.orange {
+                background-color: #FF6319;
+              }
+              &.yellow {
+                background-color: #FCCC0A;
+                color: $dark-grey;
+              }
+            }
           }
         }
         a {
@@ -455,6 +476,84 @@
           &:hover {
             background-color: $gold;
             color: $dark-grey;
+          }
+        }
+      }
+    }
+  }
+  .popup {
+    position: fixed;
+    display: flex;
+    visibility: hidden;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    background-color: rgba(0,0,0,0.8);
+    opacity: 0;
+    transition: all 0.5s;
+    &.open {
+      opacity: 1;
+      visibility: visible;
+    }
+    .centered {
+      position: relative;
+      background-color: #fff;
+      // min-height: 400px;
+      min-width: 500px;
+      box-shadow: 4px 4px 30px 0px rgba(0,0,0,0.5);
+      .close {
+        font-size: 2em;
+        position: absolute;
+        right: -40;
+        top: -30;
+        cursor: pointer;
+        color: $gold;
+      }
+      .tour {
+        // background: linear-gradient(180deg, $gold 0%, #ffefce 100%);
+        background: url(../images/tour_bkg2.png) no-repeat center center;
+        background-size: cover;
+        background-color: rgb(58, 72, 112);
+        padding: 40px;
+        .header {
+          // background-color: #fff;
+          color: $gold;
+          // background: linear-gradient(45deg, $gold 0%, #edc878 100%);
+          text-align: center;
+          font-size: 1.2em;
+          text-align: left;
+          h1 {
+            line-height: 80px;
+          }
+          // padding: 30px;
+          // padding-bottom: 0;
+          margin-bottom: 30px;
+        }
+        .body {
+          form {
+            margin-bottom: 0;
+          }
+          // padding: 30px;
+          input {
+            display: block;
+            width: 100%;
+            // height: 50px;
+            padding: 20px;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            border-radius: 4px;
+            border: none;
+          }
+          input[type=submit] {
+            background-color: $gold;
+            margin-bottom: 0;
+            margin-top: 40px;
+            font-weight: 600;
+            cursor: pointer;
           }
         }
       }
