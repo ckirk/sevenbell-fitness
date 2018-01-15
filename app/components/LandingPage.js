@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Router, Route, Link, IndexRoute, hashHistory, browserHistory } from 'react-router';
+import GoogleMapReact from 'google-map-react';
 
 // Image Imports
 import training from '../images/training.jpg'
@@ -10,10 +11,40 @@ import member1 from '../images/members/1.jpg'
 import member3 from '../images/members/3.jpg'
 import member5 from '../images/members/5.jpg'
 import member6 from '../images/members/6.jpg'
+import pin from '../images/pin.svg'
+
+import mapStyle from '../data/mapStyle.json'
 
 // import curves from '../images/curves_bw.png'
 
 // import SlideShow from 'SlideShow'
+
+const Marker = ({ text }) => (
+  <div id='pin'>
+    <img src={pin} />
+  </div>
+);
+
+class Map extends React.Component {
+  static defaultProps = {
+    center: {lat: 40.683603, lng: -73.972470},
+    zoom: 15
+  };
+
+  render() {
+    return (
+       <GoogleMapReact
+        defaultCenter={this.props.center}
+        defaultZoom={this.props.zoom}
+        options={{ styles: mapStyle }}>
+        <Marker
+          lat={40.680319}
+          lng={-73.969135}
+        />
+      </GoogleMapReact>
+    );
+  }
+}
 
 class LandingPage extends React.Component {
   constructor(props) {
@@ -150,7 +181,9 @@ class LandingPage extends React.Component {
 
           {/* LOCATION */}
           <div id="location" className='half'>
-            <div className="map cover"></div>
+            <div className="map cover">
+              <Map />
+            </div>
             <div className="textBox">
               <h1>Location</h1>
               <p>640 Dean St.<br/>Brooklyn, NY 11238</p>
@@ -165,7 +198,7 @@ class LandingPage extends React.Component {
                 <div className="subway orange">B</div>
                 <div className="subway yellow">Q</div>
               </div>
-              <a href='#'>Google Maps</a>
+              <a href='https://www.google.com/maps/place/SevenBell+Fitness/@40.6802876,-73.971325,17z/data=!3m1!4b1!4m5!3m4!1s0x89c25ba5b814cd3d:0x257bc11a2006f8e2!8m2!3d40.6802836!4d-73.9691363'>Google Maps</a>
             </div>
           </div>
 

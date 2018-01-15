@@ -105,6 +105,17 @@
       color: $dark-grey;
       background: url(../images/map.png) no-repeat center center;
       background-size: cover;
+      #pin {
+        // font-size: 100px;
+        // margin-top: -100px;
+        // margin-left: -25px;
+        // color: $gold;
+        img {
+          height: 150px;
+          margin-top: -135px;
+          margin-left: -50px;
+        }
+      }
       .textBox {
         position: absolute;
         background-color: rgba(#fff, 0.6);
@@ -124,7 +135,7 @@
       .bottom {
         position: absolute;
         bottom: 0;
-        width: 100%;
+        width: calc(100% - 30px);
         display: flex;
         justify-content: space-between;
         align-items: center;
