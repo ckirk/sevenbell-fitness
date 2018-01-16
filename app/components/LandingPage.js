@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Router, Route, Link, IndexRoute, hashHistory, browserHistory } from 'react-router';
 import GoogleMapReact from 'google-map-react';
+// import Marzipano from 'marzipano';
+// import Pannellum from '360-react-pannellum';
+import Pannellum from 'pannellum';
 
 // Image Imports
 import training from '../images/training.jpg'
@@ -18,33 +21,6 @@ import mapStyle from '../data/mapStyle.json'
 // import curves from '../images/curves_bw.png'
 
 // import SlideShow from 'SlideShow'
-
-const Marker = ({ text }) => (
-  <div id='pin'>
-    <img src={pin} />
-  </div>
-);
-
-class Map extends React.Component {
-  static defaultProps = {
-    center: {lat: 40.683603, lng: -73.972470},
-    zoom: 15
-  };
-
-  render() {
-    return (
-       <GoogleMapReact
-        defaultCenter={this.props.center}
-        defaultZoom={this.props.zoom}
-        options={{ styles: mapStyle }}>
-        <Marker
-          lat={40.680319}
-          lng={-73.969135}
-        />
-      </GoogleMapReact>
-    );
-  }
-}
 
 class LandingPage extends React.Component {
   constructor(props) {
@@ -81,6 +57,23 @@ class LandingPage extends React.Component {
       sevenOpen: false
     });
   };
+
+  componentDidMount() {
+    console.log('mounted!');
+    pannellum.viewer('pano', {
+      "type": "equirectangular",
+      "panorama": "https://pannellum.org/images/cerro-toco-0.jpg",
+      "autoLoad": true,
+      "autoRotate": -2,
+      "compass": false,
+      "showZoomCtrl": false,
+      "showFullscreenCtrl": false,
+      "showControls": false,
+      "autoRotateInactivityDelay": 3000,
+      "mouseZoom": false,
+      "yaw": -220,
+    });
+  }
 
   render() {
     return (
@@ -164,7 +157,9 @@ class LandingPage extends React.Component {
 
         {/* 360 TOUR */}
         <div id="tour">
-          <div className="bkgImage cover"></div>
+          <div className="bkgImage cover">
+            <div id="pano"></div>
+          </div>
             <div className="title">
               <h2>360&deg; Tour</h2>
             </div>
@@ -340,6 +335,7 @@ class LandingPage extends React.Component {
             <div className="body">
               <form>
                 <input type="text" name="name" placeholder="Name" />
+                <input type="text" name="email" placeholder="Email" />
                 <input type="text" name="phone" placeholder="Phone Number" />
                 <input type="submit" value="Submit" />
               </form>
@@ -390,5 +386,32 @@ const Popup = (props) => (
     </div>
   </div>
 )
+
+const Marker = ({ text }) => (
+  <div id='pin'>
+    <img src={pin} />
+  </div>
+);
+
+class Map extends React.Component {
+  static defaultProps = {
+    center: {lat: 40.683603, lng: -73.972470},
+    zoom: 15
+  };
+
+  render() {
+    return (
+       <GoogleMapReact
+        defaultCenter={this.props.center}
+        defaultZoom={this.props.zoom}
+        options={{ styles: mapStyle }}>
+        <Marker
+          lat={40.680319}
+          lng={-73.969135}
+        />
+      </GoogleMapReact>
+    );
+  }
+}
 
 export default LandingPage;
