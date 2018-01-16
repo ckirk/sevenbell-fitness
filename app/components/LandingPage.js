@@ -61,7 +61,7 @@ class LandingPage extends React.Component {
 
   componentDidMount() {
     console.log('mounted!');
-    pannellum.viewer('pano', {
+    let viewer = pannellum.viewer('pano', {
       "type": "equirectangular",
       "panorama": pano1,
       "autoLoad": true,
@@ -72,8 +72,9 @@ class LandingPage extends React.Component {
       "showControls": false,
       "autoRotateInactivityDelay": 3000,
       "mouseZoom": false,
-      "yaw": -220,
+      "yaw": 140,
     });
+
   }
 
   render() {
