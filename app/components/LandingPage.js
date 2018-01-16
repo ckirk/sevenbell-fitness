@@ -74,7 +74,6 @@ class LandingPage extends React.Component {
       "mouseZoom": false,
       "yaw": 140,
     });
-
   }
 
   render() {
@@ -398,16 +397,21 @@ const Marker = ({ text }) => (
 class Map extends React.Component {
   static defaultProps = {
     center: {lat: 40.683603, lng: -73.972470},
-    zoom: 15,
-    apiKey: 'AIzaSyAUjolc0x3PiWc0jAr0eG9cR_s1QnYIJbU'
+    zoom: 15
   };
 
   render() {
     return (
        <GoogleMapReact
+         bootstrapURLKeys={{
+          key: 'AIzaSyAUjolc0x3PiWc0jAr0eG9cR_s1QnYIJbU'
+        }}
         defaultCenter={this.props.center}
         defaultZoom={this.props.zoom}
-        options={{ styles: mapStyle }}>
+        options={{
+          styles: mapStyle,
+          scrollwheel: false,
+        }}>
         <Marker
           lat={40.680319}
           lng={-73.969135}
