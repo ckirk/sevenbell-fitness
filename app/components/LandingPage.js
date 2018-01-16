@@ -15,6 +15,7 @@ import member3 from '../images/members/3.jpg'
 import member5 from '../images/members/5.jpg'
 import member6 from '../images/members/6.jpg'
 import pin from '../images/pin.svg'
+import pano1 from '../images/moon_car.jpg'
 
 import mapStyle from '../data/mapStyle.json'
 
@@ -62,9 +63,9 @@ class LandingPage extends React.Component {
     console.log('mounted!');
     pannellum.viewer('pano', {
       "type": "equirectangular",
-      "panorama": "https://pannellum.org/images/cerro-toco-0.jpg",
+      "panorama": pano1,
       "autoLoad": true,
-      "autoRotate": -2,
+      "autoRotate": -1,
       "compass": false,
       "showZoomCtrl": false,
       "showFullscreenCtrl": false,
