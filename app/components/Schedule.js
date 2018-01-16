@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import bkgImage from '../images/pushup.jpg'
+import bkgImage from '../images/pushup.jpg';
 
 class Schedule extends React.Component {
   constructor(props) {
@@ -7,17 +7,23 @@ class Schedule extends React.Component {
     this.state = { state: null }
   };
 
-  componentWillMount () {
-    // load mindbody scedule embed script
-    console.log('boom!')
-    let script = document.createElement("script");
+  componentDidMount () {
+    // Healthcode dumps all these bs scripts into the document the first time you load it
+    // always fails the second time the components mounts with the scripts already loaded
+    // the below tests for the presence of one of these bs scripts and simply refreshes the page if it finds one so that all the scripts get reinjected like the first time
+    if (document.querySelector('script[src="https://assets.healcode.com/assets/healcode.yepnope-23af02e66170f2455f54b54cf8bbb19d15a2446cd81dfcbb9c4390c5a0ef4a4a.js"]')) {
+      location.reload();
+    } else {
+      // load mindbody scedule embed script
+      let script = document.createElement("script");
 
-    script.src = "https://widgets.healcode.com/javascripts/healcode.js";
-    script.type = 'text/javascript'
-    script.async = true;
+      script.src = "https://widgets.healcode.com/javascripts/healcode.js";
+      script.type = 'text/javascript'
+      script.async = true;
 
-    document.body.appendChild(script);
-}
+      document.body.appendChild(script);
+    }
+  }
 
   render() {
 

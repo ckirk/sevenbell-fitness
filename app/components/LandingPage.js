@@ -398,7 +398,7 @@ class Map extends React.Component {
   static defaultProps = {
     center: {lat: 40.683603, lng: -73.972470},
     zoom: 15,
-    key: 'AIzaSyAUjolc0x3PiWc0jAr0eG9cR_s1QnYIJbU'
+    apiKey: 'AIzaSyAUjolc0x3PiWc0jAr0eG9cR_s1QnYIJbU'
   };
 
   render() {
