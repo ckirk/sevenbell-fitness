@@ -1,15 +1,37 @@
 import React, { Component } from 'react';
 import bkgImage from '../images/ropes.png'
+import TourPopup from './TourPopup'
 
 class Memberships extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { state: null }
+    this.state = { tourOpen: false }
+  };
+
+  toggleTourPopup = () => {
+    this.closePopup();
+    this.setState({
+      tourOpen: !this.state.tourOpen
+    });
+  };
+
+  handleClickOutside = (event) => {
+    if (event.target.classList.contains('popup')) {
+      this.closePopup();
+    }
+  };
+
+  closePopup = () => {
+    this.setState({
+      tourOpen: false
+    });
   };
 
   render() {
     return (
       <div id='memberships' className='supportPage'>
+
+        <TourPopup open={this.state.tourOpen} closePopup={this.closePopup} handleClickOutside={this.handleClickOutside} />
 
         {/* HERO */}
         <div className="hero"
@@ -23,7 +45,7 @@ class Memberships extends React.Component {
             <p>
               Which one of our 3 memberships are right for you?
             </p>
-            <button className='bigButton'>Schedule A Tour</button>
+            <button className='bigButton' onClick={this.toggleTourPopup}>Schedule A Tour</button>
           </div>
         </div>
 

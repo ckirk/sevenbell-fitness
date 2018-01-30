@@ -19,7 +19,8 @@ import stadium from '../images/stadium2.png'
 import pano1 from '../images/moon_car.jpg'
 
 import mapStyle from '../data/mapStyle.json'
-import Modal from './Modal'
+import Popup from './Popup'
+import TourPopup from './TourPopup'
 
 // import curves from '../images/curves_bw.png'
 
@@ -355,53 +356,7 @@ class LandingPage extends React.Component {
 
         </div>
 
-        <Popup open={this.state.tourOpen} closePopup={this.closePopup} handleClickOutside={this.handleClickOutside}>
-          <div className="content tour">
-            <div className="header">
-              <h1>Schedule A Visit</h1>
-              <p>
-                Complete the fields below and a membership advisor will reach out to you in the next 24 hours to schedule your visit.
-              </p>
-            </div>
-            <div className="body">
-              <form>
-                <input type="text" name="name" placeholder="Name" />
-                <input className='inline' type="text" name="email" placeholder="Email" />
-                <input className='inline' type="text" name="phone" placeholder="Phone Number" />
-
-                <label>
-                  <input
-                    name="tour"
-                    type="checkbox"
-                    checked={true}
-                    onChange={this.handleInputChange} />
-                  I'd like a Tour
-                </label>
-
-                <label>
-                  <input
-                    name="evaluation"
-                    type="checkbox"
-                    checked={this.state.isGoing}
-                    onChange={this.handleInputChange} />
-                    I'd Like a Complimentary Fitness Evaluation
-                </label>
-
-                <label>
-                  Primary Interest:
-                  <select>
-                    <option value="Personal Training">Personal Training</option>
-                    <option value="Classes">Classes</option>
-                    <option value="Private Boxing">Private Boxing</option>
-                    <option value="Nutrition Guidance">Nutrition Guidance</option>
-                  </select>
-                </label>
-
-                <input type="submit" value="Submit" />
-              </form>
-            </div>
-          </div>
-        </Popup>
+        <TourPopup open={this.state.tourOpen} closePopup={this.closePopup} handleClickOutside={this.handleClickOutside} />
 
         <Popup open={this.state.assessOpen} closePopup={this.closePopup} handleClickOutside={this.handleClickOutside}>
           <div className="content philosophy">
@@ -490,18 +445,6 @@ const Review = (props) => (
     <div className="name">- {props.name}</div>
     <div className="logo">
       <i className="fa fa-yelp" aria-hidden="true"></i>
-    </div>
-  </div>
-)
-
-
-const Popup = (props) => (
-  <div className={"popup" + (props.open ? ' open' : '')} onClick={props.handleClickOutside}>
-    <div className="centered">
-      <div className="close" onClick={props.closePopup}>
-        <i className="fa fa-fw fa-times-circle" aria-hidden="true"></i>
-      </div>
-      {props.children}
     </div>
   </div>
 )
