@@ -15,9 +15,11 @@ import member3 from '../images/members/3.jpg'
 import member5 from '../images/members/5.jpg'
 import member6 from '../images/members/6.jpg'
 import pin from '../images/pin.svg'
+import stadium from '../images/stadium2.png'
 import pano1 from '../images/moon_car.jpg'
 
 import mapStyle from '../data/mapStyle.json'
+import Modal from './Modal'
 
 // import curves from '../images/curves_bw.png'
 
@@ -28,12 +30,15 @@ class LandingPage extends React.Component {
     super(props);
     this.state = {
       tourOpen: false,
-      philoOpen: false,
+      assessOpen: false,
+      planOpen: false,
+      progressOpen: false,
       sevenOpen: false
     }
   };
 
   toggleTourPopup = () => {
+    this.closePopup();
     this.setState({
       tourOpen: !this.state.tourOpen
     });
@@ -42,6 +47,24 @@ class LandingPage extends React.Component {
   toggleSevenPopup = () => {
     this.setState({
       sevenOpen: !this.state.sevenOpen
+    });
+  };
+
+  toggleAssessPopup = () => {
+    this.setState({
+      assessOpen: !this.state.assessOpen
+    });
+  };
+
+  togglePlanPopup = () => {
+    this.setState({
+      planOpen: !this.state.planOpen
+    });
+  };
+
+  toggleProgressPopup = () => {
+    this.setState({
+      progressOpen: !this.state.progressOpen
     });
   };
 
@@ -54,7 +77,9 @@ class LandingPage extends React.Component {
   closePopup = () => {
     this.setState({
       tourOpen: false,
-      philoOpen: false,
+      assessOpen: false,
+      planOpen: false,
+      progressOpen: false,
       sevenOpen: false
     });
   };
@@ -79,6 +104,8 @@ class LandingPage extends React.Component {
   render() {
     return (
       <div id='landingPage'>
+
+        {/* <Modal open={true} /> */}
 
         {/* HERO */}
         <div className="hero"
@@ -122,16 +149,7 @@ class LandingPage extends React.Component {
                   <i className="fa fa-fw fa-trophy" aria-hidden="true"></i>
                 </div>
                 <div className="featureText">
-                  Nationally Certified Trainers
-                </div>
-              </div>
-
-              <div className="featureContainer">
-                <div className="featureIcon">
-                  <i className="fa fa-fw fa-building" aria-hidden="true"></i>
-                </div>
-                <div className="featureText">
-                  State of the Art Facility
+                  Nationally Certified Personal Trainers
                 </div>
               </div>
 
@@ -141,6 +159,15 @@ class LandingPage extends React.Component {
                 </div>
                 <div className="featureText">
                   Unmatched <br/> Privacy
+                </div>
+              </div>
+
+              <div className="featureContainer">
+                <div className="featureIcon">
+                  <i className="fa fa-fw fa-building" aria-hidden="true"></i>
+                </div>
+                <div className="featureText">
+                  State of the Art Boxing & Training Facility
                 </div>
               </div>
 
@@ -281,7 +308,7 @@ class LandingPage extends React.Component {
                 <h2>Assess</h2>
                 <p>Our assessment acts as a snapshot of your current state of fitness</p>
                 <div className="buttonContainer">
-                  <button>
+                  <button onClick={this.toggleAssessPopup}>
                     Learn More
                   </button>
                 </div>
@@ -292,7 +319,7 @@ class LandingPage extends React.Component {
                 <h2>Plan</h2>
                 <p>The results of the assessment allow our trainers to create the best plan to get you to your goals based on your body type</p>
                 <div className="buttonContainer">
-                  <button>
+                  <button onClick={this.togglePlanPopup}>
                     Learn More
                   </button>
                 </div>
@@ -303,7 +330,7 @@ class LandingPage extends React.Component {
                 <h2>Progress</h2>
                 <p>Results are earned, and if you follow our program, you will have earned them</p>
                 <div className="buttonContainer">
-                  <button>
+                  <button onClick={this.toggleProgressPopup}>
                     Learn More
                   </button>
                 </div>
@@ -329,27 +356,118 @@ class LandingPage extends React.Component {
         </div>
 
         <Popup open={this.state.tourOpen} closePopup={this.closePopup} handleClickOutside={this.handleClickOutside}>
-          <div className="tour">
+          <div className="content tour">
             <div className="header">
-              <h1>Schedule<br/>A Tour</h1>
+              <h1>Schedule A Visit</h1>
+              <p>
+                Complete the fields below and a membership advisor will reach out to you in the next 24 hours to schedule your visit.
+              </p>
             </div>
             <div className="body">
               <form>
                 <input type="text" name="name" placeholder="Name" />
-                <input type="text" name="email" placeholder="Email" />
-                <input type="text" name="phone" placeholder="Phone Number" />
+                <input className='inline' type="text" name="email" placeholder="Email" />
+                <input className='inline' type="text" name="phone" placeholder="Phone Number" />
+
+                <label>
+                  <input
+                    name="tour"
+                    type="checkbox"
+                    checked={true}
+                    onChange={this.handleInputChange} />
+                  I'd like a Tour
+                </label>
+
+                <label>
+                  <input
+                    name="evaluation"
+                    type="checkbox"
+                    checked={this.state.isGoing}
+                    onChange={this.handleInputChange} />
+                    I'd Like a Complimentary Fitness Evaluation
+                </label>
+
+                <label>
+                  Primary Interest:
+                  <select>
+                    <option value="Personal Training">Personal Training</option>
+                    <option value="Classes">Classes</option>
+                    <option value="Private Boxing">Private Boxing</option>
+                    <option value="Nutrition Guidance">Nutrition Guidance</option>
+                  </select>
+                </label>
+
                 <input type="submit" value="Submit" />
               </form>
             </div>
           </div>
         </Popup>
 
-        <Popup open={this.state.philoOpen} closePopup={this.closePopup} handleClickOutside={this.handleClickOutside}>
-          <h1>Our Philosophy</h1>
+        <Popup open={this.state.assessOpen} closePopup={this.closePopup} handleClickOutside={this.handleClickOutside}>
+          <div className="content philosophy">
+            <div className="header">
+              <h1><i className="fa fa-fw fa-balance-scale" aria-hidden="true"></i>Assess</h1>
+            </div>
+            <div className="body">
+              <p>
+                Once you sign up with us one of our trainers will take you through one of our popular assessments! This assessment will be kept as a record of your measurements and performance when you first signed up. Essentially, this acts as a snapshot of your current state of fitness. We take your body measurements, body fat percentage, and put you through a performance test so that we can design the best personal training program to get you to your goals.
+              </p>
+              <div className="buttonContainer">
+                <button className="bigButton" onClick={this.toggleTourPopup}>
+                  Book Your Free Assessment
+                </button>
+              </div>
+            </div>
+          </div>
+        </Popup>
+
+        <Popup open={this.state.planOpen} closePopup={this.closePopup} handleClickOutside={this.handleClickOutside}>
+          <div className="content philosophy">
+            <div className="header">
+              <h1><i className="fa fa-fw fa-calendar-check-o" aria-hidden="true"></i>Plan</h1>
+            </div>
+            <div className="body">
+              <p>
+                The assessment allows our personal trainers to determine your body type and develop a program that will safely and correctly guide you to your goals. We keep it fun too! Don’t get stuck with the same boring workouts! We will set you up with a fun and diverse program that appropriately incorporates everything from boxing to weight training. If functional training or rehabilitation is required, we can address those needs too!
+              </p>
+              <div className="buttonContainer">
+                <button className="bigButton" onClick={this.toggleTourPopup}>
+                  Book Your Free Assessment
+                </button>
+              </div>
+            </div>
+          </div>
+        </Popup>
+
+        <Popup open={this.state.progressOpen} closePopup={this.closePopup} handleClickOutside={this.handleClickOutside}>
+          <div className="content philosophy">
+            <div className="header">
+              <h1><i className="fa fa-fw fa-line-chart" aria-hidden="true"></i>Progress</h1>
+            </div>
+            <div className="body">
+              <p>
+                Track the progress you make with us here at Brooklyn’s best private gym experience! With a proper assessment of your current state of fitness and proper planning based on your body type, results are all but guaranteed, just trust the process. So what are you waiting for? Come get the steps of your fitness journey started here with us at SevenBell Fitness.
+              </p>
+              <div className="buttonContainer">
+                <button className="bigButton" onClick={this.toggleTourPopup}>
+                  Book Your Free Assessment
+                </button>
+              </div>
+            </div>
+          </div>
         </Popup>
 
         <Popup open={this.state.sevenOpen} closePopup={this.closePopup} handleClickOutside={this.handleClickOutside}>
-          <h1>About SevenBell</h1>
+          <div className="content seven">
+            <div className="header">
+              <h1>Who is SevenBell?</h1>
+            </div>
+            <div className="body">
+              <p>
+                Seven Bell is a hard-nose personal trainer/motivator and most importantly a leader. When it comes to getting the best out of you, this is your guy. Seven has created a very serious reputation in NY/LA for his mental toughness and his pursuit to being the best. A perfectionist at his craft and very result driven, Seven has been in the fitness business for 20 years. His passion for helping people reach their goals in fitness is unparalleled. Seven’s philosophy in life is very simple, and describes him to the tee, “Raise the bar.” This gym is built from the eye of Seven Bell himself, and he subscribes to the ideology that the quality of your training and level of fitness determines the quality of your mindset, and therefore has an important impact on your life. Seven and his staff have helped exercise this philosophy in his members’ fitness experiences. Now people all over Brooklyn are experiencing and achieving the bodies of their dreams.
+              </p>
+            </div>
+          </div>
         </Popup>
       </div>
     );
@@ -394,6 +512,12 @@ const Marker = ({ text }) => (
   </div>
 );
 
+const Barclays = ({ text }) => (
+  <div id='stadium'>
+    <img src={stadium} />
+  </div>
+);
+
 class Map extends React.Component {
   static defaultProps = {
     center: {lat: 40.683603, lng: -73.972470},
@@ -415,6 +539,10 @@ class Map extends React.Component {
         <Marker
           lat={40.680319}
           lng={-73.969135}
+        />
+        <Barclays
+          lat={40.682828}
+          lng={-73.975840}
         />
       </GoogleMapReact>
     );

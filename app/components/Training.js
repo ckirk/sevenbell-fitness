@@ -2,29 +2,45 @@ import React, { Component } from 'react';
 import bkgImage from '../images/high_five.png'
 
 // Trainer Images
-import alison from '../images/trainers/1.jpg'
-import mike from '../images/trainers/2.jpg'
-import robert from '../images/trainers/3.jpg'
+import shawna from '../images/trainers/shawna.jpg'
+import jemal from '../images/trainers/jemal.jpg'
+import sean from '../images/trainers/sean.jpg'
+import adelo from '../images/trainers/adelo.jpg'
 
 const trainers = [{
-  name: 'Mike D.',
-  image: mike,
-  skills: ['Weight Loss', 'Strenghthening', 'Martial Arts', 'Body Building', 'Yoga'],
+  name: 'Shawna [Master]',
+  image: shawna,
+  skills: ['Weight Loss', 'Functional Strength', 'Pre/Post Natal', 'Marathon Training'],
   bio: 'The preservation of human life is the ultimate value, a pillar of ethics and the foundation of all morality. This held true in most cultures and societies throughout history.'
 },{
-  name: 'Alison Z.',
-  image: alison,
-  skills: ['Weight Loss', 'Strenghthening', 'Martial Arts', 'Body Building', 'Yoga'],
+  name: 'Adelo [Master]',
+  image: adelo,
+  skills: ['Olympic Lifting', 'Rehabilitation', 'Boxing', 'Kettle Bells', 'pre/post natal', 'MMA', 'Weight Loss', 'Muscle Gain'],
   bio: 'The preservation of human life is the ultimate value, a pillar of ethics and the foundation of all morality. This held true in most cultures and societies throughout history.'
 },{
-  name: 'Robert F.',
-  image: robert,
-  skills: ['Weight Loss', 'Strenghthening', 'Martial Arts', 'Body Building', 'Yoga'],
+  name: 'Jamal (IFBB Pro Body Builder)',
+  image: jemal,
+  skills: ['Muscle Gain', 'Weight Loss', 'Functional Strength', 'Body Building Preparation'],
   bio: 'The preservation of human life is the ultimate value, a pillar of ethics and the foundation of all morality. This held true in most cultures and societies throughout history.'
 },{
-  name: 'Robert F.',
-  image: robert,
-  skills: ['Weight Loss', 'Strenghthening', 'Martial Arts', 'Body Building', 'Yoga'],
+  name: 'Coach Sean [Master]',
+  image: sean,
+  skills: ['Boxing', 'MMA', 'Functional Strength', 'Weight Loss'],
+  bio: 'The preservation of human life is the ultimate value, a pillar of ethics and the foundation of all morality. This held true in most cultures and societies throughout history.'
+},{
+  name: 'Johanna (IFBB Pro Body Builder)',
+  image: sean,
+  skills: ['Muscle Gain', 'Weight Loss', 'Functional Strength', 'Body Building Preparation'],
+  bio: 'The preservation of human life is the ultimate value, a pillar of ethics and the foundation of all morality. This held true in most cultures and societies throughout history.'
+},{
+  name: 'Sigal',
+  image: sean,
+  skills: ['Functional Strength', 'Circuit Training', 'Weight Loss', 'Core Strengthening'],
+  bio: 'The preservation of human life is the ultimate value, a pillar of ethics and the foundation of all morality. This held true in most cultures and societies throughout history.'
+},{
+  name: 'Hannah',
+  image: sean,
+  skills: ['Functional Strength', 'Weight Loss', 'Pilates', 'Circuit Training'],
   bio: 'The preservation of human life is the ultimate value, a pillar of ethics and the foundation of all morality. This held true in most cultures and societies throughout history.'
 }]
 
@@ -51,6 +67,8 @@ class Training extends React.Component {
             <p>
               Our nationally certified personal trainers are dedicated to getting your mind and body where they need to be to achieve your goals! Start the process and watch the results come!
             </p>
+            <button className='bigButton'>I'm Ready!</button>
+            <button className='bigButton'>Why Train at SevenBell Fitness?</button>
           </div>
         </div>
 

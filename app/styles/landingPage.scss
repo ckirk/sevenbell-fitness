@@ -22,7 +22,7 @@
           text-align: center;
           color: $dark-grey;
           flex: 0 0 25%;
-          max-width: 200px;
+          // max-width: 200px;
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -112,14 +112,17 @@
       background: url(../images/map.png) no-repeat center center;
       background-size: cover;
       #pin {
-        // font-size: 100px;
-        // margin-top: -100px;
-        // margin-left: -25px;
-        // color: $gold;
         img {
           height: 150px;
           margin-top: -135px;
           margin-left: -50px;
+        }
+      }
+      #stadium {
+        img {
+          height: 60px;
+          margin-top: -40px;
+          margin-left: -12px;
         }
       }
       .textBox {
@@ -499,6 +502,16 @@
       }
     }
   }
+  .modal {
+    background-color: red;
+    position: absolute;
+    z-index: 10;
+    padding: 30px;
+    visibility: hidden;
+    &.open {
+      visibility: visible;
+    }
+  }
   .popup {
     position: fixed;
     display: flex;
@@ -510,7 +523,7 @@
     left: 0;
     right: 0;
     z-index: 10;
-    background-color: rgba(0,0,0,0.8);
+    background-color: rgba(255,255,255,0.8);
     opacity: 0;
     transition: all 0.5s;
     &.open {
@@ -522,6 +535,7 @@
       background-color: #fff;
       // min-height: 400px;
       min-width: 500px;
+      max-width: 800px;
       box-shadow: 4px 4px 30px 0px rgba(0,0,0,0.5);
       .close {
         font-size: 2em;
@@ -530,48 +544,85 @@
         top: -30;
         cursor: pointer;
         color: $gold;
+        // text-shadow: 4px 4px 30px rgba(0,0,0,0.5);
       }
-      .tour {
+      .content {
         // background: linear-gradient(180deg, $gold 0%, #ffefce 100%);
-        background: url(../images/tour_bkg2.png) no-repeat center center;
+        background: url(../images/tour_bkg3.png) no-repeat center center;
         background-size: cover;
-        background-color: rgb(58, 72, 112);
         padding: 40px;
         .header {
           // background-color: #fff;
           color: $gold;
           // background: linear-gradient(45deg, $gold 0%, #edc878 100%);
           text-align: center;
-          font-size: 1.2em;
+          font-size: 1em;
           text-align: left;
           h1 {
-            line-height: 80px;
+            line-height: 70px;
           }
-          // padding: 30px;
-          // padding-bottom: 0;
+          p {
+            color: #fff;
+            font-size: 1em;
+          }
           margin-bottom: 30px;
         }
-        .body {
-          form {
-            margin-bottom: 0;
+
+        &.tour {
+          .body {
+            form {
+              margin-bottom: 0;
+            }
+            // padding: 30px;
+            input {
+              display: block;
+              width: 100%;
+              // height: 50px;
+              padding: 15px;
+              margin-bottom: 20px;
+              font-size: 1.5em;
+              font-weight: 500;
+              border-radius: 4px;
+              border: none;
+              &::placeholder {
+                color: rgb(170, 170, 170);
+              }
+            }
+            label {
+              display: block;
+              color: $gold;
+              font-size: 1.3em;
+              font-weight: 500;
+            }
+            input[type=submit] {
+              background-color: $gold;
+              margin-bottom: 0;
+              margin-top: 20px;
+              font-weight: 600;
+              cursor: pointer;
+            }
+            input[type=checkbox] {
+              color: $gold;
+              display: inline-block;
+              width: auto;
+            }
+            select {
+              margin-left: 20px;
+              margin-bottom: 20px;
+              font-size: 1em;
+            }
           }
-          // padding: 30px;
-          input {
-            display: block;
-            width: 100%;
-            // height: 50px;
-            padding: 20px;
-            margin-bottom: 20px;
-            font-size: 1.8em;
-            border-radius: 4px;
-            border: none;
+        }
+        &.seven, &.philosophy {
+          p {
+            font-size: 1.3em;
+            margin-bottom: 40px;
           }
-          input[type=submit] {
-            background-color: $gold;
-            margin-bottom: 0;
-            margin-top: 40px;
-            font-weight: 600;
-            cursor: pointer;
+          .buttonContainer {
+            text-align: center;
+          }
+          .fa {
+            margin-right: 20px;
           }
         }
       }

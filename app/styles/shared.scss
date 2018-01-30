@@ -105,6 +105,7 @@
     padding: .5em 1.2em;
     border-radius: 4px;
     transition: 0.2s all;
+    margin: 0 5px;
     &:hover {
       // box-shadow: 4px 4px 30px 0px rgba(0,0,0,0.3);
       background-color: #eec262;
@@ -118,7 +119,7 @@
       p {
         border-top: 1px solid #fff;
         padding: 15px 0;
-        max-width: 500px;
+        max-width: 600px;
       }
     }
     .contentBkg {
