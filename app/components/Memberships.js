@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import bkgImage from '../images/ropes.png'
+import Popup from './Popup'
 import TourPopup from './TourPopup'
 
 class Memberships extends React.Component {
@@ -31,7 +32,9 @@ class Memberships extends React.Component {
     return (
       <div id='memberships' className='supportPage'>
 
-        <TourPopup open={this.state.tourOpen} closePopup={this.closePopup} handleClickOutside={this.handleClickOutside} />
+        <Popup open={this.state.tourOpen} closePopup={this.closePopup} handleClickOutside={this.handleClickOutside}>
+          <TourPopup />
+        </Popup>
 
         {/* HERO */}
         <div className="hero"

@@ -31,6 +31,7 @@ class LandingPage extends React.Component {
     super(props);
     this.state = {
       tourOpen: false,
+      tourMode: 'tour',
       assessOpen: false,
       planOpen: false,
       progressOpen: false,
@@ -38,10 +39,12 @@ class LandingPage extends React.Component {
     }
   };
 
-  toggleTourPopup = () => {
+  toggleTourPopup = (mode) => {
+    console.log("mode: " + mode)
     this.closePopup();
     this.setState({
-      tourOpen: !this.state.tourOpen
+      tourOpen: !this.state.tourOpen,
+      tourMode: mode == 'eval' ? 'eval' : 'tour'
     });
   };
 
@@ -356,7 +359,9 @@ class LandingPage extends React.Component {
 
         </div>
 
-        <TourPopup open={this.state.tourOpen} closePopup={this.closePopup} handleClickOutside={this.handleClickOutside} />
+        <Popup open={this.state.tourOpen} closePopup={this.closePopup} handleClickOutside={this.handleClickOutside}>
+          <TourPopup mode={this.state.tourMode} />
+        </Popup>
 
         <Popup open={this.state.assessOpen} closePopup={this.closePopup} handleClickOutside={this.handleClickOutside}>
           <div className="content philosophy">
@@ -368,7 +373,7 @@ class LandingPage extends React.Component {
                 Once you sign up with us one of our trainers will take you through one of our popular assessments! This assessment will be kept as a record of your measurements and performance when you first signed up. Essentially, this acts as a snapshot of your current state of fitness. We take your body measurements, body fat percentage, and put you through a performance test so that we can design the best personal training program to get you to your goals.
               </p>
               <div className="buttonContainer">
-                <button className="bigButton" onClick={this.toggleTourPopup}>
+                <button className="bigButton" onClick={() => this.toggleTourPopup('eval')}>
                   Book Your Free Assessment
                 </button>
               </div>
@@ -386,7 +391,7 @@ class LandingPage extends React.Component {
                 The assessment allows our personal trainers to determine your body type and develop a program that will safely and correctly guide you to your goals. We keep it fun too! Don’t get stuck with the same boring workouts! We will set you up with a fun and diverse program that appropriately incorporates everything from boxing to weight training. If functional training or rehabilitation is required, we can address those needs too!
               </p>
               <div className="buttonContainer">
-                <button className="bigButton" onClick={this.toggleTourPopup}>
+                <button className="bigButton" onClick={() => this.toggleTourPopup('eval')}>
                   Book Your Free Assessment
                 </button>
               </div>
@@ -404,7 +409,7 @@ class LandingPage extends React.Component {
                 Track the progress you make with us here at Brooklyn’s best private gym experience! With a proper assessment of your current state of fitness and proper planning based on your body type, results are all but guaranteed, just trust the process. So what are you waiting for? Come get the steps of your fitness journey started here with us at SevenBell Fitness.
               </p>
               <div className="buttonContainer">
-                <button className="bigButton" onClick={this.toggleTourPopup}>
+                <button className="bigButton" onClick={() => this.toggleTourPopup('eval')}>
                   Book Your Free Assessment
                 </button>
               </div>

@@ -1,51 +1,10 @@
 import React, { Component } from 'react';
 import bkgImage from '../images/high_five.png'
 
-// Trainer Images
-import shawna from '../images/trainers/shawna.jpg'
-import jemal from '../images/trainers/jemal.jpg'
-import sean from '../images/trainers/sean.jpg'
-import adelo from '../images/trainers/adelo.jpg'
-
 import Popup from './Popup'
 import TourPopup from './TourPopup'
 
-const trainers = [{
-  name: 'Shawna [Master]',
-  image: shawna,
-  skills: ['Weight Loss', 'Functional Strength', 'Pre/Post Natal', 'Marathon Training'],
-  bio: 'The preservation of human life is the ultimate value, a pillar of ethics and the foundation of all morality. This held true in most cultures and societies throughout history.'
-},{
-  name: 'Adelo [Master]',
-  image: adelo,
-  skills: ['Olympic Lifting', 'Rehabilitation', 'Boxing', 'Kettle Bells', 'pre/post natal', 'MMA', 'Weight Loss', 'Muscle Gain'],
-  bio: 'The preservation of human life is the ultimate value, a pillar of ethics and the foundation of all morality. This held true in most cultures and societies throughout history.'
-},{
-  name: 'Jamal (IFBB Pro Body Builder)',
-  image: jemal,
-  skills: ['Muscle Gain', 'Weight Loss', 'Functional Strength', 'Body Building Preparation'],
-  bio: 'The preservation of human life is the ultimate value, a pillar of ethics and the foundation of all morality. This held true in most cultures and societies throughout history.'
-},{
-  name: 'Coach Sean [Master]',
-  image: sean,
-  skills: ['Boxing', 'MMA', 'Functional Strength', 'Weight Loss'],
-  bio: 'The preservation of human life is the ultimate value, a pillar of ethics and the foundation of all morality. This held true in most cultures and societies throughout history.'
-},{
-  name: 'Johanna (IFBB Pro Body Builder)',
-  image: sean,
-  skills: ['Muscle Gain', 'Weight Loss', 'Functional Strength', 'Body Building Preparation'],
-  bio: 'The preservation of human life is the ultimate value, a pillar of ethics and the foundation of all morality. This held true in most cultures and societies throughout history.'
-},{
-  name: 'Sigal',
-  image: sean,
-  skills: ['Functional Strength', 'Circuit Training', 'Weight Loss', 'Core Strengthening'],
-  bio: 'The preservation of human life is the ultimate value, a pillar of ethics and the foundation of all morality. This held true in most cultures and societies throughout history.'
-},{
-  name: 'Hannah',
-  image: sean,
-  skills: ['Functional Strength', 'Weight Loss', 'Pilates', 'Circuit Training'],
-  bio: 'The preservation of human life is the ultimate value, a pillar of ethics and the foundation of all morality. This held true in most cultures and societies throughout history.'
-}]
+import Trainers from '../data/Trainers'
 
 class Training extends React.Component {
   constructor(props) {
@@ -106,15 +65,17 @@ class Training extends React.Component {
         </div>
 
         <div className="contentBkg">
-          {trainers.map((trainer, index) => {
+          {Trainers.map((trainer, index) => {
             return (
-              <Trainer name={trainer.name} bio={trainer.bio} image={trainer.image} skills={trainer.skills} key={index} />
+              <Trainer name={trainer.name} bio={trainer.bio} image={trainer.image} skills={trainer.skills} certifications={trainer.certifications} key={index} />
             )
           })}
         </div>
 
         {/* I'm Ready Popup */}
-        <TourPopup open={this.state.tourOpen} closePopup={this.closePopup} handleClickOutside={this.handleClickOutside} />
+        <Popup open={this.state.tourOpen} closePopup={this.closePopup} handleClickOutside={this.handleClickOutside}>
+          <TourPopup />
+        </Popup>
 
 
         {/* Why SevenBell Popup */}
@@ -144,18 +105,31 @@ const Trainer = (props) => (
       </div>
       <div className="right">
         <h1>{props.name}</h1>
+
+        {props.certifications.length > 0 ?
+          <div>
+            <h5>Certifications:</h5>
+            <div className="skills">
+              {props.certifications.map((skill, index) =>
+                <div className='skill' key={index}>{skill}</div>
+              )}
+            </div>
+          </div>
+        :
+        null
+        }
+
         <h5>Specialties:</h5>
         <div className="skills">
           {props.skills.map((skill, index) =>
             <div className='skill' key={index}>{skill}</div>
           )}
-
         </div>
       </div>
     </div>
-    <div className="bio">
+    {/* <div className="bio">
       <p>{props.bio}</p>
-    </div>
+    </div> */}
 
   </div>
 )
