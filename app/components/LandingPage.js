@@ -16,7 +16,7 @@ import member5 from '../images/members/5.jpg'
 import member6 from '../images/members/6.jpg'
 import pin from '../images/pin.svg'
 import stadium from '../images/stadium2.png'
-import pano1 from '../images/moon_car.jpg'
+import pano1 from '../images/360_Pano.jpg'
 
 import mapStyle from '../data/mapStyle.json'
 import Popup from './Popup'
@@ -101,7 +101,8 @@ class LandingPage extends React.Component {
       "showControls": false,
       "autoRotateInactivityDelay": 3000,
       "mouseZoom": false,
-      "yaw": 140,
+      "yaw": 20,
+      "pitch": -12,
     });
   }
 

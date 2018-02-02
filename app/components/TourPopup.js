@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 class TourPopup extends React.Component {
   constructor(props) {
-    console.log('constructor props: ' + props)
     super(props);
     this.state = {
       name: '',
@@ -14,7 +13,20 @@ class TourPopup extends React.Component {
     }
   };
 
-  componentWillReceiveProps(nextProps) {
+  handleNameChange = (event) => {
+    this.setState({
+      name: event.target.value
+    });
+  }
+
+  handleSubmit = (event) => {
+    alert('Name: ' + this.state.name +
+    '\nEmail: ' + this.state.email +
+    '\nPhone: ' + this.state.phone);
+    event.preventDefault();
+  }
+
+  componentWillReceiveProps = (nextProps) => {
     console.log('cwrp props: ' + nextProps)
     this.setState({
       tour: nextProps.mode == 'eval' ? false : true,
@@ -33,7 +45,7 @@ class TourPopup extends React.Component {
         </div>
         <div className="body">
           <form>
-            <input type="text" name="name" placeholder="Name" />
+            <input type="text" name="name" value={this.state.name} onChange={this.handleNameChange} placeholder="Name" />
             <input className='inline' type="text" name="email" placeholder="Email" />
             <input className='inline' type="text" name="phone" placeholder="Phone Number" />
 
@@ -57,7 +69,8 @@ class TourPopup extends React.Component {
 
             <label>
               Primary Interest:
-              <select>
+              <select value='blank'>
+                <option disabled selected value='blank'>Select One</option>
                 <option value="Personal Training">Personal Training</option>
                 <option value="Classes">Classes</option>
                 <option value="Private Boxing">Private Boxing</option>
@@ -65,7 +78,7 @@ class TourPopup extends React.Component {
               </select>
             </label>
 
-            <input type="submit" value="Submit" />
+            <input type="submit" value="Submit" onClick={this.handleSubmit} />
           </form>
         </div>
       </div>
