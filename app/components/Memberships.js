@@ -46,8 +46,9 @@ class Memberships extends React.Component {
           <div className="content">
             <h1>Memberships</h1>
             <p>
-              Which one of our 3 memberships are right for you?
+              At SevenBell Fitness, we work for you! Our memberships and training programs are customizable to best fit your goals, your time, and your budget. While we reward hard work with more affordable training rates, we have something for everyone at every level of fitness!
             </p>
+
             <button className='bigButton' onClick={this.toggleTourPopup}>Schedule A Tour</button>
           </div>
         </div>

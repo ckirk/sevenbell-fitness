@@ -32,10 +32,8 @@ class LandingPage extends React.Component {
     this.state = {
       tourOpen: false,
       tourMode: 'tour',
-      assessOpen: false,
-      planOpen: false,
-      progressOpen: false,
-      sevenOpen: false
+      sevenOpen: false,
+      pano: null
     }
   };
 
@@ -54,23 +52,23 @@ class LandingPage extends React.Component {
     });
   };
 
-  toggleAssessPopup = () => {
-    this.setState({
-      assessOpen: !this.state.assessOpen
-    });
-  };
+  // handleScroll = (event) => {
+  //   let currentYaw = this.state.pano.getYaw()
+  //   console.log('yaw: ' + currentYaw)
+  //
+  //   let scrollTop = event.srcElement.body.scrollTop
+  //   console.log('scrollTop: ' + scrollTop)
+  //   console.log('------------')
+  //   // let itemTranslate = Math.min(0, scrollTop/3 - 60)
+  //
+  //   // How to set Yaw
+  //   this.state.pano.setYaw((scrollTop)/50, false)
+  //
+  //   this.setState({
+  //     state: null
+  //   });
+  // };
 
-  togglePlanPopup = () => {
-    this.setState({
-      planOpen: !this.state.planOpen
-    });
-  };
-
-  toggleProgressPopup = () => {
-    this.setState({
-      progressOpen: !this.state.progressOpen
-    });
-  };
 
   handleClickOutside = (event) => {
     if (event.target.classList.contains('popup')) {
@@ -81,16 +79,14 @@ class LandingPage extends React.Component {
   closePopup = () => {
     this.setState({
       tourOpen: false,
-      assessOpen: false,
-      planOpen: false,
-      progressOpen: false,
       sevenOpen: false
     });
   };
 
   componentDidMount() {
     console.log('mounted!');
-    let viewer = pannellum.viewer('pano', {
+    // window.addEventListener('scroll', this.handleScroll);
+    let pano = pannellum.viewer('pano', {
       "type": "equirectangular",
       "panorama": pano1,
       "autoLoad": true,
@@ -104,6 +100,14 @@ class LandingPage extends React.Component {
       "yaw": 20,
       "pitch": -12,
     });
+
+    this.setState({
+      pano: pano
+    });
+  }
+
+  componentWillUnmount() {
+    // window.removeEventListener('scroll', this.handleScroll);
   }
 
   render() {
@@ -127,7 +131,7 @@ class LandingPage extends React.Component {
               <a href="tel:718-857-2355"> (718) 857-2355</a>
             </p>
           </div>
-          <div className="bottom">
+          {/* <div className="bottom">
             <div className="socials">
               <a href='#'>
                 <i className="fa fa-instagram" aria-hidden="true"></i>
@@ -139,7 +143,7 @@ class LandingPage extends React.Component {
                 <i className="fa fa-twitter-square" aria-hidden="true"></i>
               </a>
             </div>
-          </div>
+          </div> */}
 
         </div>
 
@@ -304,7 +308,7 @@ class LandingPage extends React.Component {
         </div>
 
         {/* PHILOSOPHY */}
-        <div id="philosophy">
+        {/* <div id="philosophy">
           <h1>Our Philosophy</h1>
           <div className="steps">
             <div className="center">
@@ -342,7 +346,7 @@ class LandingPage extends React.Component {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
 
         {/* SEVENBELL */}
         <div id="sevenBell">
@@ -354,17 +358,23 @@ class LandingPage extends React.Component {
             <p>If you’re ready to take your body to the next level and train with the best, make your next workout with Seven Bell himself.</p>
             <div className="buttons">
               <button onClick={this.toggleSevenPopup}>Learn More</button>
-              <button>Train with SevenBell</button>
+              <Link to='training' className="button">
+                <button>Train with SevenBell</button>
+              </Link>
             </div>
           </div>
 
         </div>
 
+
+
+        {/* POPUPS ///////////////////// */}
+
         <Popup open={this.state.tourOpen} closePopup={this.closePopup} handleClickOutside={this.handleClickOutside}>
           <TourPopup mode={this.state.tourMode} />
         </Popup>
 
-        <Popup open={this.state.assessOpen} closePopup={this.closePopup} handleClickOutside={this.handleClickOutside}>
+        {/* <Popup open={this.state.assessOpen} closePopup={this.closePopup} handleClickOutside={this.handleClickOutside}>
           <div className="content philosophy">
             <div className="header">
               <h1><i className="fa fa-fw fa-balance-scale" aria-hidden="true"></i>Assess</h1>
@@ -416,7 +426,7 @@ class LandingPage extends React.Component {
               </div>
             </div>
           </div>
-        </Popup>
+        </Popup> */}
 
         <Popup open={this.state.sevenOpen} closePopup={this.closePopup} handleClickOutside={this.handleClickOutside}>
           <div className="content seven">
@@ -430,6 +440,7 @@ class LandingPage extends React.Component {
             </div>
           </div>
         </Popup>
+
       </div>
     );
   }

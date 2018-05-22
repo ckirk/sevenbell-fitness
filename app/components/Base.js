@@ -61,7 +61,7 @@ const Footer = (props) => (
       </div>
     </div>
     <div className="right">
-      <div className="socials">
+      {/* <div className="socials">
         <a href='#'>
           <i className="fa fa-instagram" aria-hidden="true"></i>
         </a>
@@ -71,7 +71,7 @@ const Footer = (props) => (
         <a href='#'>
           <i className="fa fa-twitter-square" aria-hidden="true"></i>
         </a>
-      </div>
+      </div> */}
       <div className="copyright">
         Copyright All Rights Reserved © 2017 | SEVENBELLFITNESS
       </div>

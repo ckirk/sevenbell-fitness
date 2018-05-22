@@ -13,16 +13,28 @@ class TourPopup extends React.Component {
     }
   };
 
-  handleNameChange = (event) => {
+  handleInputChange = (event) => {
+    const target = event.target;
+    const value = target.type === 'checkbox' ? target.checked : target.value;
+    const name = target.name;
+
+    console.log('onChange!');
+    console.log('target: ', target);
+    console.log('value: ', value);
+    console.log('name: ', name);
+
     this.setState({
-      name: event.target.value
+      [name]: value
     });
   }
 
   handleSubmit = (event) => {
     alert('Name: ' + this.state.name +
-    '\nEmail: ' + this.state.email +
-    '\nPhone: ' + this.state.phone);
+      '\nEmail: ' + this.state.email +
+      '\nPhone: ' + this.state.phone +
+      '\nInterest: ' + this.state.interest +
+      '\nWants Tour: ' + this.state.tour +
+      '\nWants Evaluation: ' + this.state.eval);
     event.preventDefault();
   }
 
@@ -45,9 +57,9 @@ class TourPopup extends React.Component {
         </div>
         <div className="body">
           <form>
-            <input type="text" name="name" value={this.state.name} onChange={this.handleNameChange} placeholder="Name" />
-            <input className='inline' type="text" name="email" placeholder="Email" />
-            <input className='inline' type="text" name="phone" placeholder="Phone Number" />
+            <input type="text" name="name" value={this.state.name} onChange={this.handleInputChange} placeholder="Name" />
+            <input className='inline' type="text" name="email" onChange={this.handleInputChange} placeholder="Email" />
+            <input className='inline' type="text" name="phone" onChange={this.handleInputChange} placeholder="Phone Number" />
 
             <label>
               <input
@@ -60,7 +72,7 @@ class TourPopup extends React.Component {
 
             <label>
               <input
-                name="evaluation"
+                name="eval"
                 type="checkbox"
                 checked={this.state.eval}
                 onChange={this.handleInputChange} />
@@ -69,8 +81,8 @@ class TourPopup extends React.Component {
 
             <label>
               Primary Interest:
-              <select value='blank'>
-                <option disabled selected value='blank'>Select One</option>
+              <select name="interest" value={this.state.interest} onChange={this.handleInputChange}>
+                <option disabled value='blank'>Select One</option>
                 <option value="Personal Training">Personal Training</option>
                 <option value="Classes">Classes</option>
                 <option value="Private Boxing">Private Boxing</option>
