@@ -56,7 +56,9 @@ class TourPopup extends React.Component {
           </p>
         </div>
         <div className="body">
-          <form>
+
+          <form method="POST" action="https://formspree.io/ckirkinis@gmail.com">
+
             <input type="text" name="name" value={this.state.name} onChange={this.handleInputChange} placeholder="Name" />
             <input className='inline' type="text" name="email" onChange={this.handleInputChange} placeholder="Email" />
             <input className='inline' type="text" name="phone" onChange={this.handleInputChange} placeholder="Phone Number" />
@@ -90,7 +92,9 @@ class TourPopup extends React.Component {
               </select>
             </label>
 
-            <input type="submit" value="Submit" onClick={this.handleSubmit} />
+            <input type="submit" value="Submit" />
+            {/* <input type="submit" value="Submit" onClick={this.handleSubmit} /> */}
+
           </form>
         </div>
       </div>
