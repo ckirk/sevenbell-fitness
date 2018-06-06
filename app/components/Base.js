@@ -28,6 +28,9 @@ class Base extends React.Component {
               <Link to='/schedule' activeClassName='active'>Class Schedule</Link>
               <Link to='/training' activeClassName='active'>Personal Training</Link>
             </div>
+            <div className="MobileNavMenu">
+              <i className="fa fa-fw fa-bars" aria-hidden="true"></i>
+            </div>
           </div>
           {this.props.children}
         </div>

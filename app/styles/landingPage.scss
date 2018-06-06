@@ -5,6 +5,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    @media only screen and (max-width : 768px) {
+      min-height: none;
+      padding-top: 20px;
+    }
     .bkgImage {
       background: url(../images/curves_bw.png) no-repeat center center;
       background-size: cover;
@@ -18,12 +22,22 @@
         padding: 40px;
         max-width: 1200px;
         margin: 0 auto;
+        @media only screen and (max-width : 768px) {
+          padding: 20px;
+          max-width: 100%;
+          flex-wrap: wrap;
+        }
         .featureContainer {
           text-align: center;
           color: $dark-grey;
           flex: 0 0 25%;
           // max-width: 200px;
           display: flex;
+          @media only screen and (max-width : 768px) {
+            justify-content: center;
+            margin-bottom: 30px;
+            flex: 1 1 25%;
+          }
           flex-direction: column;
           align-items: center;
           padding: 0 10px;
@@ -37,10 +51,18 @@
             align-items: center;
             font-size: 5em;
             margin-bottom: 20px;
+            @media only screen and (max-width : 768px) {
+              height: 140px;
+              width: 140px;
+              font-size: 4.5em;
+            }
           }
           .featureText {
-            font-size: 1.4em;
-            font-weight: 700;
+            font-size: 1.2em;
+            font-weight: 900;
+            @media only screen and (max-width : 768px) {
+              font-size: 1em;
+            }
           }
         }
       }
@@ -103,6 +125,9 @@
   }
   #two {
     display: flex;
+    @media only screen and (max-width : 768px) {
+      flex-direction: column;
+    }
     #location {
       position: relative;
       flex: 1 0 50%;
@@ -111,6 +136,9 @@
       color: $dark-grey;
       background: url(../images/map.png) no-repeat center center;
       background-size: cover;
+      @media only screen and (max-width : 768px) {
+        min-height: 500px;
+      }
       #pin {
         img {
           height: 150px;
@@ -139,6 +167,9 @@
           margin: 0;
           font-size: 1.2em;
           font-weight: 500;
+        }
+        @media only screen and (max-width : 768px) {
+          width: calc(100% - 40px);
         }
       }
       .bottom {
@@ -227,6 +258,9 @@
           font-size: 1.5em;
           font-weight: 400;
         }
+      }
+      @media only screen and (max-width : 768px) {
+        min-height: 500px;
       }
     }
   }
@@ -390,7 +424,7 @@
     }
 
   }
-  
+
   #sevenBell {
     background: linear-gradient(90deg, #000 0%, rgb(45, 45, 45) 100%);
     display: flex;
