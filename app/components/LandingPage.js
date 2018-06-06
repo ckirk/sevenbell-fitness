@@ -148,7 +148,7 @@ class LandingPage extends React.Component {
         </div>
 
         {/* TOP FEATURES */}
-        <div id="topFeatures">
+        <div id="topFeatures" className="section">
           <div className="bkgImage cover"></div>
           <div className="gradient cover"></div>
           <div className="content">
@@ -193,7 +193,7 @@ class LandingPage extends React.Component {
         </div>
 
         {/* 360 TOUR */}
-        <div id="tour">
+        <div id="tour" className="section">
           <div className="bkgImage cover">
             <div id="pano"></div>
           </div>
@@ -212,7 +212,7 @@ class LandingPage extends React.Component {
         <div id="two">
 
           {/* LOCATION */}
-          <div id="location" className='half'>
+          <div id="location" className='half section'>
             <div className="map cover">
               <Map />
             </div>
@@ -235,7 +235,7 @@ class LandingPage extends React.Component {
           </div>
 
           {/* PERKS */}
-          <div id="perks" className='half'>
+          <div id="perks" className='half section'>
             <div className="top">
               <h1>Private<br/>Gym Perks</h1>
               <div className="box">
@@ -252,29 +252,32 @@ class LandingPage extends React.Component {
         </div>
 
         {/* QUOTE */}
-        <div id="quote">
+        <div id="quote" className="section">
           <div className="content">
             <h2>The Best Private Gym Experience In Brooklyn <br/> Is SevenBell Fitness</h2>
           </div>
         </div>
 
         {/* YELP */}
-        <div id="yelp">
+        <div id="yelp" className="section">
           <h2>Our Members Love Us on Yelp!</h2>
+          <div className="mobileLogo">
+            <i className="fa fa-yelp" aria-hidden="true"></i>
+          </div>
           <div className="reviews">
             <Review image={member6} name='Cody B.' quote="This has been my first time consistently going to a gym and working with a trainer and it's been a great experience." />
             <Review image={member3} name='Christina R.' quote="My body has improved and [so has] my struggles with motivation and regularity… [I’m] excited to see what happens next!" />
             <Review image={member5} name='Schuyler H.' quote="Can't recommend this gym enough to anyone who feels intimidated by gyms. You feel welcomed immediately." />
             <Review image={member1} name='Jade B.' quote='Unlike other fitness chains, SevenBell staff puts in the effort to say hello and know you by name.' />
           </div>
-          <div className="arrows">
+          {/* <div className="arrows">
             <i className="fa fa-fw fa-chevron-left" aria-hidden="true"></i>
             <i className="fa fa-fw fa-chevron-right" aria-hidden="true"></i>
-          </div>
+          </div> */}
         </div>
 
         {/* EXPLORE */}
-        <div id="explore">
+        <div id="explore" className="section">
           <div className='left'>
             <h1>Explore</h1>
             <div className="cta">
@@ -302,6 +305,18 @@ class LandingPage extends React.Component {
                 <i className="fa fa-fw fa-rocket" aria-hidden="true"></i>
                 <h3>Personal Training</h3>
               </Link>
+            </div>
+          </div>
+
+          <div className="mobileCta">
+            <div className="cta">
+              <div className="center">
+                <button className='bigButton' onClick={this.toggleTourPopup}>Schedule A Tour</button>
+                <p>
+                  Call Now:
+                  <a href="tel:718-857-2355"> (718) 857-2355</a>
+                </p>
+              </div>
             </div>
           </div>
 
@@ -349,7 +364,7 @@ class LandingPage extends React.Component {
         </div> */}
 
         {/* SEVENBELL */}
-        <div id="sevenBell">
+        <div id="sevenBell" className="section">
           <div className="sevenPic">
             {/* <img src='../images/seven_hoodie.png' /> */}
           </div>
