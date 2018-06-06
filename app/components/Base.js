@@ -9,8 +9,16 @@ class Base extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      signInModal: false
+      signInModal: false,
+      mobileMenuOpen: false
     }
+  };
+
+  toggleMobileMenu = () => {
+    console.log('menu toggle!');
+    this.setState({
+      mobileMenuOpen: !this.state.mobileMenuOpen
+    });
   };
 
   render() {
@@ -28,8 +36,14 @@ class Base extends React.Component {
               <Link to='/schedule' activeClassName='active'>Class Schedule</Link>
               <Link to='/training' activeClassName='active'>Personal Training</Link>
             </div>
-            <div className="MobileNavMenu">
-              <i className="fa fa-fw fa-bars" aria-hidden="true"></i>
+            <div className="MobileMenuBtn">
+              <i className="fa fa-fw fa-bars" aria-hidden="true" onClick={this.toggleMobileMenu}></i>
+            </div>
+            <div className={"MobileNavMenu" + (this.state.mobileMenuOpen? ' show ' : '')}>
+              <Link to='/' activeClassName='active'>Home</Link>
+              <Link to='/memberships' activeClassName='active'>Memberships</Link>
+              <Link to='/schedule' activeClassName='active'>Class Schedule</Link>
+              <Link to='/training' activeClassName='active'>Personal Training</Link>
             </div>
           </div>
           {this.props.children}

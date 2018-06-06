@@ -81,7 +81,7 @@ class TourPopup extends React.Component {
                 I'd Like a Complimentary Fitness Evaluation
             </label>
 
-            <label>
+            <label className='primaryInterest'>
               Primary Interest:
               <select name="interest" value={this.state.interest} onChange={this.handleInputChange}>
                 <option disabled value='blank'>Select One</option>
