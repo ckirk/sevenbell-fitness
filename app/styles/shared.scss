@@ -71,11 +71,11 @@
       display: none;
       position: fixed;
       top: 0;
-      left: -50%;
+      left: -100%;
       height: 100%;
       background-color: rgba(0,0,0,1);
       padding: 20px;
-      width: 50%;
+      // width: 50%;
       transition: all 0.1s ease;
       @media only screen and (max-width : 768px) {
         display: block;
@@ -98,11 +98,21 @@
     background-color: rgb(82, 83, 83);
     padding-top: 50px;
     min-height: 500px;
+    &.landingHero {
+      .gradient {
+        background: linear-gradient(45deg, rgba(#1a1a1a, 1) 0%, rgba(#414141, 0.6) 100%);
+      }
+    }
+    @media only screen and (max-width : 768px) {
+      min-height: 100px;
+    }
     color: #fff;
     .content {
+      margin: 30px 0;
       z-index: 1;
       h1 {
         font-weight: 700;
+        margin: 20px;
         margin-bottom: 30px;
         @media only screen and (max-width : 768px) {
           font-size: 3em;
@@ -112,6 +122,11 @@
         font-weight: 400;
         font-size: 1.1em;
         color: $gold;
+        margin: 5px 20px;
+        // margin-bottom: 20px;
+        @media only screen and (max-width : 768px) {
+          font-size: 1em;
+        }
         a {
           font-weight: 400;
         }
@@ -142,10 +157,7 @@
       bottom: 0;
       left: 0;
       right: 0;
-      background: linear-gradient(45deg, rgba(#1a1a1a, 1) 0%, rgba(#414141, 0.2) 100%);
-    }
-    @media only screen and (max-width : 768px) {
-
+      background: linear-gradient(45deg, rgba(#1a1a1a, 1) 0%, rgba(#414141, 0.7) 100%);
     }
   }
   .bigButton {
@@ -157,6 +169,7 @@
     border-radius: 4px;
     transition: 0.2s all;
     margin: 0 5px;
+    margin-bottom: 10px;
     opacity: 0.9;
     &:hover {
       // box-shadow: 4px 4px 30px 0px rgba(0,0,0,0.3);
@@ -237,8 +250,10 @@
       }
     }
     .content {
+      // z-index: 10;
+      // position: absolute;
       // background: linear-gradient(180deg, $gold 0%, #ffefce 100%);
-      background: url(../images/popup_bkg.png) no-repeat center center;
+      background: url(../images/popup_bkg2.png) no-repeat center center;
       background-size: cover;
       padding: 40px;
       @media only screen and (max-width : 768px) {
@@ -254,19 +269,26 @@
         text-align: left;
         h1 {
           line-height: 70px;
+          @media only screen and (max-width : 768px) {
+            &.popupTitle {
+              font-size: 0.8em;
+            }
+          }
         }
         p {
           color: #fff;
           font-size: 1em;
         }
-        margin-bottom: 30px;
+        margin-bottom: 20px;
       }
+
 
       &.tour {
         .body {
           form {
             margin-bottom: 0;
           }
+          overflow-y: scroll;
           // padding: 30px;
           input {
             display: block;
@@ -291,6 +313,9 @@
             color: $gold;
             font-size: 1.3em;
             font-weight: 500;
+            @media only screen and (max-width : 768px) {
+              font-size: 1.1em;
+            }
           }
           input[type=submit] {
             background-color: $gold;
@@ -306,7 +331,7 @@
           }
 
           .primaryInterest {
-            margin-top: 20px;
+            margin-top: 10px;
           }
 
           select {
@@ -319,6 +344,7 @@
               background-color: #fff;
               margin: 10px;
               padding: 4px;
+              max-width: 150px;
             }
           }
         }
@@ -405,75 +431,6 @@
       @media only screen and (max-width : 768px) {
         margin: 20px;
         // text-align: left;
-      }
-    }
-  }
-}
-
-// css for slideshow
-#references {
-  background:
-    url(/images/geometric_dark.png)    /* image */
-    center center / cover               /* position / size */
-    no-repeat;                      /* repeat */
-    // $dark-green-fade;
-  position: relative;
-  overflow: hidden;
-  #slides {
-    width: 100%;
-    display: flex;
-    transition: all 0.5s ease;
-    .slide {
-      flex: 1 0 100%;
-      #content {
-        padding: 50px 130px;
-        h2 {
-          text-align: center;
-          font-size: 1.8em;
-          font-weight: 500;
-        }
-        p {
-          text-align: right;
-          font-weight: 300;
-          font-size: 1.3em;
-        }
-      }
-    }
-  }
-  #arrows {
-    position: absolute;
-    text-align: left;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    width: 100%;
-    padding: 20px;
-    display: inline-block;
-    font-size: 4em;
-    .fa {
-      cursor: pointer;
-    }
-    .fa-chevron-right {
-      float: right;
-    }
-  }
-  #dots {
-    margin: 0 auto;
-    padding: 20px;
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    .dot {
-      height: 12px;
-      width: 12px;
-      border: 1px solid #fff;
-      border-radius: 100%;
-      display: inline-block;
-      margin: 3px;
-      cursor: pointer;
-      &.active {
-        background-color: #fff;
       }
     }
   }

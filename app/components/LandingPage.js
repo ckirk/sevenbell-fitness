@@ -69,7 +69,6 @@ class LandingPage extends React.Component {
   //   });
   // };
 
-
   handleClickOutside = (event) => {
     if (event.target.classList.contains('popup')) {
       this.closePopup();
@@ -117,7 +116,7 @@ class LandingPage extends React.Component {
         {/* <Modal open={true} /> */}
 
         {/* HERO */}
-        <div className="hero"
+        <div className="hero landingHero"
           style={{
             background: `url(${training}) no-repeat center center`,
             backgroundSize: 'cover'

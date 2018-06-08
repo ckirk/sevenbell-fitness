@@ -50,7 +50,7 @@ class TourPopup extends React.Component {
     return (
       <div className="content tour">
         <div className="header">
-          <h1>Schedule A Visit</h1>
+          <h1 className="popupTitle">Schedule A Visit</h1>
           <p>
             Complete the fields below and a membership advisor will reach out to you in the next 24 hours to schedule your visit.
           </p>

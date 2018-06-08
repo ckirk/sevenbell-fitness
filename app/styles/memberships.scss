@@ -8,6 +8,12 @@
       max-width: 1000px;
       margin: 0 auto;
       justify-content: center;
+      @media only screen and (max-width : 768px) {
+        // overflow: scroll;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        padding: 20px 30px;
+      }
       .tier {
         display: flex;
         // width: 300px;
@@ -17,6 +23,11 @@
         padding: 30px;
         margin: 10px;
         background-color: #fff;
+        @media only screen and (max-width : 768px) {
+          margin: 15px 0px;
+          box-shadow: 5px 5px 20px rgba(#000, 0.25);
+          flex: 1 0 auto;
+        }
         &.center {
           box-shadow: 5px 5px 20px rgba(#000, 0.25);
           height: 500px;

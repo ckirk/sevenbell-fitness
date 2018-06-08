@@ -1,0 +1,213 @@
+#training {
+  // .contentBkg {
+  //   display: flex;
+  //   align-items: stretch;
+  //   justify-content: flex-start;
+  //   flex-wrap: wrap;
+  //   padding: 30px;
+  //   .trainerContainer {
+  //     margin: 10px;
+  //     background-color: rgba(#fff, 0.8);
+  //     // padding: 20px;
+  //     display: flex;
+  //     flex: 1 0 calc(50% - 40px);
+  //     flex-direction: column;
+  //     .top {
+  //       display: flex;
+  //       // margin-bottom: 20px;
+  //       .image {
+  //         // margin-right: 30px;
+  //         img {
+  //           width: 180px;
+  //           // border-radius: 100%;
+  //         }
+  //       }
+  //     }
+  //     .right {
+  //       padding: 20px;
+  //       h1 {
+  //         font-size: 2.3em;
+  //         margin-bottom: 10px;
+  //       }
+  //       h5 {
+  //         font-size: 1.2em;
+  //         margin: 0;
+  //         margin-bottom: 10px;
+  //       }
+  //       .skills {
+  //         padding-left: 10px;
+  //         margin-bottom: 10px;
+  //         .skill {
+  //           display: inline-block;
+  //           background-color: $gold;
+  //           border-radius: 4px;
+  //           margin: 4px;
+  //           padding: 0.2em 0.6em;
+  //           font-size: 0.9em;
+  //         }
+  //       }
+  //     }
+  //   }
+  // }
+  #philosophy {
+    color: $dark-grey;
+    text-align: center;
+    min-height: 400px;
+    padding: 40px;
+    @media only screen and (max-width : 768px) {
+      padding: 20px;
+    }
+    background: url(../images/philosophy.png) no-repeat center center;
+    background-size: cover;
+
+    h1 {
+      margin: 20px;
+      font-size: 5em;
+      @media only screen and (max-width : 768px) {
+        font-size: 4em;
+        margin: 0;
+        // text-align: left;
+      }
+    }
+    .steps {
+      padding: 20px;
+      margin-top: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      @media only screen and (max-width : 768px) {
+        margin-top: 40px;
+        padding: 0px;
+      }
+      .center {
+        display: flex;
+        justify-content: space-around;
+        align-items: stretch;
+        flex: 1 1 auto;
+        max-width: 1200px;
+        flex-wrap: wrap;
+        .step {
+          flex: 1 0 33%;
+          padding: 20px;
+          max-width: 280px;
+          display: flex;
+          flex-direction: column;
+          @media only screen and (max-width : 768px) {
+            margin-bottom: 30px;
+          }
+          .fa {
+            font-size: 5em;
+            margin: 0 auto;
+          }
+          h2 {
+            font-size: 2.5em;
+            margin-top: 20px;
+          }
+          p {
+            font-size: 1em;
+            margin: 20px 0;
+            margin-bottom: 30px;
+          }
+          .buttonContainer {
+            flex: 1 0 auto;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            button {
+              background-color: rgba(#fff, 0);
+              border: 2px solid $dark-grey;
+              border-radius: 4px;
+              font-size: 1.2em;
+              padding: .8em 3em;
+              font-weight: 500;
+              // width: 100%;
+              &:hover {
+                background-color: $dark-grey;
+                color: #fff;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  #seven {
+    background: linear-gradient(90deg, #000 0%, rgb(45, 45, 45) 100%);
+    display: flex;
+    min-height: 500px;
+    .sevenPic {
+      flex: 1 0 40%;
+      background: url(../images/seven_hoodie2.png) no-repeat top center;
+      background-size: cover;
+      @media only screen and (max-width : 768px) {
+        display: none;
+      }
+      img {
+        height: 400px;
+      }
+    }
+    .content {
+      padding: 30px;
+      flex: 1 0 60%;
+      h1 {
+        padding: 20px 0;
+        font-size: 4em;
+        color: $gold;
+      }
+      p {
+        font-size: 1.4em;
+        font-weight: 200;
+        margin-bottom: 50px;
+        @media only screen and (max-width : 768px) {
+          font-size: 1.2em;
+        }
+      }
+      .pricing_container {
+        text-align: center;
+        .pricing {
+          display: inline-block;
+          margin: 0 auto;
+          border: 1px solid white;
+          padding: 20px 30px;
+          @media only screen and (max-width : 768px) {
+            padding: 10px;
+          }
+          p {
+            text-align: center;
+            font-size: 1em;
+            margin: 5px;
+            &.header {
+              font-weight: bold;
+            }
+          }
+        }
+      }
+      .buttons {
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+        margin-top: 50px;
+        margin-bottom: 30px;
+        button {
+          padding: 1em 2em;
+          margin: 10px;
+          background-color: rgba($gold, 0);
+          color: $gold;
+          border: 2px solid $gold;
+          border-radius: 4px;
+          font-size: 1.2em;
+          font-weight: 500;
+          // width: 200px;
+          @media only screen and (max-width : 768px) {
+            font-size: 1em;
+            padding: 1em 1em;
+          }
+          &:hover {
+            background-color: $gold;
+            color: $dark-grey;
+          }
+        }
+      }
+    }
+  }
+}

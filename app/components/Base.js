@@ -40,10 +40,10 @@ class Base extends React.Component {
               <i className="fa fa-fw fa-bars" aria-hidden="true" onClick={this.toggleMobileMenu}></i>
             </div>
             <div className={"MobileNavMenu" + (this.state.mobileMenuOpen? ' show ' : '')}>
-              <Link to='/' activeClassName='active'>Home</Link>
-              <Link to='/memberships' activeClassName='active'>Memberships</Link>
-              <Link to='/schedule' activeClassName='active'>Class Schedule</Link>
-              <Link to='/training' activeClassName='active'>Personal Training</Link>
+              <Link to='/' activeClassName='active' onClick={this.toggleMobileMenu}>Home</Link>
+              <Link to='/memberships' activeClassName='active' onClick={this.toggleMobileMenu}>Memberships</Link>
+              <Link to='/schedule' activeClassName='active' onClick={this.toggleMobileMenu}>Class Schedule</Link>
+              <Link to='/training' activeClassName='active' onClick={this.toggleMobileMenu}>Personal Training</Link>
             </div>
           </div>
           {this.props.children}

@@ -25,21 +25,22 @@
         padding: 40px;
         max-width: 1200px;
         margin: 0 auto;
+        flex-wrap: wrap;
         @media only screen and (max-width : 768px) {
-          padding: 20px;
-          max-width: 100%;
-          flex-wrap: wrap;
+          padding: 0px;
+          // max-width: 100%;
+          // justify-content: space-between;
         }
         .featureContainer {
           text-align: center;
           color: $dark-grey;
-          flex: 0 0 25%;
+          flex: 0 0 auto;
           // max-width: 200px;
           display: flex;
           @media only screen and (max-width : 768px) {
             justify-content: center;
             margin-bottom: 30px;
-            flex: 1 1 25%;
+            flex: 1 1 50%;
           }
           flex-direction: column;
           align-items: center;
@@ -435,18 +436,21 @@
   #explore {
     color: $gold;
     display: flex;
+    flex-wrap: wrap;
     min-height: 400px;
     background: url(../images/weights.png) no-repeat center center;
     background-size: cover;
     @media only screen and (max-width : 768px) {
       // flex-direction: column;
-      flex-wrap: wrap;
-      min-height: none;
+      min-height: 100px;
     }
     .left {
       display: flex;
       flex-direction: column;
-      flex: 1 0 50%;
+      flex: 1 1 50%;
+      @media only screen and (max-width : 768px) {
+        flex: 1 1 100%;
+      }
       h1 {
         font-size: 6em;
         margin: 50px;
@@ -457,7 +461,7 @@
         }
       }
       .cta {
-        flex: 1 0 auto;
+        flex: 1 1 auto;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -477,11 +481,14 @@
       }
     }
     .options {
-      flex: 1 0 50%;
+      flex: 1 1 50%;
       padding: 20px;
       display: flex;
       justify-content: center;
       align-items: center;
+      @media only screen and (max-width : 768px) {
+        flex: 1 1 100%;
+      }
       .center {
         .option {
           color: $gold;
