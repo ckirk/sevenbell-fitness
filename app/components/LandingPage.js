@@ -166,7 +166,7 @@ class LandingPage extends React.Component {
                   <i className="fa fa-fw fa-lock" aria-hidden="true"></i>
                 </div>
                 <div className="featureText">
-                  Unmatched <br/> Privacy
+                  Unmatched Privacy
                 </div>
               </div>
 

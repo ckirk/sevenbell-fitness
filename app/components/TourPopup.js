@@ -57,7 +57,7 @@ class TourPopup extends React.Component {
         </div>
         <div className="body">
 
-          <form method="POST" action="https://formspree.io/ckirkinis@gmail.com">
+          <form method="POST" action="https://formspree.io/info@sevenbellfitness.com">
 
             <input type="text" name="name" value={this.state.name} onChange={this.handleInputChange} placeholder="Name" />
             <input className='inline' type="text" name="email" onChange={this.handleInputChange} placeholder="Email" />

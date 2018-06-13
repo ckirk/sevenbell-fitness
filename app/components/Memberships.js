@@ -57,18 +57,18 @@ class Memberships extends React.Component {
           <div className="memberships">
             <Tier name='Basic'
                   description='Access to private facility and classes'
-                  price={90}
+                  price={95}
                   perks={['Private gym access', 'Private classes', 'One fitness assessment']}
             />
             <Tier name='VIP'
-                  description="I’m comitted to my body"
-                  price={140}
+                  description="I’m committed to my body"
+                  price={115}
                   perks={['Private gym access', 'Private classes', 'Monthly fitness assessment', 'Supplement starter kit', 'Lowest training cost']}
                   center={true}
             />
             <Tier name='Preferred'
-                  description='Guidance with no comittment'
-                  price={130}
+                  description='Guidance with no commitment'
+                  price={125}
                   perks={['Private gym access', 'Private classes', 'Monthly fitness assessment', 'Discount training price', 'Discount enrollment']}
             />
           </div>
