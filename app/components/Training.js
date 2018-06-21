@@ -4,7 +4,7 @@ import bkgImage from '../images/high_five.png'
 import Popup from './Popup'
 import TourPopup from './TourPopup'
 
-import Trainers from '../data/Trainers'
+// import Trainers from '../data/Trainers'
 
 class Training extends React.Component {
   constructor(props) {

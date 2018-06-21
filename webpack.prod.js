@@ -28,7 +28,7 @@ module.exports = merge(common, {
         secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
       },
       s3UploadOptions: {
-        Bucket: 'sevenbellfitness.com'
+        Bucket: 'www.sevenbellfitness.com'
       }
     })
   ]

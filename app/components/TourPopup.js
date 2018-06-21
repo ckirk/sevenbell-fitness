@@ -62,6 +62,7 @@ class TourPopup extends React.Component {
             <input type="text" name="name" value={this.state.name} onChange={this.handleInputChange} placeholder="Name" />
             <input className='inline' type="text" name="email" onChange={this.handleInputChange} placeholder="Email" />
             <input className='inline' type="text" name="phone" onChange={this.handleInputChange} placeholder="Phone Number" />
+            <input type="hidden" name="_subject" value={this.state.name} />
 
             <label>
               <input
@@ -89,6 +90,7 @@ class TourPopup extends React.Component {
                 <option value="Classes">Classes</option>
                 <option value="Private Boxing">Private Boxing</option>
                 <option value="Nutrition Guidance">Nutrition Guidance</option>
+                <option value="Just Gym Access">Just Gym Access</option>
               </select>
             </label>
 
