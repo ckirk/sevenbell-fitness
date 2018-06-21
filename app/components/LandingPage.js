@@ -9,6 +9,7 @@ import Pannellum from 'pannellum';
 import training from '../images/training.jpg'
 import curves from '../images/curves_bw.png'
 import logo from '../images/logo.png'
+import glove from '../images/glove.png'
 
 import member1 from '../images/members/1.jpg'
 import member3 from '../images/members/3.jpg'
@@ -172,7 +173,8 @@ class LandingPage extends React.Component {
 
               <div className="featureContainer">
                 <div className="featureIcon">
-                  <i className="fa fa-fw fa-building" aria-hidden="true"></i>
+                  {/* <i className="fa fa-fw fa-building" aria-hidden="true"></i> */}
+                  <img src={glove} alt="" />
                 </div>
                 <div className="featureText">
                   State of the Art Boxing & Training Facility
