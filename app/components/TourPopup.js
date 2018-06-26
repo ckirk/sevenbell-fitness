@@ -18,10 +18,10 @@ class TourPopup extends React.Component {
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
 
-    console.log('onChange!');
-    console.log('target: ', target);
-    console.log('value: ', value);
-    console.log('name: ', name);
+    // console.log('onChange!');
+    // console.log('target: ', target);
+    // console.log('value: ', value);
+    // console.log('name: ', name);
 
     this.setState({
       [name]: value
@@ -39,7 +39,7 @@ class TourPopup extends React.Component {
   }
 
   componentWillReceiveProps = (nextProps) => {
-    console.log('cwrp props: ' + nextProps)
+    // console.log('cwrp props: ' + nextProps)
     this.setState({
       tour: nextProps.mode == 'eval' ? false : true,
       eval: nextProps.mode == 'eval' ? true : false,

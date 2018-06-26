@@ -16,7 +16,7 @@ import member3 from '../images/members/3.jpg'
 import member5 from '../images/members/5.jpg'
 import member6 from '../images/members/6.jpg'
 import pin from '../images/pin.svg'
-import stadium from '../images/stadium2.png'
+import stadium from '../images/stadium3.png'
 import pano1 from '../images/360_Pano.jpg'
 
 import mapStyle from '../data/mapStyle.json'
@@ -34,12 +34,13 @@ class LandingPage extends React.Component {
       tourOpen: false,
       tourMode: 'tour',
       sevenOpen: false,
-      pano: null
+      pano: null,
+      panoCompatable: true
     }
   };
 
   toggleTourPopup = (mode) => {
-    console.log("mode: " + mode)
+    // console.log("mode: " + mode)
     this.closePopup();
     this.setState({
       tourOpen: !this.state.tourOpen,
@@ -84,7 +85,7 @@ class LandingPage extends React.Component {
   };
 
   componentDidMount() {
-    console.log('mounted!');
+    // console.log('mounted!');
     // window.addEventListener('scroll', this.handleScroll);
     let pano = pannellum.viewer('pano', {
       "type": "equirectangular",
@@ -101,8 +102,17 @@ class LandingPage extends React.Component {
       "pitch": -12,
     });
 
+    // Test if browser is compatable with pano
+    let panoCompatable = true
+
+    // test for browser version
+
+    // test for WebGL
+
+
     this.setState({
-      pano: pano
+      pano: pano,
+      panoCompatable: panoCompatable
     });
   }
 
@@ -193,11 +203,14 @@ class LandingPage extends React.Component {
           </div>
         </div>
 
+        {/* true && expression always evaluates to expression, and false && expression always evaluates to false. */}
         {/* 360 TOUR */}
-        <div id="tour" className="section">
-          <div className="bkgImage cover">
-            <div id="pano"></div>
-          </div>
+
+        { this.state.panoCompatable &&
+          <div id="tour" className="section">
+            <div className="bkgImage cover">
+              <div id="pano"></div>
+            </div>
             <div className="title">
               <h2>360&deg; Tour</h2>
             </div>
@@ -208,7 +221,8 @@ class LandingPage extends React.Component {
               <i className="fa fa-fw fa-chevron-left" aria-hidden="true"></i>
               <i className="fa fa-fw fa-chevron-right" aria-hidden="true"></i>
             </div>
-        </div>
+          </div>
+        }
 
         <div id="two">
 
@@ -294,15 +308,15 @@ class LandingPage extends React.Component {
 
           <div className="options">
             <div className="center">
-              <Link to='memberships' className="option">
+              <Link to='/memberships' className="option">
                 <i className="fa fa-fw fa-tags" aria-hidden="true"></i>
                 <h3>Membership Options</h3>
               </Link>
-              <Link to='schedule' className="option">
+              <Link to='/schedule' className="option">
                 <i className="fa fa-fw fa-bullhorn" aria-hidden="true"></i>
                 <h3>Private Classes</h3>
               </Link>
-              <Link to='training' className="option">
+              <Link to='/training#top' className="option">
                 <i className="fa fa-fw fa-rocket" aria-hidden="true"></i>
                 <h3>Personal Training</h3>
               </Link>
@@ -374,7 +388,7 @@ class LandingPage extends React.Component {
             <p>If you’re ready to take your body to the next level and train with the best, make your next workout with Seven Bell himself.</p>
             <div className="buttons">
               <button onClick={this.toggleSevenPopup}>Learn More</button>
-              <Link to='training' className="button">
+              <Link to='/training#seven' className="button">
                 <button>Train with SevenBell</button>
               </Link>
             </div>

@@ -15,7 +15,7 @@ class Base extends React.Component {
   };
 
   toggleMobileMenu = () => {
-    console.log('menu toggle!');
+    // console.log('menu toggle!');
     this.setState({
       mobileMenuOpen: !this.state.mobileMenuOpen
     });

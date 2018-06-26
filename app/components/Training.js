@@ -79,7 +79,7 @@ class Training extends React.Component {
       <div id='training' className='supportPage'>
 
         {/* HERO */}
-        <div className="hero"
+        <div className="hero" id="top"
           style={{
             background: `url(${bkgImage}) no-repeat center center`,
             backgroundSize: 'cover'
@@ -156,11 +156,11 @@ class Training extends React.Component {
             </p>
             <div className="pricing_container">
               <div className="pricing">
-                <p className="header">TIMES PER WEEK NUMBER OF WEEKS PRICE PER SESSION TOTAL</p>
-                <p>Train 1X/Week for 1 Month - 4 sessions - $145/session - $580</p>
-                <p>Train 2X/Week for 1 Month - 8 sessions - $140/session - $1,120</p>
-                <p>Train 3X/Week for 1 Month - 12 sessions - $135/session - $1,620</p>
-                <p>Train 4X/Week for 1 Month - 16 sessions - $130/session - $2,080</p>
+                {/* <p className="header">TIMES PER WEEK NUMBER OF WEEKS PRICE PER SESSION TOTAL</p> */}
+                <p>4 sessions | $145/session | $580 Total</p>
+                <p>8 sessions | $140/session | $1,120 Total</p>
+                <p>12 sessions | $135/session | $1,620 Total</p>
+                <p>16 sessions | $130/session | $2,080 Total</p>
               </div>
             </div>
             <div className="buttons">
