@@ -77,6 +77,17 @@ class LandingPage extends React.Component {
     }
   };
 
+  // test for WebGL support
+  webgl_support = () => {
+    try {
+      var canvas = document.createElement('canvas');
+      return !!window.WebGLRenderingContext &&
+      (canvas.getContext('webgl') || canvas.getContext('experimental-webgl'));
+    } catch(e) {
+      return false;
+    }
+  };
+
   closePopup = () => {
     this.setState({
       tourOpen: false,
@@ -102,13 +113,13 @@ class LandingPage extends React.Component {
       "pitch": -12,
     });
 
-    // Test if browser is compatable with pano
-    let panoCompatable = true
-
-    // test for browser version
-
-    // test for WebGL
-
+    // test for WebGL support
+    let panoCompatable;
+    if (this.webgl_support()) {
+      panoCompatable = true;
+    } else {
+      panoCompatable = false;
+    }
 
     this.setState({
       pano: pano,
