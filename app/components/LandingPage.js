@@ -35,7 +35,8 @@ class LandingPage extends React.Component {
       tourMode: 'tour',
       sevenOpen: false,
       pano: null,
-      panoCompatable: true
+      panoCompatable: true,
+      mailerEmail: null
     }
   };
 
@@ -53,6 +54,22 @@ class LandingPage extends React.Component {
       sevenOpen: !this.state.sevenOpen
     });
   };
+
+  handleInputChange = (event) => {
+    const target = event.target;
+    const email = target.value;
+
+    // console.log('email: ', event.target.value);
+
+    this.setState({
+      mailerEmail: email
+    });
+  }
+
+  handleEmailSubmit = (event) => {
+    alert('Email: ' + this.state.mailerEmail);
+    event.preventDefault();
+  }
 
   // handleScroll = (event) => {
   //   let currentYaw = this.state.pano.getYaw()
@@ -407,7 +424,42 @@ class LandingPage extends React.Component {
 
         </div>
 
+        {/* SUBSCRIBE */}
+        <div id="subscribe" className="section">
+          <h1>Don't Miss Out</h1>
+          <p>Stay tuned for new arrivals, exclusive offers, and events.</p>
 
+          {/* OLD FORM (with react handler function) */}
+          {/* <form>
+            <input className='inline' type="text" name="email" placeholder="Enter your email for exclusive offers" onChange={this.handleInputChange} />
+            <input type="submit" value="Sign me up" onClick={this.handleEmailSubmit} />
+          </form> */}
+
+          {/* <!-- Begin MailChimp Signup Form --> */}
+
+          <div id="mc_embed_signup">
+            <form action="https://sevenbellfitness.us18.list-manage.com/subscribe/post?u=9eff37978d50bda147c9cb859&amp;id=935e79d4a5" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" className="validate" target="_blank" noValidate>
+              <div id="mc_embed_signup_scroll">
+                <input type="email" name="EMAIL" placeholder="Enter your email for exclusive offers" id="mce-EMAIL" className='inline' />
+
+                <div id="mce-responses" style={{display: 'inline-block'}} className="clear">
+                  <div className="response" id="mce-error-response" style={{display: 'none'}}></div>
+                  <div className="response" id="mce-success-response" style={{display: 'none'}}></div>
+                </div>
+
+                {/* <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups--> */}
+                <div style={{position: 'absolute', left: '-5000px'}} aria-hidden="true">
+                  <input type="text" name="b_9eff37978d50bda147c9cb859_935e79d4a5" value="" />
+                </div>
+                <input type="submit" value="Sign me up" name="subscribe" id="mc-embedded-subscribe" />
+
+              </div>
+            </form>
+          </div>
+
+          {/* <!--End mc_embed_signup--> */}
+
+        </div>
 
         {/* POPUPS ///////////////////// */}
 
