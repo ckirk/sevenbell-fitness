@@ -26,7 +26,7 @@
         @media only screen and (max-width : 768px) {
           margin: 15px 0px;
           box-shadow: 5px 5px 20px rgba(#000, 0.25);
-          flex: 1 0 auto;
+          flex: 1 1 auto;
         }
         &.center {
           box-shadow: 5px 5px 20px rgba(#000, 0.25);
@@ -44,7 +44,7 @@
             font-size: .4em;
           }
         }
-        h3 {
+        h3, h4 {
           text-align: center;
         }
         .line {

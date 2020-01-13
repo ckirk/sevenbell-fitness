@@ -57,19 +57,20 @@ class Memberships extends React.Component {
           <div className="memberships">
             <Tier name='Basic'
                   description='Access to private facility and classes'
-                  price={95}
+                  price={100}
                   perks={['Private gym access', 'Private classes', 'One fitness assessment']}
             />
-            <Tier name='VIP'
-                  description="I’m committed to my body"
-                  price={115}
-                  perks={['Private gym access', 'Private classes', 'Monthly fitness assessment', 'Supplement starter kit', 'Lowest training cost']}
+            <Tier name='Formula7'
+                  description='With this option the training is your membership. There are no additinal fees'
+                  // price={125}
+                  perks={['Lowest overall cost', 'Lowest training cost', 'Private gym access', 'Private classes']}
+                  bottomText='Price varies depending on the frequency of training'
                   center={true}
             />
             <Tier name='Preferred'
-                  description='Guidance with no commitment'
-                  price={125}
-                  perks={['Private gym access', 'Private classes', 'Monthly fitness assessment', 'Discount training price', 'Discount enrollment']}
+                  description="Guidance with no comittment"
+                  price={135}
+                  perks={['Private gym access', 'Private classes', 'Monthly fitness assessment', 'Access to our training program']}
             />
           </div>
         </div>
@@ -99,7 +100,8 @@ const Tier = (props) => (
       </div>
     </div>
     <div className="bottom">
-      <h2>${props.price}<span>/mo</span></h2>
+      { props.price ? <h2>${props.price}<span>/mo</span></h2> : ''}
+      { props.bottomText ? <h4>{props.bottomText}</h4> : ''}
     </div>
   </div>
 )

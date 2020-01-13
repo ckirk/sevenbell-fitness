@@ -10,7 +10,8 @@
     align-items: center;
     @media only screen and (max-width : 768px) {
       min-height: none;
-      padding-top: 20px;
+      padding-top: 40px;
+      padding-bottom: 20px;
     }
     .bkgImage {
       background: url(../images/curves_bw.png) no-repeat center center;
@@ -60,8 +61,8 @@
               width: 80px;
             }
             @media only screen and (max-width : 768px) {
-              height: 140px;
-              width: 140px;
+              height: 120px;
+              width: 120px;
               font-size: 4.5em;
               margin-bottom: 10px;
               img {
@@ -339,7 +340,7 @@
     }
   }
   #yelp {
-    // position: relative;
+    position: relative;
     background: linear-gradient(45deg, $gold 0%, rgba(#EFBE55, 0.35) 100%);
     color: $dark-grey;
     overflow: auto;
@@ -355,6 +356,7 @@
       display: none;
       @media only screen and (max-width : 768px) {
         display: block;
+        // display: none;
         position: absolute;
         top: -140;
         left: -130;
@@ -616,7 +618,7 @@
   }
   #subscribe {
     background-color: #343842;
-    padding: 30px;
+    padding: 40px;
     text-align: center;
     h1, p {
       color: $gold;
@@ -636,11 +638,17 @@
         height: 50px;
         background-color: #fbfbfb;
       }
+
       input[type=text], input[type=email] {
         min-width: 350px;
         padding: 10px;
         margin-right: 20px;
         font-size: 0.8em;
+        @media only screen and (max-width : 768px) {
+          min-width: 250px;
+          margin: 0 auto;
+          margin-bottom: 20px;
+        }
         &::placeholder {
           color: rgb(170, 170, 170);
         }

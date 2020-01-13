@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import 'whatwg-fetch';
 
 class TourPopup extends React.Component {
   constructor(props) {
@@ -35,6 +36,38 @@ class TourPopup extends React.Component {
       '\nInterest: ' + this.state.interest +
       '\nWants Tour: ' + this.state.tour +
       '\nWants Evaluation: ' + this.state.eval);
+
+    // fetch(`https://dev.vistawatt.com/api/${endpoint}?vw_num=${vw_num}&vw_snum=${vw_snum}&password=${password}`)
+    //   .then( (response) => response.json() )
+    //   .then( (data) => {
+    //
+    //     let hourlyData = data.res[0]
+    //     let heatMapData = data.res[1]
+    //
+    //     this.setState({
+    //       hourlyData: hourlyData,
+    //       heatMapData: heatMapData,
+    //       detailsLoaded: true
+    //     });
+    //   })
+    //
+    //   // Handle Errors
+    //   .catch( (error) => console.log('error:', error))
+
+
+    var form = document.querySelector('#inquiryForm');
+    var actionURL = "https://formspree.io/inquiry@sevenbellfitness.com"
+
+    fetch(`${actionURL}`, {
+      method: 'POST',
+      body: new FormData(form)
+    }).then(function(response) {
+      console.log(response.headers.get('Content-Type'))
+      console.log(response.headers.get('Date'))
+      console.log(response.status)
+      console.log(response.statusText)
+    })
+
     event.preventDefault();
   }
 
@@ -57,13 +90,16 @@ class TourPopup extends React.Component {
         </div>
         <div className="body">
 
-          <form method="POST" action="https://formspree.io/info@sevenbellfitness.com">
+          {/* This form can send data to formspree or MailChimp, not both... */}
+          {/* Solution would be to use a back-end service to dispatch API calls */}
+          <form method="POST" action="https://formspree.io/inquiry@sevenbellfitness.com">
+          {/* <form method="POST" action="https://formspree.io/ckirkinis@gmail.com" id="inquiryForm"> */}
 
             <input type="text" name="name" value={this.state.name} onChange={this.handleInputChange} placeholder="Name" />
             <input className='inline' type="text" name="email" onChange={this.handleInputChange} placeholder="Email" />
             <input className='inline' type="text" name="phone" onChange={this.handleInputChange} placeholder="Phone Number" />
             <input type="hidden" name="_subject" value={"New Membership Inquiry: " + this.state.name} />
-            <input type="hidden" name="_cc" value="jesse.barocas@gmail.com" />
+            {/* <input type="hidden" name="_cc" value="jesse.barocas@gmail.com" /> */}
 
             <label>
               <input

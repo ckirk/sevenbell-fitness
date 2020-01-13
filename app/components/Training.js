@@ -154,15 +154,18 @@ class Training extends React.Component {
             <p>
               If you're ready, I mean REALLY ready, to change your mindset and your body, Seven Bell is ready to get you in the best shape of your life. Stick to the program and stay consistent and you will experience what hundreds of people have; TRANSFORMATION!
             </p>
-            <div className="pricing_container">
+
+
+            {/* <div className="pricing_container">
               <div className="pricing">
-                {/* <p className="header">TIMES PER WEEK NUMBER OF WEEKS PRICE PER SESSION TOTAL</p> */}
                 <p>4 sessions | $145/session | $580 Total</p>
                 <p>8 sessions | $140/session | $1,120 Total</p>
                 <p>12 sessions | $135/session | $1,620 Total</p>
                 <p>16 sessions | $130/session | $2,080 Total</p>
               </div>
-            </div>
+            </div> */}
+
+
             <div className="buttons">
               <button onClick={this.toggleTourPopup}>Train with SevenBell</button>
               <button onClick={this.toggleSevenPopup}>Learn More</button>

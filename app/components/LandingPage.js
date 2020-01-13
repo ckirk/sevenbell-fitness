@@ -438,7 +438,7 @@ class LandingPage extends React.Component {
           {/* <!-- Begin MailChimp Signup Form --> */}
 
           <div id="mc_embed_signup">
-            <form action="https://sevenbellfitness.us18.list-manage.com/subscribe/post?u=9eff37978d50bda147c9cb859&amp;id=935e79d4a5" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" className="validate" target="_blank" noValidate>
+            <form action="https://sevenbellfitness.us18.list-manage.com/subscribe/post?u=9eff37978d50bda147c9cb859&amp;id=df73fef1d5" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" className="validate" target="_blank" noValidate>
               <div id="mc_embed_signup_scroll">
                 <input type="email" name="EMAIL" placeholder="Enter your email for exclusive offers" id="mce-EMAIL" className='inline' />
 
@@ -449,7 +449,7 @@ class LandingPage extends React.Component {
 
                 {/* <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups--> */}
                 <div style={{position: 'absolute', left: '-5000px'}} aria-hidden="true">
-                  <input type="text" name="b_9eff37978d50bda147c9cb859_935e79d4a5" value="" />
+                  <input type="text" name="b_9eff37978d50bda147c9cb859_df73fef1d5" value="" />
                 </div>
                 <input type="submit" value="Sign me up" name="subscribe" id="mc-embedded-subscribe" />
 

@@ -1,7 +1,7 @@
 {
   "name": "sevenbell",
-  "version": "1.0.0",
-  "description": "sevenbell fitness landing page",
+  "version": "1.0.1",
+  "description": "Sevenbell Fitness landing page",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -22,7 +22,8 @@
     "react-dom": "^15.3.2",
     "react-router": "^3.0.0",
     "react-transition-group": "^1.2.0",
-    "webpack-s3-plugin": "^1.0.0-rc.0"
+    "webpack-s3-plugin": "^1.0.3",
+    "whatwg-fetch": "^3.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.18.0",
@@ -39,7 +40,7 @@
     "image-webpack-loader": "^3.1.0",
     "json-loader": "^0.5.7",
     "lodash": "^4.17.4",
-    "node-sass": "^3.10.1",
+    "node-sass": "^4.13.0",
     "postcss-loader": "^1.2.2",
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",

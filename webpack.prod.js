@@ -19,17 +19,19 @@ module.exports = merge(common, {
       }
     }),
     new webpack.optimize.UglifyJsPlugin(),
-    new S3Plugin({
-      // Exclude uploading of html
-      exclude: /.*\.html$/,
-      // s3Options are required
-      s3Options: {
-        accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-        secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
-      },
-      s3UploadOptions: {
-        Bucket: 'www.sevenbellfitness.com'
-      }
-    })
+
+    // This seems to be broken now... disabling and uploading to S3 manually
+    // new S3Plugin({
+    //   // Exclude uploading of html
+    //   exclude: /.*\.html$/,
+    //   // s3Options are required
+    //   s3Options: {
+    //     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    //     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
+    //   },
+    //   s3UploadOptions: {
+    //     Bucket: process.env.BUCKET
+    //   }
+    // })
   ]
 });
