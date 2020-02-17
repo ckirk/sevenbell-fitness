@@ -99,7 +99,7 @@ class TourPopup extends React.Component {
             <input className='inline' type="text" name="email" onChange={this.handleInputChange} placeholder="Email" />
             <input className='inline' type="text" name="phone" onChange={this.handleInputChange} placeholder="Phone Number" />
             <input type="hidden" name="_subject" value={"New Membership Inquiry: " + this.state.name} />
-            {/* <input type="hidden" name="_cc" value="jesse.barocas@gmail.com" /> */}
+            <input type="hidden" name="_cc" value="solutions@sevenbellfitness.com" />
 
             <label>
               <input
