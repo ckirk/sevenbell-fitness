@@ -2,6 +2,100 @@
   .section {
     overflow: hidden;
   }
+
+  #corona {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px;
+    backdrop-filter: blur(1px);
+
+    @media only screen and (max-width : 768px) {
+      min-height: 1px;
+      padding: 30px;
+    }
+
+    .bkgImg {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: url(../images/punching_bag.jpg) no-repeat center center;
+      background-size: cover;
+      z-index: 1;
+      // filter: grayscale(1) contrast(50%) brightness(120%);
+      // filter: grayscale(1) contrast(100%) brightness(100%);
+      filter: grayscale(1);
+    }
+
+    .colorOverlay {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(#000, #9399a4 20%, #60656F);
+      z-index: 2;
+      mix-blend-mode: multiply;
+    }
+
+    .content {
+      padding: 50px;
+      padding-bottom: 30px;
+      min-height: 500px;
+      max-width: 800px;
+      background-color: rgba(#363940, 0.85);
+      z-index: 2;
+      backdrop-filter: blur(10px);
+      h1 {
+        font-size: 2.3em;
+        letter-spacing: 0.03em;
+        color: $gold;
+      }
+      h2 {
+        font-size: 1.5em;
+        text-align: left;
+        margin-top: 60px;
+        letter-spacing: 0.03em;
+        color: $gold;
+      }
+      p {
+        font-size: 1em;
+        text-align: left;
+      }
+      a {
+        color: $gold;
+      }
+      .btnWhite {
+        // background-color: #fff;
+        font-size: 1.2em;
+        margin-bottom: 30px;
+      }
+    }
+    @media only screen and (max-width : 768px) {
+      padding: 0px;
+      .content {
+        padding: 20px;
+        h1 {
+          font-size: 1.6em;
+        }
+        h2 {
+          font-size: 1.2em;
+          margin-top: 10px;
+        }
+        p {
+          font-size: 1em;
+        }
+        .btnWhite {
+          margin-top: 15px;
+        }
+      }
+    }
+  }
+
   #topFeatures {
     position: relative;
     min-height: 350px;
@@ -16,6 +110,7 @@
     .bkgImage {
       background: url(../images/curves_bw.png) no-repeat center center;
       background-size: cover;
+      // mix-blend-mode: multiply;
     }
     .content {
       width: 100%;
@@ -82,12 +177,12 @@
       }
     }
     .gradient {
-      background: linear-gradient(45deg, $gold 0%, #fff 100%);
+      background: linear-gradient(45deg, $gold, #dadada);
       z-index: -2;
       mix-blend-mode: multiply;
     }
     .bkgImage {
-      z-index: -2;
+      z-index: -3;
       opacity: 0.04;
     }
   }
@@ -617,8 +712,8 @@
     }
   }
   #subscribe {
-    background-color: #343842;
-    padding: 40px;
+    background: linear-gradient(45deg, #2e323b, #434854);
+    padding: 50px;
     text-align: center;
     h1, p {
       color: $gold;
@@ -666,7 +761,6 @@
   }
 
   .modal {
-    background-color: red;
     position: absolute;
     z-index: 10;
     padding: 30px;

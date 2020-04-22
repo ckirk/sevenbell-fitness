@@ -34,6 +34,7 @@ class LandingPage extends React.Component {
       tourOpen: false,
       tourMode: 'tour',
       sevenOpen: false,
+      donateOpen: false,
       pano: null,
       panoCompatable: true,
       mailerEmail: null
@@ -52,6 +53,12 @@ class LandingPage extends React.Component {
   toggleSevenPopup = () => {
     this.setState({
       sevenOpen: !this.state.sevenOpen
+    });
+  };
+
+  toggleDonatePopup = () => {
+    this.setState({
+      donateOpen: !this.state.donateOpen
     });
   };
 
@@ -108,7 +115,8 @@ class LandingPage extends React.Component {
   closePopup = () => {
     this.setState({
       tourOpen: false,
-      sevenOpen: false
+      sevenOpen: false,
+      donateOpen: false
     });
   };
 
@@ -183,6 +191,58 @@ class LandingPage extends React.Component {
             </div>
           </div> */}
 
+        </div>
+
+        {/* CORONA */}
+        <div id="corona" className="section">
+          <div className="bkgImg"></div>
+          <div className="colorOverlay"></div>
+          <div className="content">
+            <h1>What's New?</h1>
+            <p>
+              We haven’t stopped and neither should you!
+            </p>
+            <p>
+              SevenBell Fitness might be temporarily closed, but that doesn’t mean we are inactive. That’s not our style. We have been busy growing our digital arm (we’ve always been about gains!)
+            </p>
+            <h2>We're now offering online donation based classes!</h2>
+            <p>
+              Classes include Yoga, The Body, Bootynomics, Fat Burning Pilates and Guns n’ Poses. Don’t worry about equipment. These classes are especially designed for quarantine time!
+            </p>
+
+            <Link to='/schedule'>
+            <button className='bigButton btnWhite'>
+              Live Online Classes
+            </button>
+          </Link>
+
+
+            <p>
+              You can also reserve your spot on our app for easier access and to see what other virtual services we're offering.
+            </p>
+
+            <a href="http://mndbdy.ly/e/283341" target="_blank">
+              <button className='bigButton btnWhite'>
+                Get the App
+              </button>
+            </a>
+
+            <p>
+              If you have any questions about our online classes, 1 on 1 virtual training program, or small group training services feel free to <a href="mailto:info@sevenbellfitness.com">email us</a> and we'll be quick to reply!
+            </p>
+
+            <p>
+              We also want to acknowledge that these are difficult times, and as a community center we are now turning to the community for their support. Please help us get to the other end of this so we can continue our time as a mainstay in this community that we love so much on the other side of this pandemic
+            </p>
+            <button className='bigButton btnWhite' onClick={this.toggleDonatePopup}>
+              Support SevenBell Fitness
+            </button>
+
+            <p>
+              Stay safe, stay home, and see you online!
+            </p>
+
+          </div>
         </div>
 
         {/* TOP FEATURES */}
@@ -465,6 +525,19 @@ class LandingPage extends React.Component {
 
         <Popup open={this.state.tourOpen} closePopup={this.closePopup} handleClickOutside={this.handleClickOutside}>
           <TourPopup mode={this.state.tourMode} />
+        </Popup>
+
+        <Popup open={this.state.donateOpen} closePopup={this.closePopup} handleClickOutside={this.handleClickOutside}>
+          <div className="donatePopup">
+            <h2>How Much Would You Like <br/>to Donate?</h2>
+            <br/>
+            <healcode-widget className="mindBodyLink" data-version="0.2" data-link-class="healcode-pricing-option-text-link" data-site-id="38176" data-mb-site-id="283341" data-type="pricing-link" data-inner-html="$25" data-service-id="10606" />
+            <healcode-widget className="mindBodyLink" data-version="0.2" data-link-class="healcode-pricing-option-text-link" data-site-id="38176" data-mb-site-id="283341" data-type="pricing-link" data-inner-html="$50" data-service-id="10607" />
+            <healcode-widget className="mindBodyLink" data-version="0.2" data-link-class="healcode-pricing-option-text-link" data-site-id="38176" data-mb-site-id="283341" data-type="pricing-link" data-inner-html="$100" data-service-id="10608" />
+            <healcode-widget className="mindBodyLink" data-version="0.2" data-link-class="healcode-pricing-option-text-link" data-site-id="38176" data-mb-site-id="283341" data-type="pricing-link" data-inner-html="$150" data-service-id="10609" />
+            <healcode-widget className="mindBodyLink" data-version="0.2" data-link-class="healcode-pricing-option-text-link" data-site-id="38176" data-mb-site-id="283341" data-type="pricing-link" data-inner-html="$250" data-service-id="10610" />
+            <healcode-widget className="mindBodyLink" data-version="0.2" data-link-class="healcode-pricing-option-text-link" data-site-id="38176" data-mb-site-id="283341" data-type="pricing-link" data-inner-html="$300" data-service-id="10611" />
+          </div>
         </Popup>
 
         {/* <Popup open={this.state.assessOpen} closePopup={this.closePopup} handleClickOutside={this.handleClickOutside}>

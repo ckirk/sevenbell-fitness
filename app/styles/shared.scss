@@ -79,6 +79,7 @@
       transition: all 0.1s ease;
       @media only screen and (max-width : 768px) {
         display: block;
+        z-index: 5;
       }
       &.show {
         left: 0;
@@ -200,6 +201,44 @@
   }
 }
 
+.donatePopup {
+  padding: 40px;
+  background-color: $dark-grey;
+  h2 {
+    color: $gold;
+  }
+  a {
+    padding: 8px;
+    font-size: 1.6em;
+    display: block;
+    border: 2px solid $dark-grey;
+    border-radius: 4px;
+    &:hover {
+      color: $gold;
+      border: 2px solid $gold;
+    }
+  }
+  // healcode-widget {
+  //   // display: block;
+  //   // width: 100%;
+  //   // background-color: red;
+  //   // text-align: center;
+  //   padding: 8px;
+  //   font-size: 1.6em;
+  //   // border: 2px solid $dark-grey;
+  //   // cursor: pointer;
+  //   a {
+  //     color: $gold;
+  //     width: 100%;
+  //   }
+  //   &:hover {
+  //     // background-color: $gold;
+  //     // border: 2px solid $gold;
+  //     // color: $gold;
+  //   }
+  // }
+}
+
 .contentWrapper {
   flex: 1 0 auto;
   display: flex;
@@ -225,7 +264,7 @@
   left: 0;
   right: 0;
   z-index: 10;
-  background-color: rgba(255,255,255,0.8);
+  background-color: rgba(0,0,0,0.6);
   opacity: 0;
   transition: all 0.5s;
   &.open {
@@ -415,7 +454,7 @@
   }
   .right {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: flex-end;
     // margin-right: 10px;
     .socials {

@@ -78,17 +78,17 @@ const Footer = (props) => (
       </div>
     </div>
     <div className="right">
-      {/* <div className="socials">
-        <a href='#'>
+      <div className="socials">
+        <a href='https://www.instagram.com/7bellfitness/'>
           <i className="fa fa-instagram" aria-hidden="true"></i>
         </a>
-        <a href='#'>
+        <a href='https://www.facebook.com/sevenbellfitness'>
           <i className="fa fa-facebook-square" aria-hidden="true"></i>
         </a>
-        <a href='#'>
+        {/* <a href='#'>
           <i className="fa fa-twitter-square" aria-hidden="true"></i>
-        </a>
-      </div> */}
+        </a> */}
+      </div>
       <div className="copyright">
         Copyright All Rights Reserved © 2017 | SEVENBELLFITNESS
       </div>
