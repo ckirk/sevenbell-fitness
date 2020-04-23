@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Router, Route, Link, IndexRoute, hashHistory, browserHistory } from 'react-router';
 import GoogleMapReact from 'google-map-react';
+import { loadHealcode, removeHealcode } from './healcode.js';
+
 // import Marzipano from 'marzipano';
 // import Pannellum from '360-react-pannellum';
 import Pannellum from 'pannellum';
@@ -123,6 +125,7 @@ class LandingPage extends React.Component {
   componentDidMount() {
     // console.log('mounted!');
     // window.addEventListener('scroll', this.handleScroll);
+    loadHealcode()
     let pano = pannellum.viewer('pano', {
       "type": "equirectangular",
       "panorama": pano1,
@@ -152,8 +155,8 @@ class LandingPage extends React.Component {
     });
   }
 
-  componentWillUnmount() {
-    // window.removeEventListener('scroll', this.handleScroll);
+  componentWillUnmount () {
+    removeHealcode()
   }
 
   render() {
@@ -531,6 +534,7 @@ class LandingPage extends React.Component {
           <div className="donatePopup">
             <h2>How Much Would You Like <br/>to Donate?</h2>
             <br/>
+            {/* <script src="https://widgets.mindbodyonline.com/javascripts/healcode.js" type="text/javascript"></script> */}
             <healcode-widget className="mindBodyLink" data-version="0.2" data-link-class="healcode-pricing-option-text-link" data-site-id="38176" data-mb-site-id="283341" data-type="pricing-link" data-inner-html="$25" data-service-id="10606" />
             <healcode-widget className="mindBodyLink" data-version="0.2" data-link-class="healcode-pricing-option-text-link" data-site-id="38176" data-mb-site-id="283341" data-type="pricing-link" data-inner-html="$50" data-service-id="10607" />
             <healcode-widget className="mindBodyLink" data-version="0.2" data-link-class="healcode-pricing-option-text-link" data-site-id="38176" data-mb-site-id="283341" data-type="pricing-link" data-inner-html="$100" data-service-id="10608" />

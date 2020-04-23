@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import bkgImage from '../images/pushup.jpg';
+import { loadHealcode, removeHealcode } from './healcode.js';
 
 class Schedule extends React.Component {
   constructor(props) {
@@ -8,21 +9,11 @@ class Schedule extends React.Component {
   };
 
   componentDidMount () {
-    // Healthcode dumps all these bs scripts into the document the first time you load it
-    // always fails the second time the components mounts with the scripts already loaded
-    // the below tests for the presence of one of these bs scripts and simply refreshes the page if it finds one so that all the scripts get reinjected like the first time
-    if (document.querySelector('script[src="https://assets.healcode.com/assets/healcode.yepnope-23af02e66170f2455f54b54cf8bbb19d15a2446cd81dfcbb9c4390c5a0ef4a4a.js"]')) {
-      location.reload();
-    } else {
-      // load mindbody scedule embed script
-      let script = document.createElement("script");
+    loadHealcode()
+  }
 
-      script.src = "https://widgets.healcode.com/javascripts/healcode.js";
-      script.type = 'text/javascript'
-      script.async = true;
-
-      document.body.appendChild(script);
-    }
+  componentWillUnmount () {
+    removeHealcode()
   }
 
   render() {
@@ -47,7 +38,8 @@ class Schedule extends React.Component {
 
         <div className="contentBkg">
           <div className="healthcodeWidget">
-            <healcode-widget data-type="schedules" data-widget-partner="object" data-widget-id="cb506490148" data-widget-version="1"></healcode-widget>
+            {/* <healcode-widget data-type="schedules" data-widget-partner="object" data-widget-id="cb506490148" data-widget-version="1"></healcode-widget> */}
+            <healcode-widget data-type="schedules" data-widget-partner="object" data-widget-id="7f506497cf6" data-widget-version="1" ></healcode-widget>
           </div>
         </div>
 
