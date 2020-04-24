@@ -79,6 +79,7 @@
       padding: 0px;
       .content {
         padding: 20px;
+        padding-top: 30px;
         h1 {
           font-size: 1.6em;
         }
@@ -96,6 +97,12 @@
     }
   }
 
+  .donatePopup {
+    @media only screen and (max-width : 768px) {
+      height: 100%;
+    }
+  }
+
   #topFeatures {
     position: relative;
     min-height: 350px;
@@ -104,6 +111,7 @@
     align-items: center;
     @media only screen and (max-width : 768px) {
       min-height: none;
+      padding: 20px;
       padding-top: 40px;
       padding-bottom: 20px;
     }
@@ -137,6 +145,7 @@
             justify-content: center;
             margin-bottom: 30px;
             flex: 1 1 50%;
+            font-size: 1em;
           }
           flex-direction: column;
           align-items: center;
@@ -156,13 +165,13 @@
               width: 80px;
             }
             @media only screen and (max-width : 768px) {
-              height: 120px;
-              width: 120px;
-              font-size: 4.5em;
+              height: 110px;
+              width: 110px;
+              font-size: 4em;
               margin-bottom: 10px;
               img {
-                height: 70px;
-                width: 70px;
+                height: 55px;
+                width: 55px;
               }
             }
           }
@@ -190,7 +199,7 @@
     position: relative;
     min-height: 500px;
     @media only screen and (max-width : 768px) {
-      min-height: 400px;
+      min-height: 500px;
     }
     background: url(../images/360_placeholder.jpg) no-repeat center center;
     background-size: cover;
@@ -273,7 +282,7 @@
       }
       .textBox {
         position: absolute;
-        background-color: rgba(#fff, 0.6);
+        background-color: rgba(#fff, 0.8);
         box-shadow: 4px 4px 30px 0px rgba(0,0,0,0.1);
         display: inline-block;
         padding: 20px;
@@ -418,12 +427,12 @@
     background-size: cover;
     @media only screen and (max-width : 768px) {
       min-height: 1px;
-      padding: 30px;
+      padding: 60px 30px;
     }
     h2 {
       font-size: 3em;
       @media only screen and (max-width : 768px) {
-        font-size: 2.4em;
+        font-size: 2em;
       }
     }
     .content {
@@ -552,6 +561,7 @@
     @media only screen and (max-width : 768px) {
       // flex-direction: column;
       min-height: 100px;
+      padding: 30px 0px;
     }
     .left {
       display: flex;
@@ -565,7 +575,7 @@
         margin: 50px;
         @media only screen and (max-width : 768px) {
           font-size: 5em;
-          margin: 30px;
+          margin: 30px 20px;
           // margin-bottom: -100px;
         }
       }
@@ -591,7 +601,7 @@
     }
     .options {
       flex: 1 1 50%;
-      padding: 20px;
+      // padding: 20px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -599,23 +609,33 @@
         flex: 1 1 100%;
       }
       .center {
+        @media only screen and (max-width : 768px) {
+          width: 100%;
+          padding: 10px;
+        }
         .option {
           color: $gold;
-          height: 60px;
+          min-height: 60px;
           padding: 1.5em 2em;
           border: 2px solid $gold;
-          margin: 10px;
+          margin: 14px;
+          padding: 14px 20px;
           display: flex;
           justify-content: space-between;
           align-items: center;
           font-size: 1.3em;
           @media only screen and (max-width : 768px) {
             font-size: 1em;
-            padding: .2em 2em;
-            height: 50px;
+            padding: 1em 1.2em;
+            min-height: 50px;
+          }
+          h3 {
+            margin: 0px;
+            text-align: right;
           }
           .fa {
-            margin-right: 100px;
+            // margin: 10px;
+            margin-right: 30px;
             font-size: 2.2em;
             @media only screen and (max-width : 768px) {
               margin-right: 10px;
@@ -715,6 +735,9 @@
     background: linear-gradient(45deg, #2e323b, #434854);
     padding: 50px;
     text-align: center;
+    @media only screen and (max-width : 768px) {
+      padding: 30px;
+    }
     h1, p {
       color: $gold;
     }

@@ -91,7 +91,7 @@ class Training extends React.Component {
               Our nationally certified personal trainers are dedicated to getting your mind and body where they need to be to achieve your goals! Start the process and watch the results come!
             </p>
             <button className='bigButton' onClick={this.toggleTourPopup}>I'm Ready!</button>
-            <button className='bigButton' onClick={this.toggleWhySevenBellPopup}>Why Train at SevenBell Fitness?</button>
+            <button className='bigButton' onClick={this.toggleWhySevenBellPopup}>Why Train at SevenBell?</button>
           </div>
         </div>
 

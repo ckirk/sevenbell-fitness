@@ -25,6 +25,8 @@ class Base extends React.Component {
     return (
       <div id='base'>
         <div className="contentWrapper">
+
+          {/* HEADER */}
           <div id="header">
             <div className="logo">
               <Link to='/' >
@@ -46,8 +48,11 @@ class Base extends React.Component {
               <Link to='/training' activeClassName='active' onClick={this.toggleMobileMenu}>Personal Training</Link>
             </div>
           </div>
+
           {this.props.children}
         </div>
+
+        {/* FOOTER */}
         <Footer />
       </div>
     );
