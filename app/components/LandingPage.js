@@ -234,6 +234,10 @@ class LandingPage extends React.Component {
               If you have any questions about our online classes, 1 on 1 virtual training program, or small group training services feel free to <a href="mailto:info@sevenbellfitness.com">email us</a> and we'll be quick to reply!
             </p>
 
+            <br/>
+            <healcode-widget data-version="0.2" data-link-class="healcode-pricing-option-text-link" data-site-id="38176" data-mb-site-id="283341" data-type="pricing-link" data-inner-html="Get 5 Sessions for $325" data-service-id="10604" />
+            <br/> <br/>
+
             <p>
               We also want to acknowledge that these are difficult times, and as a community center we are now turning to the community for their support. Please help us get to the other end of this so we can continue our time as a mainstay in this community that we love so much on the other side of this pandemic
             </p>
