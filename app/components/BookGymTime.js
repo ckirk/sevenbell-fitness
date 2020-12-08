@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import bkgImage from '../images/pushup.jpg';
 import { loadHealcode, removeHealcode } from './healcode.js';
 
-class Schedule extends React.Component {
+class BookGymTime extends React.Component {
   constructor(props) {
     super(props);
     this.state = { state: null }
@@ -29,16 +29,13 @@ class Schedule extends React.Component {
           }}>
           <div className="gradient"></div>
           <div className="content">
-            <h1>Schedule</h1>
-            <p>
-              Use our class schedule to supplement your weight training! With everything from Boxing to Pilates you are sure to find something for you!
-            </p>
+            <h1>Book Gym Time</h1>
           </div>
         </div>
 
         <div className="contentBkg">
           <div className="healthcodeWidget">
-            <healcode-widget data-type="schedules" data-widget-partner="object" data-widget-id="7f1507647cf6" data-widget-version="1" ></healcode-widget>
+            <healcode-widget data-type="schedules" data-widget-partner="object" data-widget-id="7f1507667cf6" data-widget-version="1" ></healcode-widget>
           </div>
 
         </div>
@@ -48,4 +45,4 @@ class Schedule extends React.Component {
   }
 }
 
-export default Schedule;
+export default BookGymTime;

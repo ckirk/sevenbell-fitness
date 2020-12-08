@@ -34,8 +34,10 @@ class Base extends React.Component {
               </Link>
             </div>
             <div className="navMenu">
+              <a href='http://mndbdy.ly/e/283341'>Get The App</a>
               <Link to='/memberships' activeClassName='active'>Memberships</Link>
-              <Link to='/schedule' activeClassName='active'>Class Schedule</Link>
+              <Link to='/schedule' activeClassName='active'>Streaming Live Classes</Link>
+              <Link to='/book-gym-time' activeClassName='active'>Book Gym Time</Link>
               <Link to='/training' activeClassName='active'>Personal Training</Link>
             </div>
             <div className="MobileMenuBtn">
@@ -43,8 +45,10 @@ class Base extends React.Component {
             </div>
             <div className={"MobileNavMenu" + (this.state.mobileMenuOpen? ' show ' : '')}>
               <Link to='/' activeClassName='active' onClick={this.toggleMobileMenu}>Home</Link>
+              <a href='http://mndbdy.ly/e/283341'>Get The App</a>
               <Link to='/memberships' activeClassName='active' onClick={this.toggleMobileMenu}>Memberships</Link>
-              <Link to='/schedule' activeClassName='active' onClick={this.toggleMobileMenu}>Class Schedule</Link>
+              <Link to='/schedule' activeClassName='active' onClick={this.toggleMobileMenu}>Streaming Live Classes</Link>
+              <Link to='/book-gym-time' activeClassName='active' onClick={this.toggleMobileMenu}>Book Gym Time</Link>
               <Link to='/training' activeClassName='active' onClick={this.toggleMobileMenu}>Personal Training</Link>
             </div>
           </div>

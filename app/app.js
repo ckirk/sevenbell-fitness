@@ -7,6 +7,7 @@ import Base from './components/Base'
 import LandingPage from './components/LandingPage'
 import Memberships from './components/Memberships'
 import Schedule from './components/Schedule'
+import BookGymTime from './components/BookGymTime'
 import Training from './components/Training'
 
 // REACT-ROUTER
@@ -41,6 +42,7 @@ class App extends Component {
           <IndexRoute component={LandingPage} />
           <Route path='memberships' component={Memberships} />
           <Route path='schedule' component={Schedule} />
+          <Route path='book-gym-time' component={BookGymTime} />
           <Route path='training' component={Training} />
 
           <Route path='*' component={NotFound} />

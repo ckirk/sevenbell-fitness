@@ -63,8 +63,10 @@
         color: $gold;
       }
       p {
-        font-size: 1em;
+        font-size: 1.2em;
         text-align: left;
+        letter-spacing: 1px;
+        line-height: 1.4em;
       }
       a {
         color: $gold;
@@ -72,7 +74,8 @@
       .btnWhite {
         // background-color: #fff;
         font-size: 1.2em;
-        margin-bottom: 30px;
+        margin-top: 10px;
+        margin-bottom: 10px;
       }
       healcode-widget {
         a {
