@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import 'whatwg-fetch';
+import axios from 'axios';
+import validator from 'validator';
 
 class TourPopup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       name: '',
+      firstName: '',
+      lastName: '',
       email: '',
       phone: '',
       virtual: '',
@@ -13,9 +17,75 @@ class TourPopup extends React.Component {
       both: '',
       tour: props.mode == 'eval' ? false : true,
       eval: props.mode == 'eval' ? true : false,
-      interest: ''
+      interest: '',
+      inputValid: true,
+      emailValid: true
     }
   };
+
+  handleFormValidation = () => {
+    let inputValid = true
+    let emailValid = true
+    if (this.state.firstName === '') {
+      inputValid = false
+    }
+    if (this.state.lastName === '') {
+      inputValid = false
+    }
+    if (this.state.email === '') {
+      inputValid = false
+    }
+    if (this.state.phone === '') {
+      inputValid = false
+    }
+    if (!validator.isEmail(this.state.email)) {
+      inputValid = false
+      emailValid = false
+    }
+
+    if (inputValid) {
+      this.setState({
+        inputValid: true
+      });
+      this.sendFormData()
+      this.props.closePopup()
+    } else {
+      this.setState({
+        inputValid: false,
+        emailValid: emailValid
+      });
+    }
+  }
+
+  handleFormSubmit = () => {
+    console.log('BOOM!')
+    this.handleFormValidation()
+  }
+
+  sendFormData = () => {
+    console.log('Sending!')
+    axios({
+      url: 'https://formspree.io/f/mgepnvqg',
+      method: 'post',
+      headers: {
+        'Accept': 'application/json'
+      },
+      data: {
+        firstName: this.state.firstName,
+        lastName: this.state.lastName,
+        email: this.state.email,
+        phone: this.state.phone,
+        virtual: this.state.virtual,
+        inPerson: this.state.inPerson,
+        both: this.state.both,
+        interest: this.state.interest,
+        _subject: "New Membership Inquiry: " + this.state.firstName + " " + this.state.lastName,
+        _cc: "solutions@sevenbellfitness.com"
+      }
+    }).then((response) => {
+      console.log(response);
+    })
+  }
 
   handleInputChange = (event) => {
     const target = event.target;
@@ -58,78 +128,51 @@ class TourPopup extends React.Component {
     }
   }
 
-  // handleSubmit = (event) => {
-  //   alert('Name: ' + this.state.name +
-  //     '\nEmail: ' + this.state.email +
-  //     '\nPhone: ' + this.state.phone +
-  //     '\nInterest: ' + this.state.interest +
-  //     '\nWants Tour: ' + this.state.tour +
-  //     '\nWants Evaluation: ' + this.state.eval);
-  //
-  //
-  //   var form = document.querySelector('#inquiryForm');
-  //   var actionURL = "https://formspree.io/inquiry@sevenbellfitness.com"
-  //
-  //   fetch(`${actionURL}`, {
-  //     method: 'POST',
-  //     body: new FormData(form)
-  //   }).then(function(response) {
-  //     console.log(response.headers.get('Content-Type'))
-  //     console.log(response.headers.get('Date'))
-  //     console.log(response.status)
-  //     console.log(response.statusText)
-  //   })
-  //
-  //   event.preventDefault();
-  // }
-  //
-  // componentWillReceiveProps = (nextProps) => {
-  //   // console.log('cwrp props: ' + nextProps)
-  //   this.setState({
-  //     tour: nextProps.mode == 'eval' ? false : true,
-  //     eval: nextProps.mode == 'eval' ? true : false,
-  //   });
-  // }
-
   render() {
     return (
       <div className="content tour">
         <div className="header">
-          <h1 className="popupTitle">Schedule A Visit</h1>
+          <h1 className="popupTitle">Schedule A Tour</h1>
+          <p>
+            Tours take place by appointment only.
+          </p>
           <p>
             Complete the fields below and a membership advisor will reach out to you in the next 24 hours to schedule your visit.
           </p>
         </div>
         <div className="body">
 
+          {!this.state.inputValid &&
+            <div className='error'>
+              ⚠️ Please fill out all required* fields below to schedule a tour
+            </div>
+          }
+
+          {!this.state.emailValid &&
+            <div className='error'>
+              ⚠️ The email address you entered is not valid
+            </div>
+          }
+
           {/* This form can send data to formspree or MailChimp, not both... */}
           {/* Solution would be to use a back-end service to dispatch API calls */}
-          <form method="POST" action="https://formspree.io/f/mgepnvqg">
+          <form>
           {/* <form method="POST" action="https://formspree.io/ckirkinis@gmail.com" id="inquiryForm"> */}
 
-            <input type="text" name="name" value={this.state.name} onChange={this.handleInputChange} placeholder="Name" />
-            <input className='inline' type="text" name="email" onChange={this.handleInputChange} placeholder="Email" />
-            <input className='inline' type="text" name="phone" onChange={this.handleInputChange} placeholder="Phone Number" />
-            <input type="hidden" name="_subject" value={"New Membership Inquiry: " + this.state.name} />
-            <input type="hidden" name="_cc" value="solutions@sevenbellfitness.com" />
+            <div className='half'>
+              <input type="text" name="firstName" value={this.state.firstName}
+                onChange={this.handleInputChange} placeholder="First Name*"
+                className='left'
+              />
+              <input type="text" name="lastName" value={this.state.lastName}
+                onChange={this.handleInputChange} placeholder="Last Name*"
+              />
+            </div>
 
-            {/* <label>
-              <input
-                name="tour"
-                type="checkbox"
-                checked={this.state.tour}
-                onChange={this.handleInputChange} />
-              Interested in Virtual Services
-            </label> */}
-
-            {/* <label>
-              <input
-                name="eval"
-                type="checkbox"
-                checked={this.state.in-person}
-                onChange={this.handleInputChange} />
-                I'd Like a Complimentary Fitness Evaluation
-            </label> */}
+            <input className='inline' type="text" name="email" onChange={this.handleInputChange} placeholder="Email*" />
+            <input className='inline' type="text" name="phone" onChange={this.handleInputChange} placeholder="Phone Number*" />
+            {/* <input type="hidden" name="_subject" value={"New Membership Inquiry: " + this.state.name} /> */}
+            {/* <input type="hidden" name="_cc" value="solutions@sevenbellfitness.com" /> */}
 
             <label>
               <input
@@ -170,9 +213,13 @@ class TourPopup extends React.Component {
               </select>
             </label>
 
-            <input type="submit" value="Send" />
+            {/* <input className='submitButton' type="submit" value="Send" onClick={() => this.handleFormSubmit()} /> */}
 
           </form>
+
+          <button className='submitButton' onClick={this.handleFormSubmit}>
+            Send
+          </button>
         </div>
       </div>
     );

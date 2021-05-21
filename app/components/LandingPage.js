@@ -174,7 +174,7 @@ class LandingPage extends React.Component {
           <div className="gradient"></div>
           <div className="content">
             <h1>Brooklyn's #1 Private Gym is Back!</h1>
-            <button className='bigButton' onClick={this.toggleTourPopup}>Schedule A Tour Here</button>
+            <button className='bigButton' onClick={this.toggleTourPopup}>Schedule A Tour</button>
             <p>
               Call Now:
               <a href="tel:718-857-2355"> (718) 857-2355</a>
@@ -556,7 +556,7 @@ class LandingPage extends React.Component {
         {/* POPUPS ///////////////////// */}
 
         <Popup open={this.state.tourOpen} closePopup={this.closePopup} handleClickOutside={this.handleClickOutside}>
-          <TourPopup mode={this.state.tourMode} />
+          <TourPopup mode={this.state.tourMode} closePopup={this.closePopup} />
         </Popup>
 
         <Popup open={this.state.donateOpen} closePopup={this.closePopup} handleClickOutside={this.handleClickOutside}>

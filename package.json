@@ -11,6 +11,7 @@
   "author": "Chris Kirkinis",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.21.1",
     "dotenv": "^4.0.0",
     "font-awesome": "^4.7.0",
     "google-map-react": "^0.27.0",
@@ -22,6 +23,7 @@
     "react-dom": "^15.3.2",
     "react-router": "^3.0.0",
     "react-transition-group": "^1.2.0",
+    "validator": "^13.6.0",
     "webpack-s3-plugin": "^1.0.3",
     "whatwg-fetch": "^3.0.0"
   },

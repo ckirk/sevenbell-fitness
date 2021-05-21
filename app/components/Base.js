@@ -85,6 +85,9 @@ const Footer = (props) => (
           <p>Sun: closed for deep cleaning to keep our members safe</p>
       </div>
     </div>
+    <div className="trainer">
+      <p>Working with a trainer? Enjoy our facility when others can’t!</p>
+    </div>
     <div className="right">
       <div className="socials">
         <a href='https://www.instagram.com/7bellfitness/'>

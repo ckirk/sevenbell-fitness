@@ -365,6 +365,16 @@
               margin-bottom: 10px;
             }
           }
+          .half {
+            display: flex;
+            // max-width: 50%;
+            input: {
+              flex: 1 0 50%;
+            }
+            .left {
+              margin-right: 20px;
+            }
+          }
           label {
             display: block;
             color: $gold;
@@ -374,12 +384,21 @@
               font-size: 1.1em;
             }
           }
-          input[type=submit] {
+          .error {
+            color: rgb(255, 68, 68);
+            font-size: 1.2em;
+          }
+          .submitButton {
             background-color: $gold;
             margin-bottom: 0;
             margin-top: 20px;
             font-weight: 600;
             cursor: pointer;
+            text-align: center;
+            width: 100%;
+            font-size: 1.5em;
+            padding: 10px;
+            border-radius: 4px;
           }
           input[type=checkbox] {
             color: $gold;
@@ -467,6 +486,7 @@
     .hours {
       display: flex;
       flex-direction: column;
+      margin-right: 0;
       flex-wrap: wrap;
       @media only screen and (max-width : 768px) {
         flex: 1 1 60%;
@@ -479,6 +499,18 @@
       font-weight: 200;
       line-height: 22px;
       // white-space: nowrap;
+    }
+  }
+  .trainer {
+    flex: 1 1 auto;
+    p {
+      border-left: 1px solid #fff;
+      padding-left: 10px;
+    }
+    margin: 20px 0;
+    @media only screen and (max-width : 768px) {
+      margin: 20px;
+      margin-top: 0;
     }
   }
   .right {
