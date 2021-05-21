@@ -79,11 +79,10 @@ const Footer = (props) => (
 
       </div>
       <div className="hours">
-
-          <p>Monday-Thursday: 5:30am-10pm</p>
-          <p>Friday: 5:30am-8pm</p>
-          <p>Saturday & Sunday: 8am-8pm</p>
-
+          <p>Monday-Thursday: 7:30am-8:30pm</p>
+          <p>Friday: 7:30am-8pm</p>
+          <p>Saturday: 8:30am-4pm</p>
+          <p>Sun: closed for deep cleaning to keep our members safe</p>
       </div>
     </div>
     <div className="right">
@@ -99,7 +98,7 @@ const Footer = (props) => (
         </a> */}
       </div>
       <div className="copyright">
-        Copyright All Rights Reserved © 2017 | SEVENBELLFITNESS
+        Copyright All Rights Reserved © {new Date().getFullYear()} | SEVENBELLFITNESS
       </div>
     </div>
   </div>

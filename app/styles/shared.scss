@@ -1,7 +1,9 @@
 #base {
   display: flex;
   flex-direction: column;
+  max-width: 100%;
   height: 100%;
+  position: relative;
 
   h1 {
     font-family: 'Raleway', sans-serif;
@@ -427,50 +429,85 @@
 
 #footer {
   background-color: #313131;
+  // padding: 20px;
+  position: relative;
+  max-width: 100%;
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
-  flex: 0 0 auto;
+  flex-wrap: nowrap;
+  // flex: 0 1 auto;
+  @media only screen and (max-width : 768px) {
+    flex-direction: column;
+  }
   .logo {
+    // background-color: rgba(109, 117, 218, 0.53);
     img {
       height: 60px;
       margin: 30px;
     }
   }
   .info {
+    // background-color: rgba(147, 218, 109, 0.37);
     display: flex;
+    flex: 1 1 auto;
     align-items: center;
-    flex-wrap: wrap;
-    margin: 20px;
-    @media only screen and (max-width : 1200px) {
-      margin-top: 0;
-      margin-bottom: 0;
+    padding: 20px;
+    padding-bottom: 5px;
+    @media only screen and (max-width : 768px) {
+      padding-top: 0px;
     }
     .address, .hours {
       border-left: 1px solid #fff;
       padding-left: 15px;
-      margin-right: 50px;
-      margin-bottom: 10px;
+      margin-right: 20px;
+      margin-bottom: 30px;
       // display: flex;
       // align-items: center;
     }
+    .hours {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      @media only screen and (max-width : 768px) {
+        flex: 1 1 60%;
+        margin-right: 0;
+      }
+    }
     p, a {
       margin: 0;
-      font-size: 1em;
+      font-size: 0.9em;
       font-weight: 200;
       line-height: 22px;
-      white-space: nowrap;
+      // white-space: nowrap;
     }
   }
   .right {
+    // background-color: rgba(245, 18, 18, 0.36);
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+    flex: 0 1 auto;
+    .copyright {
+      position: absolute;
+      // width: 100%;
+      bottom: 0;
+      right: 0;
+      font-size: 0.7em;
+      margin: 5px 20px;
+      @media only screen and (max-width : 768px) {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
     .socials {
       flex: 1 0 auto;
       margin: 0 20px;
       display: flex;
       align-items: center;
+      justify-content: flex-end;
+      @media only screen and (max-width : 768px) {
+        justify-content: flex-start;
+      }
       .fa {
         font-size: 3em;
         margin: 6px;
@@ -481,36 +518,6 @@
         @media only screen and (max-width : 768px) {
           font-size: 2.4em;
         }
-      }
-    }
-    .copyright {
-      margin: 10px 20px;
-      margin-top: 0;
-      font-size: 0.8em;
-      color: #979797;
-      text-align: right;
-      @media only screen and (max-width : 768px) {
-        margin: 20px;
-      }
-    }
-
-    // Small
-    @media only screen and (max-width : 1200px) {
-      flex-direction: row;
-      flex-flow: row-reverse;
-      justify-content: space-between;
-      width: 100%;
-      .socials {
-        flex: 0 0 auto;
-        margin: 10px;
-        margin-top: 0px;
-      }
-    }
-
-    // Mobile
-    @media only screen and (max-width : 768px) {
-      .copyright {
-        text-align: left;
       }
     }
   }
