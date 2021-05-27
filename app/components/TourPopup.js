@@ -24,6 +24,7 @@ class TourPopup extends React.Component {
   };
 
   handleFormValidation = () => {
+    console.log('Validating form input...')
     let inputValid = true
     let emailValid = true
     if (this.state.firstName === '') {
@@ -44,12 +45,14 @@ class TourPopup extends React.Component {
     }
 
     if (inputValid) {
+      console.log('Input is valid!')
       this.setState({
         inputValid: true
       });
       this.sendFormData()
       this.props.closePopup()
     } else {
+      console.log('Input contains errors')
       this.setState({
         inputValid: false,
         emailValid: emailValid
@@ -57,13 +60,8 @@ class TourPopup extends React.Component {
     }
   }
 
-  handleFormSubmit = () => {
-    console.log('BOOM!')
-    this.handleFormValidation()
-  }
-
   sendFormData = () => {
-    console.log('Sending!')
+    console.log('Sending form data to Formspree!')
     axios({
       url: 'https://formspree.io/f/mgepnvqg',
       method: 'post',
@@ -84,6 +82,8 @@ class TourPopup extends React.Component {
       }
     }).then((response) => {
       console.log(response);
+      // const formspreeRedirect = response.data
+      window.location.href = 'https://formspree.io/thanks';
     })
   }
 
@@ -217,7 +217,7 @@ class TourPopup extends React.Component {
 
           </form>
 
-          <button className='submitButton' onClick={this.handleFormSubmit}>
+          <button className='submitButton' onClick={() => this.handleFormValidation()}>
             Send
           </button>
         </div>
