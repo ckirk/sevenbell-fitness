@@ -78,7 +78,7 @@ class TourPopup extends React.Component {
         both: this.state.both,
         interest: this.state.interest,
         _subject: "New Membership Inquiry: " + this.state.firstName + " " + this.state.lastName,
-        _cc: "solutions@sevenbellfitness.com"
+        _cc: "members@sevenbellfitness.com"
       }
     }).then((response) => {
       console.log(response);
