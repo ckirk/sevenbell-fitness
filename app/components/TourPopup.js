@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import 'whatwg-fetch';
 import axios from 'axios';
 import validator from 'validator';
+import qs from 'qs';
 
 class TourPopup extends React.Component {
   constructor(props) {
@@ -12,9 +13,9 @@ class TourPopup extends React.Component {
       lastName: '',
       email: '',
       phone: '',
-      virtual: '',
-      inPerson: '',
-      both: '',
+      virtual: false,
+      inPerson: false,
+      both: false,
       tour: props.mode == 'eval' ? false : true,
       eval: props.mode == 'eval' ? true : false,
       interest: '',
@@ -60,31 +61,84 @@ class TourPopup extends React.Component {
     }
   }
 
-  sendFormData = () => {
-    console.log('Sending form data to Formspree!')
+  handlePostToSlack = (data) => {
+    console.log('Posting To Slack...')
+
+    const token = 'xoxb-81039659079-2769568474560-vshgxX3oA4gzIPHIFgo77Qgj'
+
+    const channelId = 'C02N53SMC3B' // test channel
+    // hot leads channelId C2JL1FZCZ
+
+    const announce = '*New form submission just in!*\n'
+    const name = `👤 ${data.firstName} ${data.lastName}\n`
+    const email = `✉️ ${data.email}\n`
+    const phone = `📞 ${data.phone}\n`
+    const inPerson = data.inPerson ? '🏋️‍♂️ In Person\n' : ''
+    const virtual = data.virtual ? '💻 Virtual\n' : ''
+    const interest = data.interest != '' ? `💭 Interested In ${data.interest}` : ''
+
+    const blocks = [
+      {
+        "type": "section",
+        "text": {
+          "type": "mrkdwn",
+          "text": `${announce}${name}${phone}${inPerson}${virtual}${interest}`
+        }
+      }
+    ]
+
+    var data = qs.stringify({
+      "token": token,
+      // 'text': text, // use if just sending plain text
+      "channel": channelId,
+      "blocks": JSON.stringify(blocks)
+    });
+
     axios({
-      url: 'https://formspree.io/f/mgepnvqg',
+      url: `https://slack.com/api/chat.postMessage`,
       method: 'post',
       headers: {
-        'Accept': 'application/json'
+        'Content-Type': 'application/x-www-form-urlencoded'
       },
-      data: {
-        firstName: this.state.firstName,
-        lastName: this.state.lastName,
-        email: this.state.email,
-        phone: this.state.phone,
-        virtual: this.state.virtual,
-        inPerson: this.state.inPerson,
-        both: this.state.both,
-        interest: this.state.interest,
-        _subject: "New Membership Inquiry: " + this.state.firstName + " " + this.state.lastName,
-        _cc: "members@sevenbellfitness.com"
-      }
+      data: data
     }).then((response) => {
       console.log(response);
-      // const formspreeRedirect = response.data
       window.location.href = 'https://formspree.io/thanks';
     })
+  }
+
+  sendFormData = () => {
+    console.log('Sending form data to Formspree!')
+
+    const data = {
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      email: this.state.email,
+      phone: this.state.phone,
+      virtual: this.state.virtual,
+      inPerson: this.state.inPerson,
+      both: this.state.both,
+      interest: this.state.interest,
+      _subject: "New Membership Inquiry: " + this.state.firstName + " " + this.state.lastName,
+      _cc: "members@sevenbellfitness.com"
+    }
+
+    console.log('DATA:', data)
+    this.handlePostToSlack(data)
+
+    // axios({
+    //   url: 'https://formspree.io/f/mgepnvqg',
+    //   method: 'post',
+    //   headers: {
+    //     'Accept': 'application/json'
+    //   },
+    //   data: data
+    // }).then((response) => {
+    //   console.log(response);
+    //   // const formspreeRedirect = response.data
+    //   // window.location.href = 'https://formspree.io/thanks';
+    //   this.handlePostToSlack(data)
+    // })
   }
 
   handleInputChange = (event) => {
@@ -219,6 +273,9 @@ class TourPopup extends React.Component {
 
           <button className='submitButton' onClick={() => this.handleFormValidation()}>
             Send
+          </button>
+          <button onClick={() => this.handlePostToSlack()}>
+            Test
           </button>
         </div>
       </div>
