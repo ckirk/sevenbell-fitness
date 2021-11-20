@@ -4,7 +4,7 @@ import { Router, Route, Link, IndexRoute, hashHistory, browserHistory } from 're
 
 // Component Imports
 import Base from './components/Base'
-import LandingPage from './components/LandingPage'
+import LandingPage from './components/landingPage/LandingPage'
 import Memberships from './components/Memberships'
 import Schedule from './components/Schedule'
 import BookGymTime from './components/BookGymTime'
