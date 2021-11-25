@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Router, Route, Link, IndexRoute, hashHistory, browserHistory } from 'react-router';
 import GoogleMapReact from 'google-map-react';
 import { loadHealcode, removeHealcode } from '../healcode.js';
@@ -23,256 +23,221 @@ import TourPopup from '../TourPopup'
 import Covid from './Covid'
 import VirtualTour from './VirutalTour'
 
-class LandingPage extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      tourOpen: false,
-      tourMode: 'tour',
-      sevenOpen: false,
-      donateOpen: false,
-      mailerEmail: null
-    }
+const LandingPage = () => {
+  const [ tourOpen, setTourOpen ] = useState(false)
+  const [ tourMode, setTourMode ] = useState('tour')
+  const [ sevenOpen, setSevenOpen ] = useState(false)
+  const [ mailerEmail, setMailerEmail ] = useState(null)
+
+  const toggleTourPopup = (mode) => {
+    closePopup();
+    setTourOpen(!tourOpen)
+    setTourMode(mode === 'eval' ? 'eval' : 'tour')
   };
 
-  toggleTourPopup = (mode) => {
-    this.closePopup();
-    this.setState({
-      tourOpen: !this.state.tourOpen,
-      tourMode: mode == 'eval' ? 'eval' : 'tour'
-    });
-  };
-
-  toggleSevenPopup = () => {
-    this.setState({
-      sevenOpen: !this.state.sevenOpen
-    });
-  };
-
-  toggleDonatePopup = () => {
-    this.setState({
-      donateOpen: !this.state.donateOpen
-    });
-  };
-
-  handleInputChange = (event) => {
-    const target = event.target;
-    const email = target.value;
-
-    this.setState({
-      mailerEmail: email
-    });
+  const handleInputChange = (event) => {
+    const email = event.target.value;
+    setMailerEmail(email)
   }
 
-  handleEmailSubmit = (event) => {
-    alert('Email: ' + this.state.mailerEmail);
-    event.preventDefault();
-  }
-
-  handleClickOutside = (event) => {
+  const handleClickOutside = (event) => {
     if (event.target.classList.contains('popup')) {
-      this.closePopup();
+      closePopup();
     }
   };
 
-  closePopup = () => {
-    this.setState({
-      tourOpen: false,
-      sevenOpen: false,
-      donateOpen: false
-    });
+  const closePopup = () => {
+    setTourOpen(false)
+    setSevenOpen(false)
   };
 
-  componentDidMount() {
+  useEffect(() => {
     loadHealcode()
-  }
+    return () => {
+      removeHealcode()
+    }
+  }, [])
 
-  componentWillUnmount () {
-    removeHealcode()
-  }
+  return (
+    <div id='landingPage'>
 
-  render() {
-    return (
-      <div id='landingPage'>
-
-        {/* HERO */}
-        <div className="hero landingHero"
-          style={{
-            background: `url(${training}) no-repeat center center`,
-            backgroundSize: 'cover'
-          }}>
-          <div className="gradient"></div>
-          <div className="content">
-            <h1>Brooklyn's #1 Private Gym is Back!</h1>
-            <button className='bigButton' onClick={this.toggleTourPopup}>Schedule A Tour</button>
-            <p>
-              Call Now:
-              <a href="tel:718-857-2355"> (718) 857-2355</a>
-            </p>
-          </div>
+      {/* HERO */}
+      <div className="hero landingHero"
+        style={{
+          background: `url(${training}) no-repeat center center`,
+          backgroundSize: 'cover'
+        }}>
+        <div className="gradient"></div>
+        <div className="content">
+          <h1>Brooklyn's #1 Private Gym is Back!</h1>
+          <button className='bigButton' onClick={toggleTourPopup}>Schedule A Tour</button>
+          <p>
+            Call Now:
+            <a href="tel:718-857-2355"> (718) 857-2355</a>
+          </p>
         </div>
+      </div>
 
-        <TopFeatures />
-        <Covid />
-        <VirtualTour toggleTourPopup={this.toggleTourPopup} />
+      <TopFeatures />
+      <Covid />
+      <VirtualTour toggleTourPopup={toggleTourPopup} />
 
-        <div id="two">
-          <Location />
-          <Perks />
+      <div id="two">
+        <Location />
+        <Perks />
+      </div>
+
+      {/* QUOTE */}
+      <div id="quote" className="section">
+        <div className="content">
+          <h2>The Best Private Gym Experience In Brooklyn <br/> Is SevenBell Fitness</h2>
         </div>
+      </div>
 
-        {/* QUOTE */}
-        <div id="quote" className="section">
-          <div className="content">
-            <h2>The Best Private Gym Experience In Brooklyn <br/> Is SevenBell Fitness</h2>
-          </div>
+      {/* YELP */}
+      <div id="yelp" className="section">
+        <h2>Our Members Love Us on Yelp!</h2>
+        <div className="mobileLogo">
+          <i className="fa fa-yelp" aria-hidden="true"></i>
         </div>
-
-        {/* YELP */}
-        <div id="yelp" className="section">
-          <h2>Our Members Love Us on Yelp!</h2>
-          <div className="mobileLogo">
-            <i className="fa fa-yelp" aria-hidden="true"></i>
-          </div>
-          <div className="reviews">
-            <Review image={member6} name='Cody B.' quote="This has been my first time consistently going to a gym and working with a trainer and it's been a great experience." />
-            <Review image={member3} name='Christina R.' quote="My body has improved and [so has] my struggles with motivation and regularity… [I’m] excited to see what happens next!" />
-            <Review image={member5} name='Schuyler H.' quote="Can't recommend this gym enough to anyone who feels intimidated by gyms. You feel welcomed immediately." />
-            <Review image={member1} name='Jade B.' quote='Unlike other fitness chains, SevenBell staff puts in the effort to say hello and know you by name.' />
-          </div>
+        <div className="reviews">
+          <Review image={member6} name='Cody B.' quote="This has been my first time consistently going to a gym and working with a trainer and it's been a great experience." />
+          <Review image={member3} name='Christina R.' quote="My body has improved and [so has] my struggles with motivation and regularity… [I’m] excited to see what happens next!" />
+          <Review image={member5} name='Schuyler H.' quote="Can't recommend this gym enough to anyone who feels intimidated by gyms. You feel welcomed immediately." />
+          <Review image={member1} name='Jade B.' quote='Unlike other fitness chains, SevenBell staff puts in the effort to say hello and know you by name.' />
         </div>
+      </div>
 
-        {/* EXPLORE */}
-        <div id="explore" className="section">
-          <div className='left'>
-            <h1>Explore</h1>
-            <div className="cta">
-              <div className="center">
-                <button className='bigButton' onClick={this.toggleTourPopup}>Schedule A Tour</button>
-                <p>
-                  Call Now:
-                  <a href="tel:718-857-2355"> (718) 857-2355</a>
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="options">
+      {/* EXPLORE */}
+      <div id="explore" className="section">
+        <div className='left'>
+          <h1>Explore</h1>
+          <div className="cta">
             <div className="center">
-              <Link to='/memberships' className="option">
-                <i className="fa fa-fw fa-tags" aria-hidden="true"></i>
-                <h3>Membership Options</h3>
-              </Link>
-              <Link to='/schedule' className="option">
-                <i className="fa fa-fw fa-bullhorn" aria-hidden="true"></i>
-                <h3>Private Classes</h3>
-              </Link>
-              <Link to='/training#top' className="option">
-                <i className="fa fa-fw fa-rocket" aria-hidden="true"></i>
-                <h3>Personal Training</h3>
-              </Link>
-            </div>
-          </div>
-
-          <div className="mobileCta">
-            <div className="cta">
-              <div className="center">
-                <button className='bigButton' onClick={this.toggleTourPopup}>Schedule A Tour</button>
-                <p>
-                  Call Now:
-                  <a href="tel:718-857-2355"> (718) 857-2355</a>
-                </p>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        {/* SEVENBELL */}
-        <div id="sevenBell" className="section">
-          <div className="sevenPic">
-            {/* <img src='../images/seven_hoodie.png' /> */}
-          </div>
-          <div className="content">
-            <h1>Who is SevenBell?</h1>
-            <p>If you’re ready to take your body to the next level and train with the best, make your next workout with Seven Bell himself.</p>
-            <div className="buttons">
-              <button onClick={this.toggleSevenPopup}>Learn More</button>
-              <Link to='/training#seven' className="button">
-                <button>Train with SevenBell</button>
-              </Link>
-            </div>
-          </div>
-
-        </div>
-
-        {/* MAILING LIST SUBSCRIBE */}
-        <div id="subscribe" className="section">
-          <h1>Don't Miss Out</h1>
-          <p>Stay tuned for new arrivals, exclusive offers, and events.</p>
-
-          {/* <!-- Begin MailChimp Signup Form --> */}
-          <div id="mc_embed_signup">
-            <form action="https://sevenbellfitness.us18.list-manage.com/subscribe/post?u=9eff37978d50bda147c9cb859&amp;id=df73fef1d5" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" className="validate" target="_blank" noValidate>
-              <div id="mc_embed_signup_scroll">
-                <input type="email" name="EMAIL" placeholder="Enter your email for exclusive offers" id="mce-EMAIL" className='inline' />
-
-                <div id="mce-responses" style={{display: 'inline-block'}} className="clear">
-                  <div className="response" id="mce-error-response" style={{display: 'none'}}></div>
-                  <div className="response" id="mce-success-response" style={{display: 'none'}}></div>
-                </div>
-
-                {/* <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups--> */}
-                <div style={{position: 'absolute', left: '-5000px'}} aria-hidden="true">
-                  <input type="text" name="b_9eff37978d50bda147c9cb859_df73fef1d5" defaultValue="" />
-                </div>
-                <input type="submit" value="Sign me up" name="subscribe" id="mc-embedded-subscribe" />
-
-              </div>
-            </form>
-          </div>
-
-          {/* <!--End mc_embed_signup--> */}
-        </div>
-
-        {/* POPUPS ///////////////////// */}
-
-        {/* Tour Popup */}
-        <Popup open={this.state.tourOpen} closePopup={this.closePopup} handleClickOutside={this.handleClickOutside}>
-          <TourPopup mode={this.state.tourMode} closePopup={this.closePopup} />
-        </Popup>
-
-        {/* Donation Popup */}
-        <Popup open={this.state.donateOpen} closePopup={this.closePopup} handleClickOutside={this.handleClickOutside}>
-          <div className="donatePopup">
-            <h2>How Much Would You Like <br/>to Donate?</h2>
-            <br/>
-            <healcode-widget className="mindBodyLink" data-version="0.2" data-link-class="healcode-pricing-option-text-link" data-site-id="38176" data-mb-site-id="283341" data-type="pricing-link" data-inner-html="$25" data-service-id="10606" />
-            <healcode-widget className="mindBodyLink" data-version="0.2" data-link-class="healcode-pricing-option-text-link" data-site-id="38176" data-mb-site-id="283341" data-type="pricing-link" data-inner-html="$50" data-service-id="10607" />
-            <healcode-widget className="mindBodyLink" data-version="0.2" data-link-class="healcode-pricing-option-text-link" data-site-id="38176" data-mb-site-id="283341" data-type="pricing-link" data-inner-html="$100" data-service-id="10608" />
-            <healcode-widget className="mindBodyLink" data-version="0.2" data-link-class="healcode-pricing-option-text-link" data-site-id="38176" data-mb-site-id="283341" data-type="pricing-link" data-inner-html="$150" data-service-id="10609" />
-            <healcode-widget className="mindBodyLink" data-version="0.2" data-link-class="healcode-pricing-option-text-link" data-site-id="38176" data-mb-site-id="283341" data-type="pricing-link" data-inner-html="$250" data-service-id="10610" />
-            <healcode-widget className="mindBodyLink" data-version="0.2" data-link-class="healcode-pricing-option-text-link" data-site-id="38176" data-mb-site-id="283341" data-type="pricing-link" data-inner-html="$300" data-service-id="10611" />
-          </div>
-        </Popup>
-
-        {/* About SevenBell Popup */}
-        <Popup open={this.state.sevenOpen} closePopup={this.closePopup} handleClickOutside={this.handleClickOutside}>
-          <div className="content seven">
-            <div className="header">
-              <h1>Who is SevenBell?</h1>
-            </div>
-            <div className="body">
+              <button className='bigButton' onClick={toggleTourPopup}>Schedule A Tour</button>
               <p>
-                Seven Bell is a hard-nose personal trainer/motivator and most importantly a leader. When it comes to getting the best out of you, this is your guy. Seven has created a very serious reputation in NY/LA for his mental toughness and his pursuit to being the best. A perfectionist at his craft and very result driven, Seven has been in the fitness business for 20 years. His passion for helping people reach their goals in fitness is unparalleled. Seven’s philosophy in life is very simple, and describes him to the tee, “Raise the bar.” This gym is built from the eye of Seven Bell himself, and he subscribes to the ideology that the quality of your training and level of fitness determines the quality of your mindset, and therefore has an important impact on your life. Seven and his staff have helped exercise this philosophy in his members’ fitness experiences. Now people all over Brooklyn are experiencing and achieving the bodies of their dreams.
+                Call Now:
+                <a href="tel:718-857-2355"> (718) 857-2355</a>
               </p>
             </div>
           </div>
-        </Popup>
+        </div>
+
+        <div className="options">
+          <div className="center">
+            <Link to='/memberships' className="option">
+              <i className="fa fa-fw fa-tags" aria-hidden="true"></i>
+              <h3>Membership Options</h3>
+            </Link>
+            <Link to='/schedule' className="option">
+              <i className="fa fa-fw fa-bullhorn" aria-hidden="true"></i>
+              <h3>Private Classes</h3>
+            </Link>
+            <Link to='/training#top' className="option">
+              <i className="fa fa-fw fa-rocket" aria-hidden="true"></i>
+              <h3>Personal Training</h3>
+            </Link>
+          </div>
+        </div>
+
+        <div className="mobileCta">
+          <div className="cta">
+            <div className="center">
+              <button className='bigButton' onClick={toggleTourPopup}>Schedule A Tour</button>
+              <p>
+                Call Now:
+                <a href="tel:718-857-2355"> (718) 857-2355</a>
+              </p>
+            </div>
+          </div>
+        </div>
 
       </div>
-    );
-  }
+
+      {/* SEVENBELL */}
+      <div id="sevenBell" className="section">
+        <div className="sevenPic">
+          {/* <img src='../images/seven_hoodie.png' /> */}
+        </div>
+        <div className="content">
+          <h1>Who is SevenBell?</h1>
+          <p>If you’re ready to take your body to the next level and train with the best, make your next workout with Seven Bell himself.</p>
+          <div className="buttons">
+            <button onClick={() => setSevenOpen(!sevenOpen)}>Learn More</button>
+            <Link to='/training#seven' className="button">
+              <button>Train with SevenBell</button>
+            </Link>
+          </div>
+        </div>
+
+      </div>
+
+      {/* MAILING LIST SUBSCRIBE */}
+      <div id="subscribe" className="section">
+        <h1>Don't Miss Out</h1>
+        <p>Stay tuned for new arrivals, exclusive offers, and events.</p>
+
+        {/* <!-- Begin MailChimp Signup Form --> */}
+        <div id="mc_embed_signup">
+          <form action="https://sevenbellfitness.us18.list-manage.com/subscribe/post?u=9eff37978d50bda147c9cb859&amp;id=df73fef1d5" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" className="validate" target="_blank" noValidate>
+            <div id="mc_embed_signup_scroll">
+              <input type="email" name="EMAIL" placeholder="Enter your email for exclusive offers" id="mce-EMAIL" className='inline' />
+
+              <div id="mce-responses" style={{display: 'inline-block'}} className="clear">
+                <div className="response" id="mce-error-response" style={{display: 'none'}}></div>
+                <div className="response" id="mce-success-response" style={{display: 'none'}}></div>
+              </div>
+
+              {/* <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups--> */}
+              <div style={{position: 'absolute', left: '-5000px'}} aria-hidden="true">
+                <input type="text" name="b_9eff37978d50bda147c9cb859_df73fef1d5" defaultValue="" />
+              </div>
+              <input type="submit" value="Sign me up" name="subscribe" id="mc-embedded-subscribe" />
+
+            </div>
+          </form>
+        </div>
+
+        {/* <!--End mc_embed_signup--> */}
+      </div>
+
+      {/* POPUPS ///////////////////// */}
+
+      {/* Tour Popup */}
+      <Popup open={tourOpen} closePopup={closePopup} handleClickOutside={handleClickOutside}>
+        <TourPopup mode={tourMode} closePopup={closePopup} />
+      </Popup>
+
+      {/* Donation Popup */}
+      {/* <Popup open={donateOpen} closePopup={closePopup} handleClickOutside={handleClickOutside}>
+        <div className="donatePopup">
+          <h2>How Much Would You Like <br/>to Donate?</h2>
+          <br/>
+          <healcode-widget className="mindBodyLink" data-version="0.2" data-link-class="healcode-pricing-option-text-link" data-site-id="38176" data-mb-site-id="283341" data-type="pricing-link" data-inner-html="$25" data-service-id="10606" />
+          <healcode-widget className="mindBodyLink" data-version="0.2" data-link-class="healcode-pricing-option-text-link" data-site-id="38176" data-mb-site-id="283341" data-type="pricing-link" data-inner-html="$50" data-service-id="10607" />
+          <healcode-widget className="mindBodyLink" data-version="0.2" data-link-class="healcode-pricing-option-text-link" data-site-id="38176" data-mb-site-id="283341" data-type="pricing-link" data-inner-html="$100" data-service-id="10608" />
+          <healcode-widget className="mindBodyLink" data-version="0.2" data-link-class="healcode-pricing-option-text-link" data-site-id="38176" data-mb-site-id="283341" data-type="pricing-link" data-inner-html="$150" data-service-id="10609" />
+          <healcode-widget className="mindBodyLink" data-version="0.2" data-link-class="healcode-pricing-option-text-link" data-site-id="38176" data-mb-site-id="283341" data-type="pricing-link" data-inner-html="$250" data-service-id="10610" />
+          <healcode-widget className="mindBodyLink" data-version="0.2" data-link-class="healcode-pricing-option-text-link" data-site-id="38176" data-mb-site-id="283341" data-type="pricing-link" data-inner-html="$300" data-service-id="10611" />
+        </div>
+      </Popup> */}
+
+      {/* About SevenBell Popup */}
+      <Popup open={sevenOpen} closePopup={closePopup} handleClickOutside={handleClickOutside}>
+        <div className="content seven">
+          <div className="header">
+            <h1>Who is SevenBell?</h1>
+          </div>
+          <div className="body">
+            <p>
+              Seven Bell is a hard-nose personal trainer/motivator and most importantly a leader. When it comes to getting the best out of you, this is your guy. Seven has created a very serious reputation in NY/LA for his mental toughness and his pursuit to being the best. A perfectionist at his craft and very result driven, Seven has been in the fitness business for 20 years. His passion for helping people reach their goals in fitness is unparalleled. Seven’s philosophy in life is very simple, and describes him to the tee, “Raise the bar.” This gym is built from the eye of Seven Bell himself, and he subscribes to the ideology that the quality of your training and level of fitness determines the quality of your mindset, and therefore has an important impact on your life. Seven and his staff have helped exercise this philosophy in his members’ fitness experiences. Now people all over Brooklyn are experiencing and achieving the bodies of their dreams.
+            </p>
+          </div>
+        </div>
+      </Popup>
+
+    </div>
+  );
 }
 
 const TopFeatures = () => (
@@ -395,35 +360,39 @@ const Barclays = ({ text }) => (
   </div>
 );
 
-class Map extends React.Component {
-  static defaultProps = {
-    center: {lat: 40.683603, lng: -73.972470},
-    zoom: 15
-  };
+const Map = (props) => {
+  const {center, zoom} = props
 
-  render() {
-    return (
-       <GoogleMapReact
-         bootstrapURLKeys={{
-          key: 'AIzaSyAUjolc0x3PiWc0jAr0eG9cR_s1QnYIJbU'
-        }}
-        defaultCenter={this.props.center}
-        defaultZoom={this.props.zoom}
-        options={{
-          styles: mapStyle,
-          scrollwheel: false,
-        }}>
-        <Marker
-          lat={40.680319}
-          lng={-73.969135}
-        />
-        <Barclays
-          lat={40.682828}
-          lng={-73.975840}
-        />
-      </GoogleMapReact>
-    );
-  }
+  return (
+     <GoogleMapReact
+       bootstrapURLKeys={{
+        key: 'AIzaSyAUjolc0x3PiWc0jAr0eG9cR_s1QnYIJbU'
+      }}
+      defaultCenter={center}
+      defaultZoom={zoom}
+      options={{
+        styles: mapStyle,
+        scrollwheel: false,
+      }}>
+      <Marker
+        lat={40.680319}
+        lng={-73.969135}
+      />
+      <Barclays
+        lat={40.682828}
+        lng={-73.975840}
+      />
+    </GoogleMapReact>
+  );
 }
+
+// Set default props
+Map.defaultProps = {
+  center: {
+    lat: 40.683603,
+    lng: -73.972470
+  },
+  zoom: 15
+};
 
 export default LandingPage;

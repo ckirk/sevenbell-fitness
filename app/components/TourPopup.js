@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import 'whatwg-fetch';
 import axios from 'axios';
 import validator from 'validator';
