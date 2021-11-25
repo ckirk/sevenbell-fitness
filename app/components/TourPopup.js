@@ -66,8 +66,9 @@ class TourPopup extends React.Component {
 
     const token = 'xoxb-81039659079-2769568474560-vshgxX3oA4gzIPHIFgo77Qgj'
 
-    const channelId = 'C02N53SMC3B' // test channel
+    const channelId = 'C2JL1FZCZ'
     // hot leads channelId C2JL1FZCZ
+    // test channel C02N53SMC3B
 
     const announce = '*New form submission just in!*\n'
     const name = `👤 ${data.firstName} ${data.lastName}\n`
@@ -82,7 +83,7 @@ class TourPopup extends React.Component {
         "type": "section",
         "text": {
           "type": "mrkdwn",
-          "text": `${announce}${name}${phone}${inPerson}${virtual}${interest}`
+          "text": `${announce}${name}${email}${phone}${inPerson}${virtual}${interest}`
         }
       }
     ]
@@ -123,22 +124,22 @@ class TourPopup extends React.Component {
       _cc: "members@sevenbellfitness.com"
     }
 
-    console.log('DATA:', data)
-    this.handlePostToSlack(data)
+    // console.log('DATA:', data)
+    // this.handlePostToSlack(data)
 
-    // axios({
-    //   url: 'https://formspree.io/f/mgepnvqg',
-    //   method: 'post',
-    //   headers: {
-    //     'Accept': 'application/json'
-    //   },
-    //   data: data
-    // }).then((response) => {
-    //   console.log(response);
-    //   // const formspreeRedirect = response.data
-    //   // window.location.href = 'https://formspree.io/thanks';
-    //   this.handlePostToSlack(data)
-    // })
+    axios({
+      url: 'https://formspree.io/f/mgepnvqg',
+      method: 'post',
+      headers: {
+        'Accept': 'application/json'
+      },
+      data: data
+    }).then((response) => {
+      console.log(response);
+      // const formspreeRedirect = response.data
+      // window.location.href = 'https://formspree.io/thanks';
+      this.handlePostToSlack(data)
+    })
   }
 
   handleInputChange = (event) => {
@@ -274,9 +275,9 @@ class TourPopup extends React.Component {
           <button className='submitButton' onClick={() => this.handleFormValidation()}>
             Send
           </button>
-          <button onClick={() => this.handlePostToSlack()}>
+          {/* <button onClick={() => this.handlePostToSlack()}>
             Test
-          </button>
+          </button> */}
         </div>
       </div>
     );
