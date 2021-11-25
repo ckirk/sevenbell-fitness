@@ -1,67 +1,72 @@
-import React, { Component } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import 'whatwg-fetch';
 import axios from 'axios';
 import validator from 'validator';
 import qs from 'qs';
 
-class TourPopup extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: '',
-      firstName: '',
-      lastName: '',
-      email: '',
-      phone: '',
-      virtual: false,
-      inPerson: false,
-      both: false,
-      tour: props.mode == 'eval' ? false : true,
-      eval: props.mode == 'eval' ? true : false,
-      interest: '',
-      inputValid: true,
-      emailValid: true
-    }
-  };
+const TourPopup = (props) => {
+  const [test, setTest] = useState('test')
 
-  handleFormValidation = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: '',
+    virtual: false,
+    inPerson: false,
+    both: false,
+    tour: props.mode == 'eval' ? false : true,
+    eval: props.mode == 'eval' ? true : false,
+    interest: '',
+    inputValid: true,
+    emailValid: true
+  });
+
+  const handleFormValidation = () => {
     console.log('Validating form input...')
     let inputValid = true
     let emailValid = true
-    if (this.state.firstName === '') {
+    if (formData.firstName === '') {
       inputValid = false
     }
-    if (this.state.lastName === '') {
+    if (formData.lastName === '') {
       inputValid = false
     }
-    if (this.state.email === '') {
+    if (formData.email === '') {
       inputValid = false
     }
-    if (this.state.phone === '') {
+    if (formData.phone === '') {
       inputValid = false
     }
-    if (!validator.isEmail(this.state.email)) {
+    if (!validator.isEmail(formData.email)) {
       inputValid = false
       emailValid = false
     }
 
     if (inputValid) {
       console.log('Input is valid!')
-      this.setState({
-        inputValid: true
-      });
-      this.sendFormData()
-      this.props.closePopup()
+      // this.setState({
+      //   inputValid: true
+      // });
+      setFormData({ ...formData, inputValid: true })
+      sendFormData()
+      props.closePopup()
     } else {
       console.log('Input contains errors')
-      this.setState({
+      // this.setState({
+      //   inputValid: false,
+      //   emailValid: emailValid
+      // });
+      setFormData({
+        ...formData,
         inputValid: false,
         emailValid: emailValid
-      });
+      })
     }
   }
 
-  handlePostToSlack = (data) => {
+  const handlePostToSlack = (data) => {
     console.log('Posting To Slack...')
 
     const token = 'xoxb-81039659079-2769568474560-vshgxX3oA4gzIPHIFgo77Qgj'
@@ -108,19 +113,19 @@ class TourPopup extends React.Component {
     })
   }
 
-  sendFormData = () => {
+  const sendFormData = () => {
     console.log('Sending form data to Formspree!')
 
     const data = {
-      firstName: this.state.firstName,
-      lastName: this.state.lastName,
-      email: this.state.email,
-      phone: this.state.phone,
-      virtual: this.state.virtual,
-      inPerson: this.state.inPerson,
-      both: this.state.both,
-      interest: this.state.interest,
-      _subject: "New Membership Inquiry: " + this.state.firstName + " " + this.state.lastName,
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+      email: formData.email,
+      phone: formData.phone,
+      virtual: formData.virtual,
+      inPerson: formData.inPerson,
+      both: formData.both,
+      interest: formData.interest,
+      _subject: "New Membership Inquiry: " + formData.firstName + " " + formData.lastName,
       _cc: "members@sevenbellfitness.com"
     }
 
@@ -138,150 +143,184 @@ class TourPopup extends React.Component {
       console.log(response);
       // const formspreeRedirect = response.data
       // window.location.href = 'https://formspree.io/thanks';
-      this.handlePostToSlack(data)
+      handlePostToSlack(data)
     })
   }
 
-  handleInputChange = (event) => {
+  const handleTest = (event) => {
+    console.log('Change!')
+    console.log(event.target.value)
+    setFormData({ ...formData, test: event.target.value})
+  }
+
+  const handleInputChange = (event) => {
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
 
-    // console.log('value: ', value);
+    console.log('value: ', value);
     // console.log('name: ', name);
 
     if (target.name === 'both') {
-      this.setState({
+      // this.setState({
+      //   virtual: value,
+      //   inPerson: value,
+      //   both: value
+      // });
+      setFormData({
+        ...formData,
         virtual: value,
         inPerson: value,
         both: value
-      });
-    } else if (target.name === 'virtual' && this.state.inPerson === value) {
-      this.setState({
+      })
+    } else if (target.name === 'virtual' && formData.inPerson === value) {
+      // this.setState({
+      //   virtual: value,
+      //   both: value
+      // });
+      setFormData({
+        ...formData,
         virtual: value,
         both: value
-      });
-    } else if (target.name === 'inPerson' && this.state.virtual === value) {
-      this.setState({
+      })
+    } else if (target.name === 'inPerson' && formData.virtual === value) {
+      // this.setState({
+      //   inPerson: value,
+      //   both: value
+      // });
+      setFormData({
+        ...formData,
         inPerson: value,
         both: value
-      });
-    } else if (target.name === 'virtual' && this.state.inPerson !== value) {
-      this.setState({
+      })
+    } else if (target.name === 'virtual' && formData.inPerson !== value) {
+      // this.setState({
+      //   virtual: value,
+      //   both: false
+      // });
+      setFormData({
+        ...formData,
         virtual: value,
         both: false
-      });
-    } else if (target.name === 'inPerson' && this.state.virtual !== value) {
-      this.setState({
+      })
+    } else if (target.name === 'inPerson' && formData.virtual !== value) {
+      // this.setState({
+      //   inPerson: value,
+      //   both: false
+      // });
+      setFormData({
+        ...formData,
         inPerson: value,
         both: false
-      });
+      })
     } else {
-      this.setState({
+      // this.setState({
+      //   [name]: value
+      // });
+      setFormData({
+        ...formData,
         [name]: value
-      });
+      })
     }
   }
 
-  render() {
-    return (
-      <div className="content tour">
-        <div className="header">
-          <h1 className="popupTitle">Schedule A Tour</h1>
-          <p>
-            Tours take place by appointment only.
-          </p>
-          <p>
-            Complete the fields below and a membership advisor will reach out to you in the next 24 hours to schedule your visit.
-          </p>
-        </div>
-        <div className="body">
 
-          {!this.state.inputValid &&
-            <div className='error'>
-              ⚠️ Please fill out all required* fields below to schedule a tour
-            </div>
-          }
-
-          {!this.state.emailValid &&
-            <div className='error'>
-              ⚠️ The email address you entered is not valid
-            </div>
-          }
-
-          {/* This form can send data to formspree or MailChimp, not both... */}
-          {/* Solution would be to use a back-end service to dispatch API calls */}
-          <form>
-          {/* <form method="POST" action="https://formspree.io/ckirkinis@gmail.com" id="inquiryForm"> */}
-
-            <div className='half'>
-              <input type="text" name="firstName" value={this.state.firstName}
-                onChange={this.handleInputChange} placeholder="First Name*"
-                className='left'
-              />
-              <input type="text" name="lastName" value={this.state.lastName}
-                onChange={this.handleInputChange} placeholder="Last Name*"
-              />
-            </div>
-
-            <input className='inline' type="text" name="email" onChange={this.handleInputChange} placeholder="Email*" />
-            <input className='inline' type="text" name="phone" onChange={this.handleInputChange} placeholder="Phone Number*" />
-            {/* <input type="hidden" name="_subject" value={"New Membership Inquiry: " + this.state.name} /> */}
-            {/* <input type="hidden" name="_cc" value="solutions@sevenbellfitness.com" /> */}
-
-            <label>
-              <input
-                name="virtual"
-                type="checkbox"
-                checked={this.state.virtual}
-                onChange={this.handleInputChange} />
-              Interested in Virtual Services
-            </label>
-
-            <label>
-              <input
-                name="inPerson"
-                type="checkbox"
-                checked={this.state.inPerson}
-                onChange={this.handleInputChange} />
-                Interested in In-Person Services
-            </label>
-
-            <label>
-              <input
-                name="both"
-                type="checkbox"
-                checked={this.state.both}
-                onChange={this.handleInputChange} />
-                Interested in Both
-            </label>
-
-            <label className='primaryInterest'>
-              Primary Interest:
-              <select name="interest" value={this.state.interest} onChange={this.handleInputChange}>
-                <option disabled value='blank'>Select One</option>
-                <option value="Personal Training">Personal Training</option>
-                <option value="Classes">Classes</option>
-                <option value="Private Boxing">Private Boxing</option>
-                <option value="Nutrition Guidance">Nutrition Guidance</option>
-                <option value="Just Gym Access">Just Gym Access</option>
-              </select>
-            </label>
-
-            {/* <input className='submitButton' type="submit" value="Send" onClick={() => this.handleFormSubmit()} /> */}
-
-          </form>
-
-          <button className='submitButton' onClick={() => this.handleFormValidation()}>
-            Send
-          </button>
-          {/* <button onClick={() => this.handlePostToSlack()}>
-            Test
-          </button> */}
-        </div>
+  return (
+    <div className="content tour">
+      <div className="header">
+        <h1 className="popupTitle">Schedule A Tour</h1>
+        <p>
+          Tours take place by appointment only.
+        </p>
+        <p>
+          Complete the fields below and a membership advisor will reach out to you in the next 24 hours to schedule your visit.
+        </p>
       </div>
-    );
-  }
+      <div className="body">
+
+        {!formData.inputValid &&
+          <div className='error'>
+            ⚠️ Please fill out all required* fields below to schedule a tour
+          </div>
+        }
+
+        {!formData.emailValid &&
+          <div className='error'>
+            ⚠️ The email address you entered is not valid
+          </div>
+        }
+
+        {/* This form can send data to formspree or MailChimp, not both... */}
+        {/* Solution would be to use a back-end service to dispatch API calls */}
+        <form>
+        {/* <form method="POST" action="https://formspree.io/ckirkinis@gmail.com" id="inquiryForm"> */}
+
+          <div className='half'>
+            <input type="text" name="firstName" value={formData.firstName}
+              onChange={handleInputChange} placeholder="First Name*"
+              className='left'
+            />
+            <input type="text" name="lastName" value={formData.lastName}
+              onChange={handleInputChange} placeholder="Last Name*"
+            />
+          </div>
+
+          <input className='inline' type="text" name="email" onChange={handleInputChange} placeholder="Email*" />
+          <input className='inline' type="text" name="phone" onChange={handleInputChange} placeholder="Phone Number*" />
+
+
+          <label>
+            <input
+              name="virtual"
+              type="checkbox"
+              checked={formData.virtual}
+              onChange={handleInputChange} />
+            Interested in Virtual Services
+          </label>
+
+          <label>
+            <input
+              name="inPerson"
+              type="checkbox"
+              checked={formData.inPerson}
+              onChange={handleInputChange} />
+              Interested in In-Person Services
+          </label>
+
+          <label>
+            <input
+              name="both"
+              type="checkbox"
+              checked={formData.both}
+              onChange={handleInputChange} />
+              Interested in Both
+          </label>
+
+          <label className='primaryInterest'>
+            Primary Interest:
+            <select name="interest" value={formData.interest} onChange={handleInputChange}>
+              <option disabled value='blank'>Select One</option>
+              <option value="Personal Training">Personal Training</option>
+              <option value="Classes">Classes</option>
+              <option value="Private Boxing">Private Boxing</option>
+              <option value="Nutrition Guidance">Nutrition Guidance</option>
+              <option value="Just Gym Access">Just Gym Access</option>
+            </select>
+          </label>
+
+          {/* <input className='submitButton' type="submit" value="Send" onClick={() => this.handleFormSubmit()} /> */}
+
+        </form>
+
+        <button className='submitButton' onClick={() => handleFormValidation()}>
+          Send
+        </button>
+        {/* <button onClick={() => this.handlePostToSlack()}>
+          Test
+        </button> */}
+      </div>
+    </div>
+  );
 }
 
 export default TourPopup;
