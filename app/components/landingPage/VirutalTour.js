@@ -22,11 +22,12 @@ class VirtualTour extends React.Component {
         "compass": false,
         "showZoomCtrl": false,
         "showFullscreenCtrl": false,
-        "showControls": false,
+        "showControls": true,
         "autoRotateInactivityDelay": 3000,
         "mouseZoom": false,
         "yaw": 20,
         "pitch": -12,
+        "draggable": true
       });
     }
     // listen for scroll event (disabled)
