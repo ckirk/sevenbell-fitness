@@ -4,11 +4,13 @@ import React, { Component } from 'react';
 // check for healcode.js - if found refresh page to kill it
 // if not found, add it to the page
 const loadHealcode = () => {
+  // if healcode script is already loaded
   if (document.querySelector('script[src="https://widgets.healcode.com/javascripts/healcode.js"]')) {
-    // console.log('script found!')
-    location.reload();
+    console.log('script found!')
+    // console.log('Force Refresh!')
+    // location.reload();
   } else {
-    // console.log('script not found... fetching script')
+    console.log('script not found... fetching script')
 
     // load mindbody scedule embed script
     let script = document.createElement("script");
@@ -23,6 +25,8 @@ const loadHealcode = () => {
 // when unmounting component check for healcode.js script
 // if found refresh the page to kill/remove it
 const removeHealcode = () => {
+  console.log('remove healcode!')
+
   if (document.querySelector('script[src="https://widgets.healcode.com/javascripts/healcode.js"]')) {
     location.reload();
   }

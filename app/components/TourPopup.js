@@ -147,12 +147,6 @@ const TourPopup = (props) => {
     })
   }
 
-  const handleTest = (event) => {
-    console.log('Change!')
-    console.log(event.target.value)
-    setFormData({ ...formData, test: event.target.value})
-  }
-
   const handleInputChange = (event) => {
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;

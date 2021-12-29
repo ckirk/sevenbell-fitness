@@ -56,22 +56,41 @@ class Memberships extends React.Component {
         <div className="contentBkg">
           <div className="memberships">
             <Tier name='Basic'
-                  description='Access to private facility and classes'
-                  price={100}
-                  perks={['Private gym access', 'Private classes', 'One fitness assessment']}
+                  description="I'm Just Here For The Privacy"
+                  price={120}
+                  perks={[
+                    'Private Gym Access',
+                    '2 Small Group Training Sessions Each Month',
+                    'Requires 3 month commitment to start'
+                  ]}
             />
             <Tier name='Formula7'
-                  description='With this option the training is your membership. There are no additinal fees'
+                  description='Training Is Your Membership With No Additional Fees'
                   // price={125}
-                  perks={['Lowest overall cost', 'Lowest training cost', 'Private gym access', 'Private classes']}
-                  bottomText='Price varies depending on the frequency of training'
+                  perks={[
+                    'Lowest Overall Cost /Highest Overall Savings',
+                    'A Personal Training Experience At Least 2X Per Week',
+                    'Access To Private Gym',
+                    '10% Off Small Group Training Sessions (No Small Group Training Classes Are Included In This Membership)'
+                  ]}
+                  bottomText='Price Varies Based On Frequency'
                   center={true}
             />
             <Tier name='Preferred'
-                  description="Guidance with no comittment"
-                  price={135}
-                  perks={['Private gym access', 'Private classes', 'Monthly fitness assessment', 'Access to our training program']}
+                  description="Perfect For Someone Looking For A Little Guidance"
+                  price={145}
+                  perks={[
+                    'Private Gym Access',
+                    'Access To Our Training Programs',
+                    '1 Fitness Assessment Each Month',
+                    '4 Small Group Training Sessions Each Month'
+                  ]}
             />
+          </div>
+          <div className='bottom'>
+            <div>
+              All memberships are subject to a $149 Enrollment and Processing Fee
+            </div>
           </div>
         </div>
 
@@ -89,14 +108,15 @@ const Tier = (props) => (
     </div>
     <div className="perksContainer">
       <div className="perks">
-        {props.perks.map((perk, index) => {
-          return (
-            <p key={index}>
-              <i className="fa fa-fw fa-check" aria-hidden="true"></i>
-              {perk}
-            </p>
-          )
-        })}
+        <ul>
+          {props.perks.map((perk, index) => {
+            return (
+              <li key={index}>
+                {perk}
+              </li>
+            )
+          })}
+        </ul>
       </div>
     </div>
     <div className="bottom">

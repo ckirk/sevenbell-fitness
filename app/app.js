@@ -10,6 +10,16 @@ import Schedule from './components/Schedule'
 import BookGymTime from './components/BookGymTime'
 import Training from './components/Training'
 
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#EFBE55',
+    },
+  },
+});
+
 // REACT-ROUTER
 class App extends Component {
 
@@ -37,17 +47,19 @@ class App extends Component {
 
   render () {
     return (
-      <Router onUpdate={this.hashLinkScroll} history={hashHistory}>
-        <Route path='/' component={Base}>
-          <IndexRoute component={LandingPage} />
-          <Route path='memberships' component={Memberships} />
-          <Route path='schedule' component={Schedule} />
-          <Route path='book-gym-time' component={BookGymTime} />
-          <Route path='training' component={Training} />
+      <ThemeProvider theme={theme}>
+        <Router onUpdate={this.hashLinkScroll} history={hashHistory}>
+          <Route path='/' component={Base}>
+            <IndexRoute component={LandingPage} />
+            <Route path='memberships' component={Memberships} />
+            <Route path='schedule' component={Schedule} />
+            <Route path='book-gym-time' component={BookGymTime} />
+            <Route path='training' component={Training} />
 
-          <Route path='*' component={NotFound} />
-        </Route>
-      </Router>
+            <Route path='*' component={NotFound} />
+          </Route>
+        </Router>
+      </ThemeProvider>
     )
   }
 }

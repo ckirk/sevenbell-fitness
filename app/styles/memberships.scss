@@ -47,6 +47,9 @@
         h3, h4 {
           text-align: center;
         }
+        h4 {
+          margin: 5px;
+        }
         .line {
           background-color: $dark-grey;
           height: 3px;
@@ -59,10 +62,20 @@
           align-items: center;
           margin-bottom: 30px;
           .perks {
-            p {
+            ul {
+              list-style-type: none;
               margin: 10px 0;
               font-size: 1.1em;
               font-weight: 400;
+              li {
+                margin-bottom: 10px;
+              }
+              li:before {
+                font-family: 'FontAwesome';
+                content: '\f00c';
+                margin: 0 10px 0 -34px;
+                font-size: 1.4em;
+              }
             }
             .fa {
               margin-right: 5px;
@@ -71,6 +84,12 @@
           }
         }
       }
+    }
+    .bottom {
+      display: flex;
+      padding: 10px;
+      justify-content: center;
+      align-items: center;
     }
   }
 }
