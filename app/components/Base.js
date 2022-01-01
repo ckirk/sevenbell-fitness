@@ -31,7 +31,7 @@ const Base = (props) =>  {
           <div className="navMenu">
             <a href='http://mndbdy.ly/e/283341'>Get The App</a>
             <Link to='/memberships' activeClassName='active'>Memberships</Link>
-            <Link to='/schedule' activeClassName='active'>Streaming Live Classes</Link>
+            {/* <Link to='/schedule' activeClassName='active'>Streaming Live Classes</Link> */}
             <Link to='/book-gym-time' activeClassName='active'>Book Gym Time</Link>
             <Link to='/training' activeClassName='active'>Personal Training</Link>
           </div>
@@ -43,7 +43,7 @@ const Base = (props) =>  {
             <Link to='/' activeClassName='active' onClick={toggleMobileMenu}>Home</Link>
             <a href='http://mndbdy.ly/e/283341'>Get The App</a>
             <Link to='/memberships' activeClassName='active' onClick={toggleMobileMenu}>Memberships</Link>
-            <Link to='/schedule' activeClassName='active' onClick={toggleMobileMenu}>Streaming Live Classes</Link>
+            {/* <Link to='/schedule' activeClassName='active' onClick={toggleMobileMenu}>Streaming Live Classes</Link> */}
             <Link to='/book-gym-time' activeClassName='active' onClick={toggleMobileMenu}>Book Gym Time</Link>
             <Link to='/training' activeClassName='active' onClick={toggleMobileMenu}>Personal Training</Link>
           </div>
