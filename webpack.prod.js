@@ -7,9 +7,10 @@ const common = require('./webpack.common.js');
 
 // js minification
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin-legacy');
 
 // upload contents of /build directory directly to S3
-var S3Plugin = require('webpack-s3-plugin');
+// var S3Plugin = require('webpack-s3-plugin');
 
 module.exports = merge(common, {
   plugins: [
@@ -18,7 +19,7 @@ module.exports = merge(common, {
         NODE_ENV: JSON.stringify('production')
       }
     }),
-    new webpack.optimize.UglifyJsPlugin(),
+    new TerserPlugin(),
 
     // This seems to be broken now... disabling and uploading to S3 manually
     // new S3Plugin({
